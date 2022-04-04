@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 	"database/sql"
-	"rpl-sixmath/model/entity"
+	"rpl-sixmath/entity"
 )
 
 type UserRepository interface {
