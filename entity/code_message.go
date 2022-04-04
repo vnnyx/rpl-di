@@ -1,8 +1,8 @@
 package entity
 
 type CodeMessageEntity struct {
-	Id      int    `gorm:"primaryKey;column:codemessage_id;autoIncrement"`
-	Code    string `gorm:"column:code;"`
+	Id      int    `gorm:"column:codemessage_id;primaryKey;int;autoIncrement"`
+	Code    string `gorm:"column:code;type:text"`
 	Message string `gorm:"column:message"`
 }
 

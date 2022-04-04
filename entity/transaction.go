@@ -3,13 +3,13 @@ package entity
 import "time"
 
 type Transaction struct {
-	TransactionId   int            `gorm:"column:transaction_id;primaryKey;autoIncrement"`
+	TransactionId   int            `gorm:"column:transaction_id;primaryKey;autoIncrement;type:int"`
 	Child           *StudentEntity `gorm:"association_foreignKey:StudentId"`
-	ChildId         int            `gorm:"column:child_id"`
-	TotalAmount     float64        `gorm:"column:total_amount"`
-	Subscription    int            `gorm:"column:subcription"`
+	ChildId         int            `gorm:"column:child_id;type:int"`
+	TotalAmount     float64        `gorm:"column:total_amount;type:double"`
+	Subscription    int            `gorm:"column:subcription;type:int"`
 	TransactionDate time.Time      `gorm:"column:transaction_date"`
-	Status          bool           `gorm:"column:status"`
+	Status          bool           `gorm:"column:status;type:bool"`
 }
 
 func (Transaction) TableName() string {

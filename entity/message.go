@@ -5,7 +5,7 @@ import "time"
 type MessageEntity struct {
 	MessageId int                `gorm:"column:message_id;primaryKey;autoIncrement"`
 	Message   string             `gorm:"column:message"`
-	TargetId  int                `gorm:"column:target_id"`
+	TargetId  int                `gorm:"column:target_id;type:int"`
 	Target    *CodeMessageEntity `gorm:"association_foreignKey:Id"`
 	TeacherId int                `gorm:"column:teacher_id"`
 	Teacher   *TeacherEntity     `gorm:"association_foreignKey:TeacherId"`
