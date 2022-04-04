@@ -1,25 +1,21 @@
 package repository
 
-import (
-	"context"
-	"database/sql"
-	"rpl-sixmath/model/entity"
-)
+import "rpl-sixmath/entity"
 
 type UserRepository interface {
-	InsertTeacher(ctx context.Context, tx *sql.Tx, teacher entity.TeacherEntity) entity.TeacherEntity
-	InsertStudent(ctx context.Context, tx *sql.Tx, student entity.StudentEntity) entity.StudentEntity
-	InsertParent(ctx context.Context, tx *sql.Tx, parent entity.ParentEntity) entity.ParentEntity
-	UpdateTeacher(ctx context.Context, tx *sql.Tx, teacher entity.TeacherEntity) entity.TeacherEntity
-	UpdateStudent(ctx context.Context, tx *sql.Tx, student entity.StudentEntity) entity.StudentEntity
-	UpdateParent(ctx context.Context, tx *sql.Tx, parent entity.ParentEntity) entity.ParentEntity
-	DeleteTeacher(ctx context.Context, tx *sql.Tx, teacherId int)
-	DeleteStudent(ctx context.Context, tx *sql.Tx, studentId int)
-	DeleteParent(ctx context.Context, tx *sql.Tx, parentId int)
-	FindTeacherById(ctx context.Context, tx *sql.Tx, teacherId int) (entity.TeacherEntity, error)
-	FindStudentById(ctx context.Context, tx *sql.Tx, studentId int) (entity.StudentEntity, error)
-	FindParentById(ctx context.Context, tx *sql.Tx, parentId int) (entity.ParentEntity, error)
-	FindTeacherAll(ctx context.Context, tx *sql.Tx) []entity.TeacherEntity
-	FindStudentAll(ctx context.Context, tx *sql.Tx) []entity.StudentEntity
-	FindParentAll(ctx context.Context, tx *sql.Tx) []entity.ParentEntity
+	InsertTeacher(teacher entity.TeacherEntity) (entity.TeacherEntity, error)
+	InsertStudent(student entity.StudentEntity) (entity.StudentEntity, error)
+	InsertParent(parent entity.ParentEntity) (entity.ParentEntity, error)
+	UpdateTeacher(teacher entity.TeacherEntity) (entity.TeacherEntity, error)
+	UpdateStudent(student entity.StudentEntity) (entity.StudentEntity, error)
+	UpdateParent(parent entity.ParentEntity) (entity.ParentEntity, error)
+	DeleteTeacher(teacherId int) error
+	DeleteStudent(studentId int) error
+	DeleteParent(parentId int) error
+	FindTeacherById(teacherId int) (response entity.TeacherEntity, err error)
+	FindStudentById(studentId int) (responer entity.StudentEntity, err error)
+	FindParentById(parentId int) (responer entity.ParentEntity, err error)
+	FindTeacherAll() (response []entity.TeacherEntity, err error)
+	FindStudentAll() (response []entity.StudentEntity, err error)
+	FindParentAll() (response []entity.ParentEntity, err error)
 }

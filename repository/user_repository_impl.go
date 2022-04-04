@@ -1,85 +1,105 @@
 package repository
 
 import (
-	"context"
-	"database/sql"
-	"rpl-sixmath/model/entity"
+	"rpl-sixmath/entity"
+
+	"gorm.io/gorm"
 )
 
 type UserRepositoryImpl struct {
+	DB *gorm.DB
 }
 
-func (repo *UserRepositoryImpl) InsertTeacher(ctx context.Context, tx *sql.Tx, teacher entity.TeacherEntity) entity.TeacherEntity {
-	//TODO implement me
-	panic("implement me")
+func NewUserRepositoryImpl(DB *gorm.DB) UserRepository {
+	return &UserRepositoryImpl{DB: DB}
 }
 
-func (repo *UserRepositoryImpl) InsertStudent(ctx context.Context, tx *sql.Tx, student entity.StudentEntity) entity.StudentEntity {
+func (repo UserRepositoryImpl) InsertTeacher(teacher entity.TeacherEntity) (entity.TeacherEntity, error) {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Create(&teacher).Error
+	return teacher, err
 }
 
-func (repo *UserRepositoryImpl) InsertParent(ctx context.Context, tx *sql.Tx, parent entity.ParentEntity) entity.ParentEntity {
+func (repo UserRepositoryImpl) InsertStudent(student entity.StudentEntity) (entity.StudentEntity, error) {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Create(&student).Error
+	return student, err
 }
 
-func (repo *UserRepositoryImpl) UpdateTeacher(ctx context.Context, tx *sql.Tx, teacher entity.TeacherEntity) entity.TeacherEntity {
+func (repo UserRepositoryImpl) InsertParent(parent entity.ParentEntity) (entity.ParentEntity, error) {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Create(&parent).Error
+	return parent, err
 }
 
-func (repo *UserRepositoryImpl) UpdateStudent(ctx context.Context, tx *sql.Tx, student entity.StudentEntity) entity.StudentEntity {
+func (repo UserRepositoryImpl) UpdateTeacher(teacher entity.TeacherEntity) (entity.TeacherEntity, error) {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Where("teacher_id", teacher.Id).Updates(&teacher).Error
+	return teacher, err
 }
 
-func (repo *UserRepositoryImpl) UpdateParent(ctx context.Context, tx *sql.Tx, parent entity.ParentEntity) entity.ParentEntity {
+func (repo UserRepositoryImpl) UpdateStudent(student entity.StudentEntity) (entity.StudentEntity, error) {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Where("teacher_id", student.Id).Updates(&student).Error
+	return student, err
 }
 
-func (repo *UserRepositoryImpl) DeleteTeacher(ctx context.Context, tx *sql.Tx, teacherId int) {
+func (repo UserRepositoryImpl) UpdateParent(parent entity.ParentEntity) (entity.ParentEntity, error) {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Where("teacher_id", parent.Id).Updates(&parent).Error
+	return parent, err
 }
 
-func (repo *UserRepositoryImpl) DeleteStudent(ctx context.Context, tx *sql.Tx, studentId int) {
+func (repo UserRepositoryImpl) DeleteTeacher(teacherId int) error {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Where("teacher_id", teacherId).Delete(&entity.TeacherEntity{}).Error
+	return err
 }
 
-func (repo *UserRepositoryImpl) DeleteParent(ctx context.Context, tx *sql.Tx, parentId int) {
+func (repo UserRepositoryImpl) DeleteStudent(studentId int) error {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Where("student_id", studentId).Delete(&entity.StudentEntity{}).Error
+	return err
 }
 
-func (repo *UserRepositoryImpl) FindTeacherById(ctx context.Context, tx *sql.Tx, teacherId int) (entity.TeacherEntity, error) {
+func (repo UserRepositoryImpl) DeleteParent(parentId int) error {
 	//TODO implement me
-	panic("implement me")
+	err := repo.DB.Where("parent_id", parentId).Delete(&entity.ParentEntity{}).Error
+	return err
 }
 
-func (repo *UserRepositoryImpl) FindStudentById(ctx context.Context, tx *sql.Tx, studentId int) (entity.StudentEntity, error) {
+func (repo UserRepositoryImpl) FindTeacherById(teacherId int) (response entity.TeacherEntity, err error) {
 	//TODO implement me
-	panic("implement me")
+	err = repo.DB.Where("teacher_id", teacherId).First(&response).Error
+	return response, err
 }
 
-func (repo *UserRepositoryImpl) FindParentById(ctx context.Context, tx *sql.Tx, parentId int) (entity.ParentEntity, error) {
+func (repo UserRepositoryImpl) FindStudentById(studentId int) (response entity.StudentEntity, err error) {
 	//TODO implement me
-	panic("implement me")
+	err = repo.DB.Where("student_id", studentId).First(&response).Error
+	return response, err
 }
 
-func (repo *UserRepositoryImpl) FindTeacherAll(ctx context.Context, tx *sql.Tx) []entity.TeacherEntity {
+func (repo UserRepositoryImpl) FindParentById(parentId int) (response entity.ParentEntity, err error) {
 	//TODO implement me
-	panic("implement me")
+	err = repo.DB.Where("parent_id", parentId).First(&response).Error
+	return response, err
 }
 
-func (repo *UserRepositoryImpl) FindStudentAll(ctx context.Context, tx *sql.Tx) []entity.StudentEntity {
+func (repo UserRepositoryImpl) FindTeacherAll() (response []entity.TeacherEntity, err error) {
 	//TODO implement me
-	panic("implement me")
+	err = repo.DB.Find(&response).Error
+	return response, err
 }
 
-func (repo *UserRepositoryImpl) FindParentAll(ctx context.Context, tx *sql.Tx) []entity.ParentEntity {
+func (repo UserRepositoryImpl) FindStudentAll() (response []entity.StudentEntity, err error) {
 	//TODO implement me
-	panic("implement me")
+	err = repo.DB.Find(&response).Error
+	return response, err
+}
+
+func (repo UserRepositoryImpl) FindParentAll() (response []entity.ParentEntity, err error) {
+	//TODO implement me
+	err = repo.DB.Find(&response).Error
+	return response, err
 }
