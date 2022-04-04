@@ -9,6 +9,10 @@ type VideoRepositoryImpl struct {
 	DB *gorm.DB
 }
 
+func NewVideoRepository(DB *gorm.DB) VideoRepository {
+	return &VideoRepositoryImpl{DB: DB}
+}
+
 func (repo VideoRepositoryImpl) AddVideo(video entity.VideoEntity) (response entity.VideoEntity, err error) {
 	err = repo.DB.Create(&video).Error
 	return video, err
