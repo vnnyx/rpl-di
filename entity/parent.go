@@ -1,12 +1,12 @@
 package entity
 
 type ParentEntity struct {
-	Id       int           `gorm:"column:parent_id;autoIncrement;primaryKey"`
-	Username string        `gorm:"column:username;index:unique"`
+	ParentId int           `gorm:"column:parent_id;autoIncrement;primaryKey"`
+	Username string        `gorm:"column:username;index:username_unique,unique"`
 	Email    string        `gorm:"column:email"`
 	Password string        `gorm:"column:password"`
 	Gender   string        `gorm:"column:gender"`
-	Child    StudentEntity `gorm:"association_foreignKey:ChildId"`
+	Child    StudentEntity `gorm:"association_foreignKey:StudentId"`
 	ChildId  int           `gorm:"column:child_id"`
 }
 

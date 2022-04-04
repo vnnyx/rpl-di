@@ -3,8 +3,8 @@ package entity
 import "time"
 
 type Transaction struct {
-	Id              int           `gorm:"column:transaction_id;primaryKey;autoIncrement"`
-	Child           StudentEntity `gorm:"association_foreignKey:ChildId"`
+	TransactionId   int           `gorm:"column:transaction_id;primaryKey;autoIncrement"`
+	Child           StudentEntity `gorm:"association_foreignKey:StudentId"`
 	ChildId         int           `gorm:"column:child_id"`
 	TotalAmount     float64       `gorm:"column:total_amount"`
 	Subscription    int           `gorm:"column:subcription"`
