@@ -9,6 +9,7 @@ import (
 	"rpl-sixmath/service"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
@@ -37,6 +38,7 @@ func main() {
 	authController := controller.NewAuthController(&authService)
 
 	app := fiber.New(config.NewFiberConfig())
+	app.Use(cors.New())
 	app.Use(recover.New())
 
 	userController.Route(app)
