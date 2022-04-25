@@ -11,8 +11,8 @@ import (
 	"time"
 )
 
-func MysqlConnection(configuration Config) *gorm.DB {
-	ctx, cancel := NewMySQLSlaveContext()
+func NewMySQLDatabase(configuration Config) *gorm.DB {
+	ctx, cancel := NewMySQLContext()
 	defer cancel()
 
 	sqlDB, err := sql.Open("mysql", configuration.Get("MYSQL_HOST_SLAVE"))
@@ -51,6 +51,6 @@ func MysqlConnection(configuration Config) *gorm.DB {
 	return gormDB
 }
 
-func NewMySQLSlaveContext() (context.Context, context.CancelFunc) {
+func NewMySQLContext() (context.Context, context.CancelFunc) {
 	return context.WithTimeout(context.Background(), 10*time.Second)
 }
