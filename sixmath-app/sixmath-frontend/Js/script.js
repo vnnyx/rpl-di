@@ -37,3 +37,25 @@ $(function () {
         return true;
     });
 });
+
+$('#btn-daftar').on('click', function(){
+    $.ajax({
+        url : 'https://1307-125-164-234-150.ap.ngrok.io/api/student',
+        type : 'post',
+        dataType : 'json',
+        data : {
+            'email' : $('#email').val(),
+            'username' : $('#username').val(),
+            'handphone' : $('#handphone').val(),
+            'password' : $('#myInput2').val(),
+
+        },
+        success : function(result){
+            console.log(result)
+            
+        },
+        failure : function(){
+            console.log('ok')
+        }
+    });
+});

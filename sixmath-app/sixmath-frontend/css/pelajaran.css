@@ -292,6 +292,7 @@ body{
     width: 1280px;
     background-color: #fff;
     transition: all .4s ease;
+    z-index: -1111;
 }
 .home_content .kerjakan{
     position: relative;
@@ -330,5 +331,8 @@ body{
     top: 440px;
     left: 90px;
     width: 80%;
+}
+.sidebar.act ~ .container-fluid .instruksi{
+    width: 65%;
 }
 /* end */
