@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"rpl-sixmath/config"
 	"rpl-sixmath/controller"
@@ -30,6 +31,7 @@ func main() {
 	userService := service.NewUserService(&userRepository)
 	userController := controller.NewUserController(&userService)
 	app := fiber.New(config.NewFiberConfig())
+	app.Use(cors.New())
 	app.Use(recover.New())
 	userController.Route(app)
 	err := app.Listen(":8000")
