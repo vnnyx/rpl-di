@@ -38,7 +38,8 @@ $(function () {
     });
 });
 
-$('#btn-daftar').on('click', function(){
+$('#btn-daftar').on('click', function(e){
+    e.preventDefault();
     $.ajax({
         url : 'https://1307-125-164-234-150.ap.ngrok.io/api/student',
         type : 'post',
@@ -51,7 +52,7 @@ $('#btn-daftar').on('click', function(){
 
         },
         success : function(result){
-            console.log(result)
+            window.location = "login.html"
             
         },
         failure : function(){
