@@ -1,8 +1,9 @@
 package repository
 
 import (
-	"gorm.io/gorm"
 	"rpl-sixmath/entity"
+
+	"gorm.io/gorm"
 )
 
 type UserRepositoryImpl struct {
@@ -28,17 +29,17 @@ func (repo *UserRepositoryImpl) DeleteUser(userId int) error {
 	return err
 }
 
-func (repo *UserRepositoryImpl) FindUserById(userId int) (entity.UserEntity, error) {
-	err := repo.DB.Where("user_id", userId).Find(&entity.UserEntity{}).Error
-	return entity.UserEntity{}, err
+func (repo *UserRepositoryImpl) FindUserById(userId int) (response entity.UserEntity, err error) {
+	err = repo.DB.Where("user_id", userId).Find(&response).Error
+	return response, err
 }
 
-func (repo *UserRepositoryImpl) FindUserByUsername(username string) (entity.UserEntity, error) {
-	err := repo.DB.Where("username", username).Find(&entity.UserEntity{}).Error
-	return entity.UserEntity{}, err
+func (repo *UserRepositoryImpl) FindUserByUsername(username string) (response entity.UserEntity, err error) {
+	err = repo.DB.Where("username", username).Find(&response).Error
+	return response, err
 }
 
-func (repo *UserRepositoryImpl) FindUserAll() ([]entity.UserEntity, error) {
-	err := repo.DB.Find(&entity.UserEntity{}).Error
-	return []entity.UserEntity{}, err
+func (repo *UserRepositoryImpl) FindUserAll() (response []entity.UserEntity, err error) {
+	err = repo.DB.Find(&response).Error
+	return response, err
 }

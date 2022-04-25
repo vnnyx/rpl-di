@@ -1,10 +1,11 @@
 package controller
 
 import (
-	"github.com/gofiber/fiber/v2"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 type UserController struct {
