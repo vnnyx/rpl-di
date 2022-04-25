@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- boxicon css -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Lokal CSS -->
+    <link rel="stylesheet" href="../css/statistik.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <a href="#"><img src="../assets/logo.png" alt=""></a>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="#">
+                    <i class="bx bx-grid-alt"></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tultip">Dashboard</span>
+            </li>
+            <li class="akt">
+                <a href="#">
+                    <i class='bx bx-book-open'></i>
+                    <span class="links_name">Pelajaran</span>
+                </a>
+                <span class="tultip">Pelajaran</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-conversation'></i>
+                    <span class="links_name">Pesan</span>
+                </a>
+                <span class="tultip">Pesan</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-stats'></i>
+                    <span class="links_name">Statistik</span>
+                </a>
+                <span class="tultip">Statistik</span>
+            </li>
+            <li>
+                <a href="video.html">
+                    <i class='bx bx-video'></i>
+                    <span class="links_name">Video</span>
+                </a>
+                <span class="tultip">Video</span>
+            </li>
+        </ul>
+        <div class="logout_content">
+            <div class="logout">
+                <div class="log_details">
+                    <div class="name">
+                        <div class="string">Keluar</div>
+                    </div>
+                </div>
+                <i class="bx bx-log-out" id="log_out"></i>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="home_content">
+            <!-- content left -->
+            <div class="row">
+                <div class="cont-left col-lg-6">
+                    <h1 class="up-judul">Sixmath Pelajaran</h1>
+                </div>
+                <div class="col-lg-6">
+                    <div class="profile">
+                        <i class="bx bx-search bx-sm"></i>
+                        <i class='bx bxs-bell bx-sm'></i>
+                        <img src="../assets/foto.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-l col-lg-6">
+                    <h3 class="daftar">Statistik Pendaftaran</h3>
+                    <select class="combo-box">
+                        <option name="months" value="6" id="opt">6 Months</option>
+                        <option name="months" value="5" id="opt">5 Months</option>
+                        <option name="months" value="4" id="opt">4 Months</option>
+                        <option name="months" value="3" id="opt">3 Months</option>
+                    </select>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="vid-r col-lg-6">
+                    <h1 class="daftar">Total</h1>
+                    <div class="dough">
+                        <canvas id="doughChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tugas">
+                        <h3 class="mb-3">Daftar Tugas Terdekat</h3>
+                        <p class="tanggal mb-5">Minggu, 26 Desember 2022</p>
+                        <div class="row">
+                            <div class="task col-lg-6">
+                                <h1 class="judul-tugas">Tugas 1 : Penalaran</h1>
+                                <p>Mengerjakan tugas mengenai Penalaran Pemikiran</p>
+                                <button type="button" class="btn btn-warning">Kerjakan Tugas</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="task col-lg-6">
+                                <h1 class="judul-tugas">Tugas 2 : Matematika</h1>
+                                <p>Mengerjakan tugas mengenai Matematika</p>
+                                <button type="button" class="btn btn-warning">Kerjakan Tugas</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <!-- jquery cdn -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                let sidebar = document.querySelector(".sidebar")
+                $('#btn').on('click', function () {
+                    sidebar.classList.toggle("act");
+                });
+                $('li').on('click', function () {
+                    $(this).siblings().removeClass('akt')
+                    $(this).addClass('akt')
+                    console.log('ok')
+                });
+            });
+
+        </script>
+        <script src="../Js/util.js"></script>
+        <script>
+            $(document).ready(function () {
+                var myChart
+                const labels = Samples.utils.months({ count: 6 });
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        data: [30, 35, 40, 22, 25,77],
+                        backgroundColor: ['#6A35FF', '#EBC314'],
+                        borderRadius: 8,
+                        borderSkipped: false,
+                        barPercentage: 0.7
+                    }]
+                };
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    drawBorder: false
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    drawBorder: false
+                                }
+                            }
+                        }
+                    },
+                };
+                myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+                $("select.combo-box").change(function () {
+                    myChart.destroy()
+                    var bar = $(this).children("option:selected").val();
+                    const labels = Samples.utils.months({ count: bar });
+                    const data = {
+                        labels: labels,
+                        datasets: [{
+                            data: [30, 35, 40, 22, 25, 77],
+                            backgroundColor: ['#6A35FF', '#EBC314'],
+                            borderRadius: 8,
+                            borderSkipped: false,
+                            barPercentage: 0.7
+                        }]
+                    };
+                    const config = {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: {
+                                        display: false,
+                                        drawOnChartArea: false,
+                                        drawBorder: false
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        display: false,
+                                        drawOnChartArea: false,
+                                        drawBorder: false
+                                    }
+                                }
+                            }
+                        },
+                    };
+                    myChart = new Chart(
+                        document.getElementById('myChart'),
+                        config
+                    );
+                });
+
+            });
+            const dough = {
+                labels: [
+                    'Matematika',
+                    'Penalaran'
+                ],
+                datasets: [{
+                    data: [300, 250],
+                    backgroundColor: ['#6A35FF', '#EBC314'],
+                    hoverOffset: 4
+                }]
+            };
+            const cfg = {
+                type: 'doughnut',
+                data: dough,
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxHeight: 20,
+                                boxWidth: 20
+                            }
+                        }
+                    }
+                }
+            };
+
+            var doughChart = new Chart(
+                document.getElementById('doughChart'),
+                cfg
+            );
+        </script>
+</body>
+
+</html>
