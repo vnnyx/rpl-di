@@ -25,10 +25,9 @@ func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 	response := controller.UserService.CreateStudent(request)
-	return c.JSON(model.Response{
+	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
 		Data:   response,
-		Error:  err,
 	})
 }

@@ -32,7 +32,7 @@ func (controller AuthController) Login(c *fiber.Ctx) error {
 	response, err := controller.AuthService.Login(*request)
 	exception.PanicIfNeeded(err)
 
-	return c.JSON(model.Response{
+	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
 		Data:   response,
