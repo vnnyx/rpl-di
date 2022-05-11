@@ -4,6 +4,7 @@ import (
 	"rpl-sixmath/entity"
 	"rpl-sixmath/model"
 	"rpl-sixmath/repository"
+	"rpl-sixmath/validation"
 )
 
 type UserServiceImpl struct {
@@ -15,6 +16,7 @@ func NewUserService(userRepository *repository.UserRepository) UserService {
 }
 
 func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest) (response model.StudentCreateResponse) {
+	validation.Validate(request)
 	student := entity.UserEntity{
 		Username:  request.Username,
 		Handphone: request.Handphone,
@@ -23,12 +25,15 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 		Role:      "student",
 	}
 
-	service.UserRepository.InsertUser(student)
-	response = model.StudentCreateResponse{
-		Username:  student.Username,
-		Email:     student.Email,
-		Handphone: student.Handphone,
+	_, err := service.UserRepository.InsertUser(student)
+	if err == nil {
+		response = model.StudentCreateResponse{
+			Username:  student.Username,
+			Email:     student.Email,
+			Handphone: student.Handphone,
+		}
 	}
+	validation.ValidateUsername(err)
 
 	return response
 }
