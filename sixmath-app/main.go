@@ -30,12 +30,15 @@ func main() {
 	exception.PanicIfNeeded(err)
 
 	userRepository := repository.NewUserRepository(database)
+	playlistRepository := repository.NewPlaylistRepository(database)
 
 	userService := service.NewUserService(&userRepository)
 	authService := service.NewAuthService(&userRepository)
+	playlistService := service.NewPlaylistService(&playlistRepository)
 
 	userController := controller.NewUserController(&userService)
 	authController := controller.NewAuthController(&authService)
+	playlistController := controller.NewPlaylistController(&playlistService)
 
 	app := fiber.New(config.NewFiberConfig())
 	app.Use(cors.New())
@@ -43,6 +46,7 @@ func main() {
 
 	userController.Route(app)
 	authController.Route(app)
+	playlistController.Route(app)
 
 	err = app.Listen(":8000")
 	exception.PanicIfNeeded(err)
