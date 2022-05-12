@@ -1,10 +1,13 @@
 package controller
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"fmt"
 	"rpl-sixmath/exception"
+	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 type PlaylistController struct {
@@ -16,11 +19,13 @@ func NewPlaylistController(playlistService *service.PlaylistService) PlaylistCon
 }
 
 func (controller *PlaylistController) Route(app *fiber.App) {
-	router := app.Group("/api/playlist")
+	router := app.Group("/api/playlist", middleware.CheckToken())
 	router.Post("/create", controller.CreatePlaylist)
 }
 
 func (controller *PlaylistController) CreatePlaylist(c *fiber.Ctx) error {
+	userId := c.Locals("currentUserId").(int)
+	fmt.Print(userId)
 	var request model.PlaylistCreateRequest
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
