@@ -38,24 +38,24 @@ $(function () {
     });
 });
 
-$('#btn-daftar').on('click', function(e){
+$('#btn-daftar').on('click', function (e) {
     e.preventDefault();
     $.ajax({
-        url : 'https://1307-125-164-234-150.ap.ngrok.io/api/student',
-        type : 'post',
-        dataType : 'json',
-        data : {
-            'email' : $('#email').val(),
-            'username' : $('#username').val(),
-            'handphone' : $('#handphone').val(),
-            'password' : $('#myInput2').val(),
+        url: 'https://13de-36-90-63-179.ap.ngrok.io/api/student',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            'email': $('#email').val(),
+            'username': $('#username').val(),
+            'handphone': $('#handphone').val(),
+            'password': $('#myInput2').val(),
 
         },
-        success : function(result){
+        success: function (result) {
             window.location = "login.html"
-            
+
         },
-        failure : function(){
+        failure: function () {
             console.log('ok')
         }
     });
