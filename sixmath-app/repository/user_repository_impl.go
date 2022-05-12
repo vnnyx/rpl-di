@@ -43,3 +43,4 @@ func (repo *UserRepositoryImpl) FindUserAll() (response []entity.UserEntity, err
 	err = repo.DB.Find(&response).Error
 	return response, err
 }
+
