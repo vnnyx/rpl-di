@@ -31,14 +31,17 @@ func main() {
 
 	userRepository := repository.NewUserRepository(database)
 	playlistRepository := repository.NewPlaylistRepository(database)
+	videoRepository := repository.NewVideoRepository(database)
 
 	userService := service.NewUserService(&userRepository)
 	authService := service.NewAuthService(&userRepository)
 	playlistService := service.NewPlaylistService(&playlistRepository)
+	videoService := service.NewVideoService(&videoRepository)
 
 	userController := controller.NewUserController(&userService)
 	authController := controller.NewAuthController(&authService)
 	playlistController := controller.NewPlaylistController(&playlistService)
+	videoController := controller.NewVideoController(&videoService)
 
 	app := fiber.New(config.NewFiberConfig())
 	app.Use(cors.New())
@@ -47,6 +50,7 @@ func main() {
 	userController.Route(app)
 	authController.Route(app)
 	playlistController.Route(app)
+	videoController.Route(app)
 
 	err = app.Listen(":8000")
 	exception.PanicIfNeeded(err)
