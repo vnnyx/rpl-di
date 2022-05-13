@@ -3,8 +3,8 @@ package main
 import (
 	"rpl-sixmath/config"
 	"rpl-sixmath/controller"
-	"rpl-sixmath/entity"
 	"rpl-sixmath/exception"
+	"rpl-sixmath/model/database"
 	"rpl-sixmath/repository"
 	"rpl-sixmath/service"
 
@@ -15,23 +15,22 @@ import (
 
 func main() {
 	configuration := config.New()
-	database := config.NewMySQLDatabase(configuration)
-	mysqlMaster := config.NewMySQLDatabase(configuration)
-	err := mysqlMaster.Debug().AutoMigrate(
-		entity.UserEntity{},
-		entity.MessageEntity{},
-		entity.TransactionEntity{},
-		entity.PlaylistEntity{},
-		entity.VideoEntity{},
-		entity.ExamEntity{},
-		entity.QuestionEntity{},
-		entity.AnswerEntity{},
+	databases := config.NewMySQLDatabase(configuration)
+	err := databases.Debug().AutoMigrate(
+		database.UserEntity{},
+		database.MessageEntity{},
+		database.TransactionEntity{},
+		database.PlaylistEntity{},
+		database.VideoEntity{},
+		database.ExamEntity{},
+		database.QuestionEntity{},
+		database.AnswerEntity{},
 	)
 	exception.PanicIfNeeded(err)
 
-	userRepository := repository.NewUserRepository(database)
-	playlistRepository := repository.NewPlaylistRepository(database)
-	videoRepository := repository.NewVideoRepository(database)
+	userRepository := repository.NewUserRepository(databases)
+	playlistRepository := repository.NewPlaylistRepository(databases)
+	videoRepository := repository.NewVideoRepository(databases)
 
 	userService := service.NewUserService(&userRepository)
 	authService := service.NewAuthService(&userRepository)
