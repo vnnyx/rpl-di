@@ -16,8 +16,7 @@ import (
 func main() {
 	configuration := config.New()
 	database := config.NewMySQLDatabase(configuration)
-	mysqlMaster := config.NewMySQLDatabase(configuration)
-	err := mysqlMaster.Debug().AutoMigrate(
+	err := database.Debug().AutoMigrate(
 		entity.UserEntity{},
 		entity.MessageEntity{},
 		entity.TransactionEntity{},

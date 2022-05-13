@@ -41,7 +41,6 @@ func ValidateToken(encodedToken string) (token *jwt.Token, errData error) {
 
 func DecodeToken(encodedToken string) (decodedResult DecodedStructure, errData error) {
 	jwtPublicKey, _ := jwt.ParseRSAPublicKeyFromPEM([]byte(os.Getenv("JWT_PUBLIC_KEY")))
-
 	tokenString := encodedToken
 	claims := jwt.MapClaims{}
 	token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {

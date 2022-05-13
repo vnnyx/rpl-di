@@ -2,6 +2,7 @@ package service
 
 import (
 	"errors"
+	"fmt"
 	"rpl-sixmath/helper"
 	"rpl-sixmath/model"
 	"rpl-sixmath/repository"
@@ -22,8 +23,10 @@ func (service *AuthServiceImpl) Login(request model.LoginRequest) (response mode
 	if err != nil {
 		return response, err
 	}
+	fmt.Printf("user: %v\n", user)
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(request.Password))
 	if err != nil {
+		fmt.Printf("err: %v\n", err)
 		return response, errors.New(model.UNAUTHORIZATION)
 	}
 
