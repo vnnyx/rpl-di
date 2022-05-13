@@ -6,6 +6,7 @@ type PlaylistCreateRequest struct {
 }
 
 type PlaylistCreateResponse struct {
-	Title     string `json:"title,omitempty"`
-	TeacherId int    `json:"teacherId,omitempty"`
+	PlaylistId int    `json:"playlist_id,omitempty"`
+	Title      string `json:"title,omitempty"`
+	TeacherId  int    `json:"teacherId,omitempty"`
 }

@@ -3,6 +3,7 @@ package service
 import (
 	"fmt"
 	"rpl-sixmath/entity"
+	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
 	"rpl-sixmath/repository"
 	"rpl-sixmath/validation"
@@ -25,7 +26,7 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 	if err != nil {
 		fmt.Printf("err: %v\n", err)
 	}
-	student := entity.UserEntity{
+	student := entity.User{
 		Username:  request.Username,
 		Handphone: request.Handphone,
 		Email:     request.Email,
@@ -34,14 +35,14 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 	}
 
 	_, err = service.UserRepository.InsertUser(student)
-	if err == nil {
-		response = model.StudentCreateResponse{
-			Username:  student.Username,
-			Email:     student.Email,
-			Handphone: student.Handphone,
-		}
+	if err != nil {
+		exception.PanicIfNeeded("USERNAME_REGISTERED")
 	}
-	validation.ValidateUsername(err)
+	response = model.StudentCreateResponse{
+		Username:  student.Username,
+		Email:     student.Email,
+		Handphone: student.Handphone,
+	}
 
 	return response
 }

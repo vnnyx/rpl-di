@@ -18,11 +18,3 @@ func Validate(request model.StudentCreateRequest) {
 		})
 	}
 }
-
-func ValidateUsername(err error) {
-	if err != nil {
-		panic(exception.ValidationError{
-			Message: err.Error(),
-		})
-	}
-}

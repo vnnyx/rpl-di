@@ -1,12 +1,14 @@
 package repository
 
-import "rpl-sixmath/entity"
+import (
+	"rpl-sixmath/entity"
+)
 
 type UserRepository interface {
-	InsertUser(user entity.UserEntity) (entity.UserEntity, error)
-	UpdateUser(user entity.UserEntity) (entity.UserEntity, error)
+	InsertUser(user entity.User) (entity.User, error)
+	UpdateUser(user entity.User) (entity.User, error)
 	DeleteUser(userId int) error
-	FindUserById(userId int) (response entity.UserEntity, err error)
-	FindUserByUsername(username string) (response entity.UserEntity, err error)
-	FindUserAll() (response []entity.UserEntity, err error)
+	FindUserById(userId int) (response entity.User, err error)
+	FindUserByUsername(username string) (response entity.User, err error)
+	FindUserAll() (response []entity.User, err error)
 }

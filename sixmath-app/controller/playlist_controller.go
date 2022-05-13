@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
@@ -25,8 +24,8 @@ func (controller *PlaylistController) Route(app *fiber.App) {
 
 func (controller *PlaylistController) CreatePlaylist(c *fiber.Ctx) error {
 	userId := c.Locals("currentUserId").(int)
-	fmt.Print(userId)
 	var request model.PlaylistCreateRequest
+	request.TeacherId = userId
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 	response := controller.PlaylistService.CreatePlaylist(request)

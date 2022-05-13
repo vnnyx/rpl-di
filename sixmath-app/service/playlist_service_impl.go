@@ -15,14 +15,15 @@ func NewPlaylistService(playlistRepository *repository.PlaylistRepository) Playl
 }
 
 func (service *PlaylistServiceImpl) CreatePlaylist(request model.PlaylistCreateRequest) (response model.PlaylistCreateResponse) {
-	playlist := entity.PlaylistEntity{
+	playlist := entity.Playlist{
 		Title:     request.Title,
 		TeacherId: request.TeacherId,
 	}
-	_, _ = service.PlaylistRepository.InsertPlaylist(playlist)
+	playlist, _ = service.PlaylistRepository.InsertPlaylist(playlist)
 	response = model.PlaylistCreateResponse{
-		Title:     playlist.Title,
-		TeacherId: playlist.TeacherId,
+		PlaylistId: playlist.PlaylistId,
+		Title:      playlist.Title,
+		TeacherId:  playlist.TeacherId,
 	}
 	return response
 }
