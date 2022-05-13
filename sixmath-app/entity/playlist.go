@@ -1,12 +1,7 @@
 package entity
 
-type PlaylistEntity struct {
-	PlaylistId int         `gorm:"column:playlist_id;primaryKey;autoIncrement;type:int"`
-	Title      string      `gorm:"column:title;type:mediumtext"`
-	TeacherId  int         `gorm:"column:teacher_id;type:int"`
-	Teacher    *UserEntity `gorm:"association_foreignkey:UserId"`
-}
-
-func (PlaylistEntity) TableName() string {
-	return "playlist"
+type Playlist struct {
+	PlaylistId int    `json:"playlist_id,omitempty"`
+	Title      string `json:"title,omitempty"`
+	TeacherId  int    `json:"teacher_id,omitempty"`
 }
