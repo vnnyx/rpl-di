@@ -3,6 +3,7 @@ package controller
 import (
 	"github.com/gofiber/fiber/v2"
 	"rpl-sixmath/exception"
+	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
 	"strconv"
@@ -17,7 +18,7 @@ func NewVideoController(videoService *service.VideoService) VideoController {
 }
 
 func (controller *VideoController) Route(app *fiber.App) {
-	router := app.Group("/api/video")
+	router := app.Group("/api/video", middleware.CheckToken())
 	router.Post("/create", controller.CreateVideo)
 	router.Get("/", controller.MainVideo)
 	router.Get("/main", controller.RecommendedVideo)
@@ -48,7 +49,11 @@ func (controller *VideoController) MainVideo(c *fiber.Ctx) error {
 }
 
 func (controller VideoController) RecommendedVideo(c *fiber.Ctx) error {
-	response := controller.VideoService.GetRecommendedVideo()
+	page, _ := strconv.Atoi(c.Query("page", "1"))
+	var pagination model.Pagination
+	pagination.Page = page
+	pagination.Limit = 3
+	response := controller.VideoService.GetRecommendedVideo(pagination)
 	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",

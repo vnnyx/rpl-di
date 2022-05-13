@@ -7,5 +7,5 @@ type VideoService interface {
 	UpdateVideo(request model.VideoUpdateRequest) (response model.VideoResponse)
 	GetMainVideo() (response model.VideoResponse)
 	DeleteVideo(videoId int)
-	GetRecommendedVideo() (response []model.VideoResponse)
+	GetRecommendedVideo(pagination model.Pagination) (response model.Pagination)
 }
