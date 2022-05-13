@@ -13,7 +13,7 @@ import (
 )
 
 func CreateToken(request model.JwtPayload) *model.TokenDetails {
-	accessExpired, _ := strconv.Atoi(os.Getenv("JWT_ACCESS_MINUTE"))
+	accessExpired, _ := strconv.Atoi(os.Getenv("JWT_MINUTE"))
 
 	td := &model.TokenDetails{}
 
@@ -22,7 +22,7 @@ func CreateToken(request model.JwtPayload) *model.TokenDetails {
 
 	var err error
 
-	keyAccess, err := jwt.ParseRSAPrivateKeyFromPEM([]byte(os.Getenv("JWT_ACCESS_PRIVATE_KEY")))
+	keyAccess, err := jwt.ParseRSAPrivateKeyFromPEM([]byte(os.Getenv("JWT_SECRET_KEY")))
 	exception.PanicIfNeeded(err)
 
 	now := time.Now().UTC()
