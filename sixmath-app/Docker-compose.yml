@@ -1,8 +1,28 @@
+version: '3'
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: mysql-container
+  go:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 8080:8080
-    expose:
-      - 8080
+      - 8000:8000
+    depends_on:
+      - "db"
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: sixmath_db
+      MYSQL_USER: sixmath
+      MYSQL_PASSWORD: password
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  db-data:
+    driver: local
