@@ -1,22 +1,22 @@
 package main
 
 import (
-	"rpl-sixmath/config"
-	"rpl-sixmath/controller"
-	"rpl-sixmath/exception"
-	"rpl-sixmath/model/database"
-	"rpl-sixmath/repository"
-	"rpl-sixmath/service"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/recover"
+	"rpl-sixmath/config"
+	"rpl-sixmath/controller"
+	"rpl-sixmath/exception"
+	"rpl-sixmath/migration"
+	"rpl-sixmath/model/database"
+	"rpl-sixmath/repository"
+	"rpl-sixmath/service"
 )
 
 func main() {
 	configuration := config.New()
 	databases := config.NewMySQLDatabase(configuration)
-	err := databases.Debug().AutoMigrate(
+	migration.MyMigration(databases,
 		database.UserEntity{},
 		database.MessageEntity{},
 		database.TransactionEntity{},
@@ -26,7 +26,6 @@ func main() {
 		database.QuestionEntity{},
 		database.AnswerEntity{},
 	)
-	exception.PanicIfNeeded(err)
 
 	userRepository := repository.NewUserRepository(databases)
 	playlistRepository := repository.NewPlaylistRepository(databases)
@@ -51,6 +50,6 @@ func main() {
 	playlistController.Route(app)
 	videoController.Route(app)
 
-	err = app.Listen(":8000")
+	err := app.Listen(":8000")
 	exception.PanicIfNeeded(err)
 }
