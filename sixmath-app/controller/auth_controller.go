@@ -17,7 +17,7 @@ func NewAuthController(authService *service.AuthService) AuthController {
 }
 
 func (controller AuthController) Route(app fiber.Router) {
-	router := app.Group("/auth")
+	router := app.Group("/api/auth")
 
 	router.Post("/login", controller.Login)
 
