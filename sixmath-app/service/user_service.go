@@ -6,4 +6,5 @@ import (
 
 type UserService interface {
 	CreateStudent(request model.StudentCreateRequest) (response model.StudentCreateResponse)
+	GetDataUser(month int) (response []model.GetUserResponse)
 }

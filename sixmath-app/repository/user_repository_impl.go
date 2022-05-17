@@ -3,6 +3,7 @@ package repository
 import (
 	"gorm.io/gorm"
 	"rpl-sixmath/entity"
+	"rpl-sixmath/model"
 )
 
 type UserRepositoryImpl struct {
@@ -40,5 +41,10 @@ func (repo *UserRepositoryImpl) FindUserByUsername(username string) (response en
 
 func (repo *UserRepositoryImpl) FindUserAll() (response []entity.User, err error) {
 	err = repo.DB.Find(&response).Error
+	return response, err
+}
+
+func (repo *UserRepositoryImpl) GetDataUser(month string, year string) (response model.GetTotalUser, err error) {
+	err = repo.DB.Raw("SELECT COUNT(1) as total FROM users WHERE MONTH(created_at) = ? AND YEAR(created_at) = ?", month, year).Scan(&response).Error
 	return response, err
 }

@@ -2,13 +2,13 @@ package service
 
 import (
 	"fmt"
+	"golang.org/x/crypto/bcrypt"
 	"rpl-sixmath/entity"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
 	"rpl-sixmath/repository"
 	"rpl-sixmath/validation"
-
-	"golang.org/x/crypto/bcrypt"
+	"time"
 )
 
 type UserServiceImpl struct {
@@ -34,15 +34,34 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 		Role:      "student",
 	}
 
-	_, err = service.UserRepository.InsertUser(student)
+	student, err = service.UserRepository.InsertUser(student)
+	fmt.Println(student)
 	if err != nil {
 		exception.PanicIfNeeded("USERNAME_REGISTERED")
 	}
 	response = model.StudentCreateResponse{
+		UserId:    student.UserId,
 		Username:  student.Username,
 		Email:     student.Email,
 		Handphone: student.Handphone,
+		CreatedAt: student.CreatedAt,
 	}
 
+	return response
+}
+
+func (service *UserServiceImpl) GetDataUser(month int) (response []model.GetUserResponse) {
+	times := time.Now()
+	for i := 0; i < month; i++ {
+		date := times.AddDate(0, -i, 0)
+		months := date.Format("01")
+		year := date.Format("2006")
+		total, err := service.UserRepository.GetDataUser(months, year)
+		exception.PanicIfNeeded(err)
+		response = append(response, model.GetUserResponse{
+			Month:  date.Format("Jan"),
+			Amount: total.Total,
+		})
+	}
 	return response
 }

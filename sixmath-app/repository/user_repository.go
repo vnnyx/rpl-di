@@ -2,6 +2,7 @@ package repository
 
 import (
 	"rpl-sixmath/entity"
+	"rpl-sixmath/model"
 )
 
 type UserRepository interface {
@@ -11,4 +12,5 @@ type UserRepository interface {
 	FindUserById(userId int) (response entity.User, err error)
 	FindUserByUsername(username string) (response entity.User, err error)
 	FindUserAll() (response []entity.User, err error)
+	GetDataUser(month string, year string) (response model.GetTotalUser, err error)
 }

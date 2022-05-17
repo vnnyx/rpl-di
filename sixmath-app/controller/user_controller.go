@@ -4,6 +4,7 @@ import (
 	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -17,7 +18,9 @@ func NewUserController(service *service.UserService) UserController {
 }
 
 func (controller *UserController) Route(app *fiber.App) {
-	app.Post("/api/student", controller.CreateStudent)
+	router := app.Group("/api/user")
+	router.Post("/student", controller.CreateStudent)
+	app.Get("/api/dashboard/statistik-pendaftaran", controller.GetDataUser)
 }
 
 func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
@@ -25,6 +28,16 @@ func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 	response := controller.UserService.CreateStudent(request)
+	return c.JSON(model.WebResponse{
+		Code:   200,
+		Status: "OK",
+		Data:   response,
+	})
+}
+
+func (controller *UserController) GetDataUser(c *fiber.Ctx) error {
+	month, _ := strconv.Atoi(c.Query("month"))
+	response := controller.UserService.GetDataUser(month)
 	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
