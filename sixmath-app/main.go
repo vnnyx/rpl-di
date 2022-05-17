@@ -6,9 +6,9 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"rpl-sixmath/config"
 	"rpl-sixmath/controller"
+	"rpl-sixmath/entity"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/migration"
-	"rpl-sixmath/model/database"
 	"rpl-sixmath/repository"
 	"rpl-sixmath/service"
 )
@@ -17,14 +17,14 @@ func main() {
 	configuration := config.New()
 	databases := config.NewMySQLDatabase(configuration)
 	migration.MyMigration(databases,
-		database.UserEntity{},
-		database.MessageEntity{},
-		database.TransactionEntity{},
-		database.PlaylistEntity{},
-		database.VideoEntity{},
-		database.ExamEntity{},
-		database.QuestionEntity{},
-		database.AnswerEntity{},
+		entity.User{},
+		entity.Message{},
+		entity.Transaction{},
+		entity.Playlist{},
+		entity.Video{},
+		entity.Exam{},
+		entity.Question{},
+		entity.Answer{},
 	)
 
 	userRepository := repository.NewUserRepository(databases)
