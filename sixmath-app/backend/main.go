@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	configuration := config.New()
+	configuration := config.New(".env")
 	databases := config.NewMySQLDatabase(configuration)
 	migration.MyMigration(databases,
 		entity.User{},
