@@ -19,7 +19,7 @@ func NewVideoController(videoService *service.VideoService) VideoController {
 
 func (controller *VideoController) Route(app *fiber.App) {
 	router := app.Group("/api/video", middleware.CheckToken())
-	router.Post("/create", controller.CreateVideo)
+	router.Post("/", controller.CreateVideo)
 	router.Get("/", controller.MainVideo)
 	router.Get("/recommended", controller.RecommendedVideo)
 	router.Delete("/:id", controller.DeleteVideo)
