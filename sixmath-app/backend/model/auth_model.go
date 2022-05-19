@@ -11,6 +11,7 @@ type LoginResponse struct {
 	Email       string `json:"email"`
 	Avatar      string `json:"avatar"`
 	Username    string `json:"username"`
+	Role        string `json:"role"`
 }
 
 type JwtPayload struct {
@@ -18,9 +19,9 @@ type JwtPayload struct {
 	Avatar     string `json:"avatar"`
 	Username   string `json:"username"`
 	Email      string `json:"email"`
+	Role       string `json:"role"`
 	AccessUuid string `json:"access_uuid"`
 }
-
 type TokenDetails struct {
 	AccessToken string
 	AccessUuid  string

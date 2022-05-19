@@ -1,10 +1,11 @@
 package repository
 
 import (
-	"gorm.io/gorm"
 	"rpl-sixmath/entity"
 	"rpl-sixmath/helper"
 	"rpl-sixmath/model"
+
+	"gorm.io/gorm"
 )
 
 type VideoRepositoryImpl struct {
@@ -31,7 +32,7 @@ func (repo *VideoRepositoryImpl) DeleteVideo(videoId int) error {
 }
 
 func (repo *VideoRepositoryImpl) FindVideoById(videoId int) (response entity.Video, err error) {
-	err = repo.DB.Where("video_id", videoId).Find(&response).Error
+	err = repo.DB.Where("video_id", videoId).First(&response).Error
 	return response, err
 }
 
