@@ -33,7 +33,7 @@
         "summary": "Get statistics",
         "responses": {
           "200": {
-            "description": "Get statistics",
+            "description": "Success get statistics",
             "content": {
               "application/json": {
                 "schema": {
@@ -222,6 +222,143 @@
         }
       }
     },
+    "/video/{id}": {
+      "put": {
+        "tags": ["Video API"],
+        "summary": "Update video by id",
+        "security": [
+          {
+            "SixmathAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            },
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "playlist_id": {
+                    "type": "number"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "url_video": {
+                    "type": "string"
+                  },
+                  "deskripsi": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example":
+              {
+                "playlist_id":1,
+                "title":"title_video_update",
+                "url_video":"url_video_update",
+                "deskripsi":"deskripsi_video_update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update video by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Video"
+                    },
+                    "errors": {
+                      "type": "object",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example":
+                {
+                  "video_id": 1,
+                  "playlist_id":1,
+                  "title":"title_video_update",
+                  "url_video":"url_video_update",
+                  "deskripsi":"deskripsi_video_update"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Video API"],
+        "summary": "Delete video by id",
+        "security": [
+          {
+            "SixmathAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete video by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example":
+                {
+                  "code": 200,
+                  "status": "OK",
+                  "errors": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/video/recommended": {
       "get": {
         "security": [
@@ -325,7 +462,7 @@
         },
         "responses": {
           "200": {
-            "description": "Register user role student",
+            "description": "Success register user role student",
             "content": {
               "application/json": {
                 "schema": {
@@ -393,7 +530,7 @@
         },
         "responses": {
           "200": {
-            "description": "User Login",
+            "description": "Success login",
             "content": {
               "application/json": {
                 "schema": {
@@ -490,7 +627,7 @@
           },
           "created_at": {
             "type": "string",
-            "format": "data-time"
+            "format": "date-time"
           }
         }
       }
