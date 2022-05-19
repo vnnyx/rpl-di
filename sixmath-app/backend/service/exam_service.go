@@ -7,5 +7,5 @@ import (
 
 type ExamService interface {
 	CreateExam(request model.CreateExamRequest) (response entity.Exam, err error)
-	CreateQuestion(request model.CreateQuestioRequest) (response entity.Question, err error)
+	CreateQuestion(request model.CreateQuestionRequest) (response entity.Question, err error)
 }

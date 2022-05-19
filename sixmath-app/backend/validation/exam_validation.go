@@ -13,7 +13,6 @@ func CreateExamValidate(request model.CreateExamRequest) {
 		validation.Field(&request.Title, validation.Required),
 		validation.Field(&request.DurationInMinute, validation.Required),
 		validation.Field(&request.Image, validation.Required),
-		validation.Field(&request.VideoId, validation.Required),
 	)
 	if err != nil {
 		panic(exception.ValidationError{

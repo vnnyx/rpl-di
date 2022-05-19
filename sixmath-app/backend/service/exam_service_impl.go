@@ -22,8 +22,6 @@ func (service examServiceImpl) CreateExam(request model.CreateExamRequest) (resp
 	//validation
 	validation.CreateExamValidate(request)
 
-	//check video
-	_, err = service.videoRepo.FindVideoById(request.VideoId)
 	if err != nil {
 		return response, err
 	}
@@ -33,13 +31,12 @@ func (service examServiceImpl) CreateExam(request model.CreateExamRequest) (resp
 		ImageURL:    request.Image,
 		Description: request.Description,
 		Duration:    request.DurationInMinute * int64(time.Minute),
-		VideoId:     request.VideoId,
 	})
 
 	return response, err
 }
 
-func (service examServiceImpl) CreateQuestion(request model.CreateQuestioRequest) (response entity.Question, err error) {
+func (service examServiceImpl) CreateQuestion(request model.CreateQuestionRequest) (response entity.Question, err error) {
 	//validaiton
 
 	//check exam

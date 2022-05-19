@@ -48,6 +48,7 @@ func main() {
 	app := fiber.New(config.NewFiberConfig())
 	app.Use(cors.New())
 	app.Use(recover.New())
+	app.Static("/uploads/image", "./uploads/image")
 
 	userController.Route(app)
 	authController.Route(app)

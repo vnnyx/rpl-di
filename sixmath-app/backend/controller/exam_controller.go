@@ -28,7 +28,6 @@ func (controller ExamController) CreateExam(c *fiber.Ctx) error {
 	title := c.FormValue("title")
 	desc := c.FormValue("description")
 	duration, _ := strconv.Atoi(c.FormValue("duration_in_minute"))
-	videoID, _ := strconv.Atoi(c.FormValue("video_id"))
 
 	image, _ := c.FormFile("image")
 
@@ -37,11 +36,10 @@ func (controller ExamController) CreateExam(c *fiber.Ctx) error {
 		Image:            "/uploads/image/" + image.Filename,
 		Description:      desc,
 		DurationInMinute: int64(duration),
-		VideoId:          videoID,
 	})
 	exception.PanicIfNeeded(err)
 
-	err = c.SaveFile(image, "/uploads/image/"+image.Filename)
+	err = c.SaveFile(image, "./uploads/image/"+image.Filename)
 	exception.PanicIfNeeded(err)
 	return c.Status(200).JSON(model.WebResponse{
 		Code:   200,
@@ -59,7 +57,7 @@ func (controller ExamController) CreateQuestion(c *fiber.Ctx) error {
 	image, err := c.FormFile("image")
 	exception.PanicIfNeeded(err)
 
-	response, err := controller.service.CreateQuestion(model.CreateQuestioRequest{
+	response, err := controller.service.CreateQuestion(model.CreateQuestionRequest{
 		ExamID:        examId,
 		Image:         "/uploads/image/" + image.Filename,
 		Question:      question,

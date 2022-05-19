@@ -5,7 +5,6 @@ type CreateExamRequest struct {
 	Image            string `json:"image"`
 	Description      string `json:"description"`
 	DurationInMinute int64  `json:"duration_in_minute"`
-	VideoId          int    `json:"video_id"`
 }
 
 type AnswerRequest struct {
@@ -14,7 +13,7 @@ type AnswerRequest struct {
 	IsTrue     bool   `json:"is_true"`
 }
 
-type CreateQuestioRequest struct {
+type CreateQuestionRequest struct {
 	ExamID        int             `json:"exam_id"`
 	Image         string          `json:"image"`
 	Question      string          `json:"question"`

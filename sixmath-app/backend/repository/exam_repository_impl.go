@@ -20,7 +20,7 @@ func (repo examRepositoryImpl) InsertExam(request entity.Exam) (entity.Exam, err
 	return request, err
 }
 
-func (repo examRepositoryImpl) InsertQuestion(request model.CreateQuestioRequest) (entity.Question, error) {
+func (repo examRepositoryImpl) InsertQuestion(request model.CreateQuestionRequest) (entity.Question, error) {
 	tx := repo.DB.Begin()
 
 	question := entity.Question{
