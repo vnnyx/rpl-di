@@ -2,6 +2,7 @@ package controller
 
 import (
 	"rpl-sixmath/exception"
+	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
 	"strconv"
@@ -18,10 +19,10 @@ func NewExamController(service service.ExamService) ExamController {
 }
 
 func (controller ExamController) Route(app fiber.Router) {
-	router := app.Group("/api/exam")
+	router := app.Group("/api/exam", middleware.CheckToken())
 
-	router.Post("/", controller.CreateExam)
-	router.Post("/question/:exam_id", controller.CreateQuestion)
+	router.Post("/", middleware.IsTeacher(), controller.CreateExam)
+	router.Post("/question/:exam_id", middleware.IsTeacher(), controller.CreateQuestion)
 }
 
 func (controller ExamController) CreateExam(c *fiber.Ctx) error {
