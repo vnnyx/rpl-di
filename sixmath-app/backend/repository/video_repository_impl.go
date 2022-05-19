@@ -42,7 +42,7 @@ func (repo *VideoRepositoryImpl) FindOneRandomVideo() (response entity.Video, er
 
 func (repo *VideoRepositoryImpl) FindAllVideo(pagination model.Pagination) *model.Pagination {
 	var video []*entity.Video
-	repo.DB.Scopes(helper.Paginate(video, &pagination, repo.DB)).Find(&video)
+	repo.DB.Scopes(helper.Paginate(video, &pagination, repo.DB)).Where("video_id != ?", pagination.MainVideoId).Find(&video)
 	pagination.Rows = video
 
 	return &pagination

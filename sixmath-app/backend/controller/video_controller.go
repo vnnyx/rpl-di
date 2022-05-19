@@ -50,8 +50,10 @@ func (controller *VideoController) MainVideo(c *fiber.Ctx) error {
 
 func (controller VideoController) RecommendedVideo(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
+	main, _ := strconv.Atoi(c.Query("main"))
 	var pagination model.Pagination
 	pagination.Page = page
+	pagination.MainVideoId = main
 	pagination.Limit = 3
 	response := controller.VideoService.GetRecommendedVideo(pagination)
 	return c.JSON(model.WebResponse{
