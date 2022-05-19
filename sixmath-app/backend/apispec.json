@@ -366,6 +366,25 @@
             "SixmathAuth": []
           }
         ],
+        "parameters": [
+          {
+            "name": "main",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "example": 1,
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "example": 1
+          }
+        ],
         "tags": ["Video API"],
         "summary": "Get recommended video",
         "responses": {
@@ -402,18 +421,18 @@
                     "total_pages": 1,
                     "rows": [
                       {
-                        "video_id": 1,
-                        "playlist_id": 1,
-                        "title": "video1",
-                        "url_video": "youtube.video1",
-                        "deskripsi": "this is a video 1"
-                      },
-                      {
                         "video_id": 2,
                         "playlist_id": 1,
                         "title": "video2",
                         "url_video": "youtube.video2",
                         "deskripsi": "this is a video 2"
+                      },
+                      {
+                        "video_id": 3,
+                        "playlist_id": 1,
+                        "title": "video3",
+                        "url_video": "youtube.video3",
+                        "deskripsi": "this is a video 3"
                       }
                     ]
                   },
