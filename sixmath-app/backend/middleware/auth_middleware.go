@@ -16,6 +16,7 @@ import (
 type DecodedStructure struct {
 	UserId   int    `json:"user_id"`
 	Username string `json:"username"`
+	Role     string `json:"role"`
 }
 
 func ValidateToken(encodedToken string) (token *jwt.Token, errData error) {
@@ -105,6 +106,7 @@ func CheckToken() func(*fiber.Ctx) error {
 		// set to global var
 		c.Locals("currentUserId", decodedRes.UserId)
 		c.Locals("currentUsername", decodedRes.Username)
+		c.Locals("currentRole", decodedRes.Role)
 
 		return c.Next()
 	}
