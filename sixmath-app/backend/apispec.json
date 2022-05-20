@@ -530,7 +530,7 @@
         ],
         "parameters": [
           {
-            "name": "main",
+            "name": "main_video",
             "in": "query",
             "schema": {
               "type": "number"
