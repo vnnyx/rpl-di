@@ -212,6 +212,7 @@ body{
     transition: all .5s ease;
     opacity: 1;
     top: 50%;
+    z-index: 11111;
 }
 .sidebar.act ul li:hover .tultip
 {
@@ -220,167 +221,86 @@ body{
 .nav-list{
     padding-left: 0 !important;
 }
-/* end */
-
-/* content */
-.home_content{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 150px;
-    top: 24px;
-    transition: all .5s ease;
+.atas{
+    position: relative;
+    left: 180px;
 }
-.sidebar.act ~ .container-fluid .home_content{
-    left: 357px;
+.sidebar.act ~ .atas{
+    left: 380px;
 }
-.sidebar.act ~ .home_content .up-judul{
-    position: absolute;
-    left: 190px;
-    top: 0;
+.sidebar.act ~ .heading{
     transition: all .4s ease;
 }
-.home_content .cont-left{
-    position: relative;
-    left: 300px;
-}
-.home_content .up-judul{
-    position: relative;
-    font-weight: bold;
-    left: 26px;
-    width: 600px;
+.heading{
     transition: all .4s ease;
 }
-.home_content .cont-left{
-    position: relative;
-    left: 12px;
-}
-.sidebar.act ~ .container-fluid .home_content .profile{
-    left: 50px;
+.sidebar.act ~ .property{
     transition: all .4s ease;
 }
-.profile{
-    background: #fff;
+.property{
     position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #fff;
     border-radius: 60px;
-    width: 80px;
+    width: 110px;
     height: 40px;
     top: 10px;
-    left: 320px;
     transition: all .4s ease;
-}
-.profile img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    left: 90px;
-    position: absolute;
 }
 .bx-search{
     position: absolute;
-    left: 13px;
-    top: 7px;
 }
 .bxs-bell{
-    position: absolute;
-    top: 7px;
-    left: 10px;
     padding: 0 30px;
+    position: absolute;
 }
-/* konten kiri */
-.home_content .vid-l{
-    position: relative;
-    left: 54px;
-    top: 20px;
-    height: 865px;
-    border-radius: 10px;
-    width: 788px;
-    background-color: #fff;
-    transition: all .4s ease;
-}
-/* end */
-/* konten kanan */
-.home_content .vid-r{
-    position: relative;
-    left: 130px;
-    top: 20px;
-    width: 320px;
-    border-radius: 10px;
-    background-color: #fff;
-    transition: all .4s ease;
-}
-.sidebar.act ~ .container-fluid .home_content .vid-r{
-    left: 80px;
-    transition: all .4s ease;
-}
-.sidebar.act ~ .container-fluid .home_content .vid-l{
-    width: 750px;
-    transition: all .4s ease;
-}
-/* end */
-/* video atas */
-.vid-at iframe{
-    border-radius: 10px;
+.property img{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     object-fit: cover;
-    position: relative;
-    left: 11%;
-    top: 24px;
+    right: 10px;
 }
-/* end */
-/* desc */
-.desc h6{
-    position: relative;
-    top: 320px;
-    left: 10px;
-    color: #969696;
+.content-left
+{
+    height: 107vh;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all .4s ease;
+    margin-bottom: 20px;
 }
-.desc .judul{
-    position: relative;
-    top: 280px;
-    left: 90px;
+.content-right
+{
+    height: max-content;
+    width: 35%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: all .4s ease;
 }
-.desc p{
-    width: 97%;
-    position: relative;
-    top: 320px;
-    left: 10px;
+.sidebar.act ~ .content-left,
+.sidebar.act ~ .content-left{
+    transition: all .4s ease;
 }
-/* end */
-/* Rekomendasi video */
-.tonton{
-    position: relative;
-    top: 340px;
-    left: 11px;
-    font-weight: bold;
+#main-video iframe{
+    margin-top: 30px;
+    border-radius: 10px;
+}
+#main-video{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    border-radius: 10px;
+}
+
+.rekomendasi{
     font-size: 24px;
 }
-.rec-vid{
-    position: relative;
-    top: 350px;
-    left: 10px;
+.judul-main{
+    font-size: 20px;
 }
-.rec-vid iframe{
-    object-fit: cover;
-    border-radius: 10px;
-}
-/*  end*/
-/* konten kanan */
-/* rekomend video */
-.head{
-    position: relative;
-    font-size: 24px;
-    font-weight: bold;
-    top: 24px;
-    left: 24px;
-}
-.vcal{
-    position: relative;
-    top: 30px;
-    left: 10px;
-}
-.vcal iframe{
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-}
-/* end */

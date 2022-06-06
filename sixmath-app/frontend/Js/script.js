@@ -41,7 +41,7 @@ $(function () {
 $('#btn-daftar').on('click', function (e) {
     e.preventDefault();
     $.ajax({
-        url: 'https://13de-36-90-63-179.ap.ngrok.io/api/student',
+        url: 'https://sixmath.vnnyx.my.id/api/user/student',
         type: 'post',
         dataType: 'json',
         data: {
