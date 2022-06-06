@@ -716,7 +716,7 @@
           }
         ],
         "tags": ["Exam API"],
-        "description": "Create question",
+        "summary": "Create question",
         "requestBody": {
           "required": true,
           "content": {
