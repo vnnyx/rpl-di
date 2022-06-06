@@ -2,6 +2,7 @@ package controller
 
 import (
 	"rpl-sixmath/exception"
+	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
 	"strconv"
@@ -20,7 +21,7 @@ func NewUserController(service *service.UserService) UserController {
 func (controller *UserController) Route(app *fiber.App) {
 	router := app.Group("/api/user")
 	router.Post("/student", controller.CreateStudent)
-	app.Get("/api/dashboard/statistik-pendaftaran", controller.GetDataUser)
+	app.Get("/api/dashboard/statistik-pendaftaran", middleware.CheckToken(), controller.GetDataUser)
 }
 
 func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
@@ -36,7 +37,7 @@ func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
 }
 
 func (controller *UserController) GetDataUser(c *fiber.Ctx) error {
-	month, _ := strconv.Atoi(c.Query("month"))
+	month, _ := strconv.Atoi(c.Query("month", "6"))
 	response := controller.UserService.GetDataUser(month)
 	return c.JSON(model.WebResponse{
 		Code:   200,

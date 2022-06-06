@@ -32,7 +32,7 @@ func CreateToken(request model.JwtPayload) *model.TokenDetails {
 	atClaims["username"] = request.Username
 	atClaims["email"] = request.Email
 	atClaims["avatar"] = request.Avatar
-	atClaims["gender"] = request.Avatar
+	atClaims["role"] = request.Role
 	atClaims["access_uuid"] = td.AccessUuid
 	atClaims["exp"] = td.AtExpires
 	atClaims["iat"] = now.Unix()

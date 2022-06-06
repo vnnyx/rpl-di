@@ -1,10 +1,11 @@
 package repository
 
 import (
-	"gorm.io/gorm"
 	"rpl-sixmath/entity"
 	"rpl-sixmath/helper"
 	"rpl-sixmath/model"
+
+	"gorm.io/gorm"
 )
 
 type VideoRepositoryImpl struct {
@@ -31,7 +32,7 @@ func (repo *VideoRepositoryImpl) DeleteVideo(videoId int) error {
 }
 
 func (repo *VideoRepositoryImpl) FindVideoById(videoId int) (response entity.Video, err error) {
-	err = repo.DB.Where("video_id", videoId).Find(&response).Error
+	err = repo.DB.Where("video_id", videoId).First(&response).Error
 	return response, err
 }
 
@@ -42,7 +43,7 @@ func (repo *VideoRepositoryImpl) FindOneRandomVideo() (response entity.Video, er
 
 func (repo *VideoRepositoryImpl) FindAllVideo(pagination model.Pagination) *model.Pagination {
 	var video []*entity.Video
-	repo.DB.Scopes(helper.Paginate(video, &pagination, repo.DB)).Find(&video)
+	repo.DB.Scopes(helper.Paginate(video, &pagination, repo.DB)).Where("video_id != ?", pagination.MainVideoId).Find(&video)
 	pagination.Rows = video
 
 	return &pagination

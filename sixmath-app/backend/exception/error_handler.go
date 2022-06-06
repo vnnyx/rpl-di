@@ -39,6 +39,18 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 			},
 		})
 	}
+
+	if err.Error() == "VIDEO_NOT_FOUND" {
+		return ctx.Status(fiber.StatusNotFound).JSON(model.Response{
+			Code:   fiber.StatusNotFound,
+			Status: "BAD_REQUEST",
+			Data:   nil,
+			Error: map[string]interface{}{
+				"video_id": "NOT_FOUND",
+			},
+		})
+	}
+
 	return ctx.Status(fiber.StatusInternalServerError).JSON(model.WebResponse{
 		Code:   500,
 		Status: "INTERNAL_SERVER_ERROR",

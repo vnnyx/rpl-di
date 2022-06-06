@@ -23,7 +23,7 @@ func (service *AuthServiceImpl) Login(request model.LoginRequest) (response mode
 	if err != nil {
 		return response, err
 	}
-	fmt.Printf("user: %v\n", user)
+
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(request.Password))
 	if err != nil {
 		fmt.Printf("err: %v\n", err)
@@ -35,6 +35,7 @@ func (service *AuthServiceImpl) Login(request model.LoginRequest) (response mode
 		Avatar:   user.Avatar,
 		Username: user.Username,
 		Email:    user.Email,
+		Role:     user.Role,
 	})
 
 	response = model.LoginResponse{
@@ -43,6 +44,7 @@ func (service *AuthServiceImpl) Login(request model.LoginRequest) (response mode
 		Email:       user.Email,
 		Avatar:      user.Avatar,
 		Username:    user.Username,
+		Role:        user.Role,
 	}
 
 	return response, nil

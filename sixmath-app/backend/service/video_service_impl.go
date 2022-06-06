@@ -43,8 +43,11 @@ func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (
 
 func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (response model.VideoResponse) {
 	validation.VideoUpdateValidate(request)
-
-	video, _ := service.VideoRepository.FindVideoById(request.VideoId)
+	video, err := service.VideoRepository.FindVideoById(request.VideoId)
+	exception.PanicIfNeeded(err)
+	if (video == entity.Video{}) {
+		exception.PanicIfNeeded("VIDEO_NOT_FOUND")
+	}
 	video = entity.Video{
 		VideoId:    request.VideoId,
 		PlaylistId: request.PlaylistId,
@@ -53,7 +56,10 @@ func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (
 		Deskripsi:  request.Deskripsi,
 	}
 
-	_, _ = service.VideoRepository.UpdateVideo(video)
+	_, err = service.VideoRepository.UpdateVideo(video)
+	if err != nil {
+		exception.PanicIfNeeded("PLAYLIST_NOT_FOUND")
+	}
 	response = model.VideoResponse{
 		VideoId:    video.VideoId,
 		PlaylistId: video.PlaylistId,
@@ -78,6 +84,11 @@ func (service *VideoServiceImpl) GetMainVideo() (response model.VideoResponse) {
 }
 
 func (service *VideoServiceImpl) DeleteVideo(videoId int) {
+	video, err := service.VideoRepository.FindVideoById(videoId)
+	exception.PanicIfNeeded(err)
+	if (video == entity.Video{}) {
+		exception.PanicIfNeeded("VIDEO_NOT_FOUND")
+	}
 	_ = service.VideoRepository.DeleteVideo(videoId)
 }
 
