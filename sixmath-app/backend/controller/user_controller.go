@@ -8,6 +8,7 @@ import (
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UserController struct {
@@ -28,7 +29,13 @@ func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
 	var request model.StudentCreateRequest
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
-	response := controller.UserService.CreateStudent(request)
+
+	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
+
+	request.Password = string(passwordHash)
+
+	response, err := controller.UserService.CreateStudent(request)
+	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",

@@ -1,8 +1,8 @@
 package service
 
 import (
+	"errors"
 	"fmt"
-	"golang.org/x/crypto/bcrypt"
 	"rpl-sixmath/entity"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
@@ -15,29 +15,25 @@ type UserServiceImpl struct {
 	UserRepository repository.UserRepository
 }
 
-func NewUserService(userRepository *repository.UserRepository) UserService {
-	return &UserServiceImpl{UserRepository: *userRepository}
+func NewUserService(userRepository repository.UserRepository) UserService {
+	return &UserServiceImpl{UserRepository: userRepository}
 }
 
-func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest) (response model.StudentCreateResponse) {
+func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest) (response model.StudentCreateResponse, err error) {
 	validation.Validate(request)
 
-	passwordHash, err := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
-	if err != nil {
-		fmt.Printf("err: %v\n", err)
-	}
 	student := entity.User{
 		Username:  request.Username,
 		Handphone: request.Handphone,
 		Email:     request.Email,
-		Password:  string(passwordHash),
+		Password:  request.Password,
 		Role:      "student",
 	}
 
 	student, err = service.UserRepository.InsertUser(student)
 	fmt.Println(student)
 	if err != nil {
-		exception.PanicIfNeeded("USERNAME_REGISTERED")
+		return model.StudentCreateResponse{}, errors.New("USERNAME_REGISTERED")
 	}
 	response = model.StudentCreateResponse{
 		UserId:    student.UserId,
@@ -47,7 +43,7 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 		CreatedAt: student.CreatedAt,
 	}
 
-	return response
+	return response, nil
 }
 
 func (service *UserServiceImpl) GetDataUser(month int) (response []model.GetUserResponse) {

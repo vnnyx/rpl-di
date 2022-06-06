@@ -5,6 +5,6 @@ import (
 )
 
 type UserService interface {
-	CreateStudent(request model.StudentCreateRequest) (response model.StudentCreateResponse)
+	CreateStudent(request model.StudentCreateRequest) (response model.StudentCreateResponse, err error)
 	GetDataUser(month int) (response []model.GetUserResponse)
 }

@@ -33,7 +33,7 @@ func main() {
 	videoRepository := repository.NewVideoRepository(databases)
 	examRepository := repository.NewExamRepository(databases)
 
-	userService := service.NewUserService(&userRepository)
+	userService := service.NewUserService(userRepository)
 	authService := service.NewAuthService(&userRepository)
 	playlistService := service.NewPlaylistService(&playlistRepository)
 	videoService := service.NewVideoService(&videoRepository)

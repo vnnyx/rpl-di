@@ -1,11 +1,12 @@
 package controller
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/recover"
 	"rpl-sixmath/config"
 	"rpl-sixmath/repository"
 	"rpl-sixmath/service"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
 func createTestApp() *fiber.App {
@@ -29,6 +30,6 @@ var configuration = config.New("../.env.test")
 
 var database = config.NewMySQLDatabase(configuration)
 var userRepository = repository.NewUserRepository(database)
-var userService = service.NewUserService(&userRepository)
+var userService = service.NewUserService(userRepository)
 var userController = NewUserController(&userService)
 var app = createTestApp()
