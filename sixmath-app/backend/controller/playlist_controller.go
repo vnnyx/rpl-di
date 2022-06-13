@@ -28,7 +28,8 @@ func (controller *PlaylistController) CreatePlaylist(c *fiber.Ctx) error {
 	request.TeacherId = userId
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
-	response := controller.PlaylistService.CreatePlaylist(request)
+	response, err := controller.PlaylistService.CreatePlaylist(request)
+	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
