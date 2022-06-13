@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.left{
+    margin-top: 140px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+}
+.form-control{
+    padding: 20px 25px;
+    background-color: #F0EFFF;
+    width: 75%;
+}
+span{
+    color: #FBAF00;
+    font-weight: bold;
+    font-size: 40px;
+}
+.lupa-pw{
+    font-size: 40px;
+    font-weight: bold;
+}
+.btn-kirim{
+    margin-top: 20px;
+    background-color: #6A35FF;
+    color: #FFF;
+    border: none;
+    width: 447px;
+    height: 71.47px;
+    border-radius: 9px;
+}
+.right{
+    position: relative;
+    background-color: #6A35FF;
+    height: 100vh;
+}
+
+.img-2{
+    position: absolute;
+    width: 1000px;
+    height: 850px;
+    left: -90px;
+    top: 0px;
+}
+.img-3{
+    position: absolute;
+    height: 400px;
+    width: 500px;
+    left: 19%;
+    top: 265px;
+}
+.shape {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
