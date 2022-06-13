@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.left {
+    margin-top: 70px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+
+span.masuk {
+    color: #FBAF00;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.lupa-pw {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.right {
+    position: relative;
+    background-color: #6A35FF;
+    height: 100vh;
+}
+
+.img-2 {
+    position: absolute;
+    width: 1000px;
+    height: 850px;
+    left: -90px;
+    top: 0px;
+}
+
+.img-3 {
+    position: absolute;
+    height: 400px;
+    width: 500px;
+    left: 19%;
+    top: 265px;
+}
+
+.shape {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.otp {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 5px solid #FBAF00;
+    outline: none;
+    width: 400px;
+}
+
+.kirim-ulang {
+    color: #6A35FF;
+    cursor: pointer;
+}
+
+.side {
+    margin-left: 60px;
+}
+
+
+.digit-group {
+    display: flex;
+    width: 30px;
+    height: 50px;
+    background-color: lighten(#6A35FF, 5%);
+    border: none;
+    font-size: 24px;
+}
+.digits{
+    text-align: center;
+    margin: 0 10px;
+    width: 50px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+    outline: none;
+}

@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#kol1{
+    width: 50%;
+    height: 759px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+    z-index: 111;
+}
+#kol1 h3{
+    position: relative;
+    top: 140px;
+    left: 177px;
+    font-size: bold;
+    font-size: 40px;
+}
+#kol1 .head{
+    color: #FBAF00;
+}
+#kol1 .tulisan{
+    position: relative;
+    top: 160px;
+    left: 177px;
+    color: #B0B0B0;
+}
+#kol2{
+    width: 50%;
+    background-color: #6A35FF;
+}
+.form-control{
+    background-color: #F0EFFF;
+    width: 347px;
+    height: 50px;
+    position: relative;
+    top: 130px;
+    left: 177px;
+    margin-top: 52px;
+    border-radius: 8px;
+}
+.form-control::placeholder {
+    color: #B0B0B0;
+  }
+#kol2 .gambar img{
+    width: 125px;
+    margin-left: 60px;
+    margin-top: 31px;
+}#kol2 .gambar-2 img{
+    position: relative;
+    left: 100px;
+    width: 700px;
+}
+#kol2 .gambar-3 img{
+    position: relative;
+    top: -480px;
+    left: 290px;
+    width: 343px;
+}
+.btn{
+    position: relative;
+    left: 180px;
+    top: 170px;
+    width: 340px;
+    height: 50px;
+    background-color: #6A35FF;
+    color: white;
+}
+.btn:hover{
+    color: #fff;
+}
+.wave{
+    position: relative;
+    top: -615px;
+    left: -120px;
+    width: 900px;
+}
+.eye{
+    position: absolute;
+    top: 425px;
+    left: 490px;
+    color: #6A35FF;
+}
+.eye2{
+    position: absolute;
+    top: 325px;
+    left: 490px;
+    color: #6A35FF;
+}
+#hide1{
+    display: none;
+}
+#hide3{
+    display: none;
+}
+.matching{
+    position: absolute;
+    left: 180px;
+    top: 470px;
+    color: red;
+    display: none;
+}

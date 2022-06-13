@@ -1,0 +1,110 @@
+.content{
+    position: relative;
+    left: 150px;
+    height: 100%;
+    background: #e5e5e5;
+    margin-bottom: 50px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content{
+    left: 357px;
+}
+.profile{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -610px;
+    width: 90px;
+    height: 54px;
+    border-radius: 40px;
+    background-color: #fff;
+}
+.sidebar.act ~ .content .profile{
+    left: 430px;
+}
+.kaca{
+    padding: 0 5px;
+}
+.lonceng{
+    padding: 0 5px;
+    
+}
+.foto{
+    position: absolute;
+    right: 205px;
+    top: 17px;
+    border-radius: 50%;
+    height: 54px;
+    width: 54px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .foto{
+    right: 380px;
+}
+
+.isi-content{
+    height: 100%;
+    padding-bottom: 50px;
+    width: 1290px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .isi-content{
+    width: calc(1290px - 200px);
+}
+.task{
+    position: relative;
+    top: 16px;
+    margin-left: 70px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+    height: 155px;
+    width: 1175px;
+    -webkit-box-shadow: 0 0 2px #000;
+    -o-box-shadow: 0 0 2px #000;
+    -moz-box-shadow: 0 0 2px #000;
+    -ms-box-shadow: 0 0 2px #000;
+    box-shadow: 0 0 2px #000;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .task{
+    width: 980px;
+}
+.task p{
+    position: absolute;
+    top: 50%;
+    left: 30px;
+}
+.content .judul-tugas{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-weight: bold;
+    font-size: 24px;
+    color: #000000;
+}
+.btn{
+    position: relative;
+    left: 83%;
+    top: 35%;
+    color: #fff;
+    -webkit-box-shadow: 0 0 3px #000;
+    -webkit-box-shadow: 0 0 3px #000;
+    -o-box-shadow: 0 0 3px #000;
+    -moz-box-shadow: 0 0 3px #000;
+    -ms-box-shadow: 0 0 3px #000;
+    box-shadow: 0 0 3px #000;
+}
+.kerjakan{
+    z-index: 1111;
+}
+.variasi{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    top: -4px;
+}
