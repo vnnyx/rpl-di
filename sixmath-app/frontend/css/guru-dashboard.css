@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.content{
+    position: relative;
+    left: 150px;
+    height: 100%;
+    background: #E5E5E5;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content{
+    left: 357px;
+}
+.profile{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -630px;
+    width: 90px;
+    height: 54px;
+    border-radius: 40px;
+    background-color: #fff;
+}
+.sidebar.act ~ .content .profile{
+    left: 410px;
+}
+.kaca{
+    padding: 0 5px;
+}
+.lonceng{
+    padding: 0 5px;
+    
+}
+.foto{
+    position: absolute;
+    right: 185px;
+    top: 17px;
+    border-radius: 50%;
+    height: 54px;
+    width: 54px;
+    transition: all 1.4s ease;
+}
+.sidebar.act ~ .content .foto{
+    right: 410px;
+}
+.content-atas{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 346px;
+    width: 1083px;
+    background-color: #FFF;
+    border-radius: 8px;
+}
+.judul{
+    font-size: 24px;
+}
+.desc{
+    font-size: 16px;
+}
+.btn-buat, .btn-edit{
+    background-color: #FBAF00;
+    border-radius: 12px;
+    padding: 15px 30px;
+    margin-right: 40px;
+    margin-left: 20px;
+    margin-top: 170px;
+}
+.variasi{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.judul-video, .desc-video{
+    width: 90%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #FBAF00;
+    outline: none;
+}
+.judul-video::-webkit-input-placeholder{
+	font-weight: bold;
+    color: #000;
+    font-size: 25px;
+    background-color: #F1F3F4;
+    border-radius: 5px;
+}
+.desc-video::-webkit-input-placeholder{
+    background-color: #F1F3F4;
+    color: #000;
+}
+#pilihan {
+    width: 10%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #FBAF00;
+    outline: none;
+}
+.upload::-webkit-input-placeholder{
+    background-color: #F1F3F4;
+    color: #000;
+}

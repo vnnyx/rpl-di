@@ -39,7 +39,7 @@
                 <span class="tultip">Pelajaran</span>
             </li>
             <li>
-                <a href="#">
+                <a href="/html/list_guru.html">
                     <i class='bx bx-conversation'></i>
                     <span class="links_name">Pesan</span>
                 </a>
@@ -122,7 +122,7 @@
                             <div class="task col-lg-6">
                                 <h1 class="judul-tugas">Tugas 2 : Matematika</h1>
                                 <p>Mengerjakan tugas mengenai Matematika</p>
-                                <button type="button" class="btn btn-warning">Kerjakan Tugas</button>
+                                <button type="button" class="btn btn-warning kerjakan">Kerjakan Tugas</button>
                                 <img src="../assets/variasi.png" alt="" class="variasi">
                             </div>
                         </div>
@@ -151,7 +151,9 @@
                 console.log('ok')
             });
         });
-
+        $('.kerjakan').on('click', function(){
+            window.location = 'quiz.html'
+        })
     </script>
     <script src="../Js/util.js"></script>
     <script src="../Js/statistik.js"></script>
