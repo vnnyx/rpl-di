@@ -3,18 +3,39 @@ package model
 import "time"
 
 type StudentCreateRequest struct {
-	Email     string `json:"email,omitempty"`
-	Username  string `json:"username,omitempty"`
-	Handphone string `json:"handphone,omitempty"`
-	Password  string `json:"password,omitempty"`
+	Email     string `json:"email"`
+	Username  string `json:"username"`
+	Handphone string `json:"handphone"`
+	Avatar    string `json:"avatar"`
+	Password  string `json:"password"`
 }
 
-type StudentCreateResponse struct {
-	UserId    int       `json:"user_id,omitempty"`
-	Email     string    `json:"email,omitempty"`
-	Username  string    `json:"username,omitempty"`
-	Handphone string    `json:"handphone,omitempty"`
-	CreatedAt time.Time `json:"created_at,omitempty"`
+type StudentResponse struct {
+	UserId    int       `json:"user_id"`
+	Email     string    `json:"email"`
+	Username  string    `json:"username"`
+	Handphone string    `json:"handphone"`
+	Avatar    string    `json:"avatar"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
+type TeacherCreateRequest struct {
+	Email       string `json:"email"`
+	Username    string `json:"username"`
+	Handphone   string `json:"handphone"`
+	Password    string `json:"password"`
+	Certificate string `json:"certificate"`
+	Avatar      string `json:"avatar"`
+}
+
+type TeacherResponse struct {
+	UserId      int       `json:"user_id"`
+	Email       string    `json:"email"`
+	Username    string    `json:"username"`
+	Handphone   string    `json:"handphone"`
+	Certificate string    `json:"certificate"`
+	Avatar      string    `json:"avatar"`
+	CreatedAt   time.Time `json:"created_at"`
 }
 
 type GetUserResponse struct {

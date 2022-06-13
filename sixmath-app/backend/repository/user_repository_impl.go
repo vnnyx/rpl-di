@@ -39,7 +39,12 @@ func (repo *UserRepositoryImpl) FindUserByUsername(username string) (response en
 	return response, err
 }
 
-func (repo *UserRepositoryImpl) FindUserAll() (response []entity.User, err error) {
+func (repo *UserRepositoryImpl) FindAllTeacher() (response []entity.User, err error) {
+	err = repo.DB.Where("role", "teacher").Find(&response).Error
+	return response, err
+}
+
+func (repo *UserRepositoryImpl) FindAll() (response []entity.User, err error) {
 	err = repo.DB.Find(&response).Error
 	return response, err
 }

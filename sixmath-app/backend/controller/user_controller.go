@@ -2,6 +2,7 @@ package controller
 
 import (
 	"rpl-sixmath/exception"
+	"rpl-sixmath/helper"
 	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
@@ -22,6 +23,8 @@ func NewUserController(service *service.UserService) UserController {
 func (controller *UserController) Route(app *fiber.App) {
 	router := app.Group("/api/user")
 	router.Post("/student", controller.CreateStudent)
+	router.Post("/teacher", controller.CreateTeacher)
+	router.Get("/teacher/all", controller.GetAllTeacher)
 	app.Get("/api/dashboard/statistik-pendaftaran", middleware.CheckToken(), controller.GetDataUser)
 }
 
@@ -30,11 +33,54 @@ func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 
-	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
+	avatar, err := c.FormFile("avatar")
+	exception.PanicIfNeeded(err)
 
+	resAvatar, err := helper.UploadToCloudinary(c, avatar, "./uploads/image:/sixmath/avatar", request.Username+"_avatar")
+	avatarUrl := resAvatar.SecureURL
+	request.Avatar = avatarUrl
+
+	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
 	request.Password = string(passwordHash)
 
 	response, err := controller.UserService.CreateStudent(request)
+	exception.PanicIfNeeded(err)
+	return c.JSON(model.WebResponse{
+		Code:   200,
+		Status: "OK",
+		Data:   response,
+	})
+}
+
+func (controller *UserController) CreateTeacher(c *fiber.Ctx) error {
+	var request model.TeacherCreateRequest
+	err := c.BodyParser(&request)
+	exception.PanicIfNeeded(err)
+
+	certificate, _ := c.FormFile("certificate")
+	avatar, _ := c.FormFile("avatar")
+	resCertificate, err := helper.UploadToCloudinary(c, certificate, "./uploads/image:/sixmath/certificate", request.Username+"_certificate")
+	resAvatar, err := helper.UploadToCloudinary(c, avatar, "./uploads/image:/sixmath/avatar", request.Username+"_avatar")
+
+	certificateUrl := resCertificate.SecureURL
+	AvatarUrl := resAvatar.SecureURL
+	request.Certificate = certificateUrl
+	request.Avatar = AvatarUrl
+
+	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
+	request.Password = string(passwordHash)
+
+	response, err := controller.UserService.CreateTeacher(request)
+	exception.PanicIfNeeded(err)
+	return c.JSON(model.WebResponse{
+		Code:   200,
+		Status: "OK",
+		Data:   response,
+	})
+}
+
+func (controller *UserController) GetAllTeacher(c *fiber.Ctx) error {
+	response, err := controller.UserService.GetListTeacher()
 	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,

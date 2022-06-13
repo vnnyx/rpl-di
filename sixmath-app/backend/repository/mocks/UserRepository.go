@@ -30,7 +30,7 @@ func (_m *UserRepository) DeleteUser(userId int) error {
 }
 
 // FindUserAll provides a mock function with given fields:
-func (_m *UserRepository) FindUserAll() ([]entity.User, error) {
+func (_m *UserRepository) FindAllTeacher() ([]entity.User, error) {
 	ret := _m.Called()
 
 	var r0 []entity.User

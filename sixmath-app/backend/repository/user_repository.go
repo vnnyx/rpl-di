@@ -11,6 +11,7 @@ type UserRepository interface {
 	DeleteUser(userId int) error
 	FindUserById(userId int) (response entity.User, err error)
 	FindUserByUsername(username string) (response entity.User, err error)
-	FindUserAll() (response []entity.User, err error)
+	FindAllTeacher() (response []entity.User, err error)
+	FindAll() (response []entity.User, err error)
 	GetDataUser(month string, year string) (response model.GetTotalUser, err error)
 }
