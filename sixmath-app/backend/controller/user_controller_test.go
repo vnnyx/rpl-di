@@ -11,7 +11,7 @@ import (
 )
 
 func TestUserController_CreateStudent(t *testing.T) {
-	user, _ := userRepository.FindUserAll()
+	user, _ := userRepository.FindAllTeacher()
 	var userId int
 	for _, users := range user {
 		userId = users.UserId
@@ -40,7 +40,7 @@ func TestUserController_CreateStudent(t *testing.T) {
 	assert.Equal(t, "OK", webResponse.Status)
 
 	jsonData, _ := json.Marshal(webResponse.Data)
-	createStudentResponse := model.StudentCreateResponse{}
+	createStudentResponse := model.StudentResponse{}
 	json.Unmarshal(jsonData, &createStudentResponse)
 	assert.NotNil(t, createStudentResponse.UserId)
 	assert.Equal(t, createStudentRequest.Username, createStudentResponse.Username)
