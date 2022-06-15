@@ -36,7 +36,7 @@ func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
 	avatar, err := c.FormFile("avatar")
 	exception.PanicIfNeeded(err)
 
-	resAvatar, err := helper.UploadToCloudinary(c, avatar, "./uploads/image/:/sixmath/avatar/", request.Username+"_avatar")
+	resAvatar, err := helper.UploadToCloudinary(c, avatar, ".:/sixmath/avatar/", request.Username+"_avatar")
 	exception.PanicIfNeeded(err)
 	avatarUrl := resAvatar.SecureURL
 	request.Avatar = avatarUrl
@@ -60,9 +60,9 @@ func (controller *UserController) CreateTeacher(c *fiber.Ctx) error {
 
 	certificate, _ := c.FormFile("certificate")
 	avatar, _ := c.FormFile("avatar")
-	resCertificate, err := helper.UploadToCloudinary(c, certificate, "./uploads/image/:/sixmath/certificate/", request.Username+"_certificate")
+	resCertificate, err := helper.UploadToCloudinary(c, certificate, ".:/sixmath/certificate/", request.Username+"_certificate")
 	exception.PanicIfNeeded(err)
-	resAvatar, err := helper.UploadToCloudinary(c, avatar, "./uploads/image/:/sixmath/avatar/", request.Username+"_avatar")
+	resAvatar, err := helper.UploadToCloudinary(c, avatar, ".:/sixmath/avatar/", request.Username+"_avatar")
 	exception.PanicIfNeeded(err)
 
 	certificateUrl := resCertificate.SecureURL
