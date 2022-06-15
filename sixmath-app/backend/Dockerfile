@@ -1,5 +1,5 @@
 # builder image
-FROM golang:latest-alpine as base
+FROM golang:1.8-alpine as base
 WORKDIR /builder
 RUN apk add upx
 ENV GO111MODULE=on CGO_ENABLED=0
