@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"rpl-sixmath/entity"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
@@ -12,11 +13,11 @@ type VideoServiceImpl struct {
 	VideoRepository repository.VideoRepository
 }
 
-func NewVideoService(videoRepository *repository.VideoRepository) VideoService {
-	return &VideoServiceImpl{VideoRepository: *videoRepository}
+func NewVideoService(videoRepository repository.VideoRepository) VideoService {
+	return &VideoServiceImpl{VideoRepository: videoRepository}
 }
 
-func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (response model.VideoResponse) {
+func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (response model.VideoResponse, err error) {
 	validation.VideoValidate(request)
 
 	video := entity.Video{
@@ -26,9 +27,9 @@ func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (
 		Deskripsi:  request.Deskripsi,
 	}
 
-	video, err := service.VideoRepository.InsertVideo(video)
+	video, err = service.VideoRepository.InsertVideo(video)
 	if err != nil {
-		exception.PanicIfNeeded("PLAYLIST_NOT_FOUND")
+		return model.VideoResponse{}, errors.New("PLAYLIST_NOT_FOUND")
 	}
 	response = model.VideoResponse{
 		VideoId:    video.VideoId,
@@ -38,15 +39,15 @@ func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (
 		Deskripsi:  video.Deskripsi,
 	}
 
-	return response
+	return response, nil
 }
 
-func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (response model.VideoResponse) {
+func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (response model.VideoResponse, err error) {
 	validation.VideoUpdateValidate(request)
 	video, err := service.VideoRepository.FindVideoById(request.VideoId)
 	exception.PanicIfNeeded(err)
 	if (video == entity.Video{}) {
-		exception.PanicIfNeeded("VIDEO_NOT_FOUND")
+		return model.VideoResponse{}, errors.New("VIDEO_NOT_FOUND")
 	}
 	video = entity.Video{
 		VideoId:    request.VideoId,
@@ -58,7 +59,7 @@ func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (
 
 	_, err = service.VideoRepository.UpdateVideo(video)
 	if err != nil {
-		exception.PanicIfNeeded("PLAYLIST_NOT_FOUND")
+		return model.VideoResponse{}, errors.New("PLAYLIST_NOT_FOUND")
 	}
 	response = model.VideoResponse{
 		VideoId:    video.VideoId,
@@ -68,11 +69,14 @@ func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (
 		Deskripsi:  video.Deskripsi,
 	}
 
-	return response
+	return response, nil
 }
 
-func (service *VideoServiceImpl) GetMainVideo() (response model.VideoResponse) {
-	video, _ := service.VideoRepository.FindOneRandomVideo()
+func (service *VideoServiceImpl) GetMainVideo() (response model.VideoResponse, err error) {
+	video, err := service.VideoRepository.FindOneRandomVideo()
+	if err != nil {
+		return model.VideoResponse{}, errors.New("VIDEO_NOT_FOUND")
+	}
 	response = model.VideoResponse{
 		VideoId:    video.VideoId,
 		PlaylistId: video.PlaylistId,
@@ -80,16 +84,17 @@ func (service *VideoServiceImpl) GetMainVideo() (response model.VideoResponse) {
 		URLVideo:   video.URLVideo,
 		Deskripsi:  video.Deskripsi,
 	}
-	return response
+	return response, nil
 }
 
-func (service *VideoServiceImpl) DeleteVideo(videoId int) {
+func (service *VideoServiceImpl) DeleteVideo(videoId int) error {
 	video, err := service.VideoRepository.FindVideoById(videoId)
 	exception.PanicIfNeeded(err)
 	if (video == entity.Video{}) {
-		exception.PanicIfNeeded("VIDEO_NOT_FOUND")
+		return errors.New("VIDEO_NOT_FOUND")
 	}
 	_ = service.VideoRepository.DeleteVideo(videoId)
+	return nil
 }
 
 func (service *VideoServiceImpl) GetRecommendedVideo(pagination model.Pagination) (response model.Pagination) {

@@ -31,7 +31,8 @@ func (controller *VideoController) CreateVideo(c *fiber.Ctx) error {
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 
-	response := controller.VideoService.CreateVideo(request)
+	response, err := controller.VideoService.CreateVideo(request)
+	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
@@ -40,7 +41,8 @@ func (controller *VideoController) CreateVideo(c *fiber.Ctx) error {
 }
 
 func (controller *VideoController) MainVideo(c *fiber.Ctx) error {
-	response := controller.VideoService.GetMainVideo()
+	response, err := controller.VideoService.GetMainVideo()
+	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
@@ -81,7 +83,8 @@ func (controller VideoController) UpdateVideo(c *fiber.Ctx) error {
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 
-	response := controller.VideoService.UpdateVideo(request)
+	response, err := controller.VideoService.UpdateVideo(request)
+	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",

@@ -35,8 +35,8 @@ func main() {
 
 	userService := service.NewUserService(userRepository)
 	authService := service.NewAuthService(&userRepository)
-	playlistService := service.NewPlaylistService(&playlistRepository)
-	videoService := service.NewVideoService(&videoRepository)
+	playlistService := service.NewPlaylistService(playlistRepository)
+	videoService := service.NewVideoService(videoRepository)
 	examService := service.NewExamService(examRepository, videoRepository)
 
 	userController := controller.NewUserController(&userService)

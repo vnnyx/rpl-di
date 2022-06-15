@@ -10,20 +10,23 @@ type PlaylistServiceImpl struct {
 	PlaylistRepository repository.PlaylistRepository
 }
 
-func NewPlaylistService(playlistRepository *repository.PlaylistRepository) PlaylistService {
-	return &PlaylistServiceImpl{PlaylistRepository: *playlistRepository}
+func NewPlaylistService(playlistRepository repository.PlaylistRepository) PlaylistService {
+	return &PlaylistServiceImpl{PlaylistRepository: playlistRepository}
 }
 
-func (service *PlaylistServiceImpl) CreatePlaylist(request model.PlaylistCreateRequest) (response model.PlaylistCreateResponse) {
+func (service *PlaylistServiceImpl) CreatePlaylist(request model.PlaylistCreateRequest) (response model.PlaylistCreateResponse, err error) {
 	playlist := entity.Playlist{
 		Title:     request.Title,
 		TeacherId: request.TeacherId,
 	}
-	playlist, _ = service.PlaylistRepository.InsertPlaylist(playlist)
+	playlist, err = service.PlaylistRepository.InsertPlaylist(playlist)
+	if err != nil {
+		return model.PlaylistCreateResponse{}, err
+	}
 	response = model.PlaylistCreateResponse{
 		PlaylistId: playlist.PlaylistId,
 		Title:      playlist.Title,
 		TeacherId:  playlist.TeacherId,
 	}
-	return response
+	return response, nil
 }
