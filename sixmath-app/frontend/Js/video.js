@@ -48,7 +48,7 @@ $.ajax({
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                         <div class="card-body">
-                            <p class="card-text">Judul</p>
+                            <p class="card-text">`+ data.title +`</p>
                         </div>
                     </div>
                 </div>

@@ -354,7 +354,9 @@ body{
 .tugas{
     position: relative;
     width: 1205px;
-    height: 588px;
+    height: max-content;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
     background-color: #fff;
     color: #000000;
     margin-top: 45px;
