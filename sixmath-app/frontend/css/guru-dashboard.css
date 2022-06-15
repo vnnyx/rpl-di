@@ -51,10 +51,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 346px;
-    width: 1083px;
+    height: max-content;
+    width: 1300px;
     background-color: #FFF;
     border-radius: 8px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .content-atas{
+    transition: all .4s ease;
+    width: 1083px;
 }
 .judul{
     font-size: 24px;
@@ -104,5 +109,31 @@
 }
 .upload::-webkit-input-placeholder{
     background-color: #F1F3F4;
+    color: #000;
+}
+.opt{
+    position: relative;
+    display: flex;
+    border-radius: 50%;
+    height: 51px;
+    width: 51px;
+    align-items: center;
+    justify-content: center;
+    background-color: #6A35FF;
+    color: #fff;
+}
+.input-jawaban{
+    position: relative;
+    top: -38px;
+    left: 60px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #FBAF00;
+    outline: none;
+}
+.input-jawaban::-webkit-input-placeholder{
+    background-color: #F1F3F4;
+    font-size: 20px;
     color: #000;
 }

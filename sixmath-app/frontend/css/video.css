@@ -275,7 +275,7 @@ body{
 }
 .content-right
 {
-    height: 80vh;
+    height: max-content;
     width: 45%;
     background-color: #fff;
     border-radius: 10px;
