@@ -102,13 +102,8 @@ body{
     bottom: 135px;
     left: 180px;
 }
-#avatar{
-    position: absolute;
-    bottom: 165px;
-    left: 180px;
-}
 .warning{
     position: absolute;
-    bottom: 125px;
+    bottom: 85px;
     left: 180px;
 }

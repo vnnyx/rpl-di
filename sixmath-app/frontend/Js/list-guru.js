@@ -30,10 +30,11 @@ $(document).ready(function () {
         },
         success: function (result) {
             let datas = result.data;
+            console.log(datas)
             $('.box2').append
             (`
                 <img src="../assets/logo-2.png" alt="" class="img2">
-                <img src="../assets/`+datas.foto+`" alt="" class="img1">
+                <img src="../assets/`+datas.avatar+`" alt="" class="img1">
                 <h1 class="nama">`+datas.username+`</h1>
                 <p class="umur">24 Tahun</p>
                 <button class="btn-tanya2">Tanya Guru</button>

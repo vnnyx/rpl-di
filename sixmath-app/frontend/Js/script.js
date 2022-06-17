@@ -38,25 +38,32 @@ $(function () {
     });
 });
 
+
 $('#btn-daftar').on('click', function (e) {
     e.preventDefault();
-    $.ajax({
-        url: 'https://sixmath.vnnyx.my.id/api/user/student',
-        type: 'post',
-        dataType: 'json',
-        data: {
-            'email': $('#email').val(),
-            'username': $('#username').val(),
-            'handphone': $('#handphone').val(),
-            'password': $('#myInput2').val(),
+    var data = new FormData();
 
-        },
+    var avatar = document.getElementById("avatar-guru");
+    data.append('email', $('#email').val())
+    data.append('username', $('#username').val())
+    data.append('handphone', $('#handphone').val())
+    data.append('password', $('#myInput').val())
+    data.append('avatar', avatar.files[0])
+
+    console.log($('#myInput').val())
+    $.ajax({
+        url: 'https://sixmath.vnnyx.my.id/api/user/teacher',
+        type: 'post',
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        data: data,
         success: function (result) {
             window.location = "login.html"
-
+            
         },
-        failure: function () {
-            console.log('ok')
+        error: function () {
+            console.log("Response bla bla bla")
         }
     });
 });
