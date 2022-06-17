@@ -23,13 +23,13 @@
         </div>
         <ul class="nav-list">
             <li>
-                <a href="/html/statistik.html">
+                <a href="../html/statistik.html">
                     <i class="bx bx-grid-alt"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tultip">Dashboard</span>
             </li>
-            <li >
+            <li>
                 <a href="#">
                     <i class='bx bx-book-open'></i>
                     <span class="links_name">Pelajaran</span>
@@ -37,21 +37,21 @@
                 <span class="tultip">Pelajaran</span>
             </li>
             <li class="akt">
-                <a href="/html/list_guru.html">
+                <a href="../html/list_guru.html">
                     <i class='bx bx-conversation'></i>
                     <span class="links_name">Pesan</span>
                 </a>
                 <span class="tultip">Pesan</span>
             </li>
             <li>
-                <a href="/html/statistik.html">
+                <a href="../html/statistik.html">
                     <i class='bx bx-stats'></i>
                     <span class="links_name">Statistik</span>
                 </a>
                 <span class="tultip">Statistik</span>
             </li>
             <li>
-                <a href="video.html">
+                <a href="../html/video.html">
                     <i class='bx bx-video'></i>
                     <span class="links_name">Video</span>
                 </a>
@@ -232,25 +232,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../Js/list-guru.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            let sidebar = document.querySelector(".sidebar")
-            $('#btn').on('click', function () {
-                sidebar.classList.toggle("act");
-            });
-            $('li').on('click', function () {
-                $(this).siblings().removeClass('akt')
-                $(this).addClass('akt')
-                console.log('ok')
-            });
-        });
-        $('.btn-tanya').on('click', function(){
-            window.location = 'tanya.html'
-        })
-        $('.btn-tanya2').on('click', function(){
-            window.location = 'tanya.html'
-        })
-    </script>
+    <script src="../Js/list-guru.js"></script>
 
 </body>
 

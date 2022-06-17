@@ -40,23 +40,31 @@ $(function () {
 
 $('#btn-daftar').on('click', function (e) {
     e.preventDefault();
+    var data = new FormData();
+
+    var avatar = document.getElementById("avatar");
+    data.append('email', $('#email').val())
+    data.append('username', $('#username').val())
+    data.append('handphone', $('#handphone').val())
+    data.append('password', $('#myInput').val())
+    data.append('avatar', avatar.files[0])
+
+    console.log($('#myInput').val())
     $.ajax({
-        url: 'https://sixmath.vnnyx.my.id/api/student',
+        url: 'https://sixmath.vnnyx.my.id/api/user/student',
         type: 'post',
-        dataType: 'json',
-        data: {
-            'email': $('#email').val(),
-            'username': $('#username').val(),
-            'handphone': $('#handphone').val(),
-            'password': $('#myInput2').val(),
-
-        },
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        data: data,
         success: function (result) {
+            console.log(result)
             window.location = "login.html"
-
+            
         },
-        failure: function () {
-            console.log('ok')
+        error: function () {
+            console.log('lol')
+            console.log("Response bla bla bla")
         }
     });
 });

@@ -94,3 +94,6 @@ body{
 #hide1{
     display: none;
 }
+#btn-regis-guru, #btn-login-guru{
+    width: 22%;
+}

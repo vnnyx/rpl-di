@@ -249,10 +249,11 @@ body{
     font-size: 36px;
     transition: all .4s ease;
 }
-.home_content .cont-left{
+/* .home_content .cont-left{
     position: relative;
     left: 12px;
-}
+    z-index: -1111;
+} */
 .sidebar.act ~ .container-fluid .home_content .profile{
     left: 220px;
     transition: all .4s ease;

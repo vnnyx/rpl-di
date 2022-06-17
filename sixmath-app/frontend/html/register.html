@@ -23,7 +23,7 @@
                                                                         alt="">
         </h3>
         <p class="tulisan">Perkenalkan diri kamu!</p>
-        <form>
+        <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
             <div class="mb-3">
                 <input type="email" class="form-control" placeholder="Email" id="email" required>
             </div>
@@ -49,6 +49,8 @@
                         <i id="hide4" class="fa-solid fa-eye-slash"></i>
                     </span>
             </div>
+            <input type="file" accept="image/*" id="avatar">
+            <p class="text-danger warning">*Silahkan unggah Avatar anda</p>
             <button type="submit" class="btn" id="btn-daftar">Daftar</button>
             <span id="err" class="text-danger"></span>
         </form>
@@ -73,7 +75,7 @@
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="../Js/script.js"></script>
+<script src="../Js/register.js"></script>
 </body>
 
 </html>

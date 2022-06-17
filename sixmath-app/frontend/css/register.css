@@ -12,7 +12,7 @@ body{
 }
 #kol1 h3{
     position: relative;
-    top:80px;
+    top:30px;
     left: 177px;
     font-size: bold;
     font-size: 40px;
@@ -22,7 +22,7 @@ body{
 }
 #kol1 .tulisan{
     position: relative;
-    top: 80px;
+    top: 30px;
     left: 177px;
     color: #B0B0B0;
 }
@@ -39,7 +39,7 @@ body{
     background-color: #F0EFFF;
     width: 347px;
     height: 50px;
-    top: 80px;
+    top: 30px;
     left: 177px;
     border-radius: 8px;
 }
@@ -81,13 +81,13 @@ body{
 }
 .eye{
     position: absolute;
-    top: 495px;
+    top: 445px;
     left: 490px;
     color: #6A35FF;
 }
 .eye2{
     position: absolute;
-    top: 560px;
+    top: 510px;
     left: 490px;
     color: #6A35FF;
 }
@@ -100,5 +100,15 @@ body{
 #err{
     position: absolute;
     bottom: 135px;
+    left: 180px;
+}
+#avatar{
+    position: absolute;
+    bottom: 165px;
+    left: 180px;
+}
+.warning{
+    position: absolute;
+    bottom: 125px;
     left: 180px;
 }
