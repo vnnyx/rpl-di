@@ -1,19 +1,47 @@
-$.ajax({
-    url: 'https://sixmath.vnnyx.my.id/api/video',
-    type: 'GET',
-    contentType: 'json',
-    headers: {
-        'Authorization': "Bearer " + localStorage.getItem('access_token')
-    },
-    success: function (result) {
-        let datas = result.data;
-        $('#main-video').append(`
-        <iframe width="591" height="328" src="https://www.youtube.com/embed/`+ datas.url_video + `" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    `)
-        $('#detail').append(`
-        <h1 class="judul-main fw-bold mb-4" style="margin-left: 75px;">`+ datas.title + `</h1>
-        <h6 class="ms-4 mb-3 fw-bold text-muted">Deskripsi</h6>
-        <p class="deskripsi ms-4 mb-5" style="text-indent: 30px; width: 96%;">`+ datas.deskripsi + `</p>
-    `)
-    }
+$(document).ready(function () {
+    let sidebar = document.querySelector(".sidebar")
+    $('#btn').on('click', function () {
+        sidebar.classList.toggle("act");
+    });
+    $('li').on('click', function () {
+        $(this).siblings().removeClass('akt')
+        $(this).addClass('akt')
+        console.log('ok')
+    });
+});
+$('.btn-tanya').on('click', function () {
+    window.location = 'tanya.html'
+})
+$('.btn-tanya2').on('click', function () {
+    window.location = 'tanya.html'
+})
+
+$(document).ready(function () {
+    $.ajax({
+        url: 'https://sixmath.vnnyx.my.id/api/user/teacher/all',
+        type: 'post',
+        dataType: 'json',
+        headers: {
+            'Authorization': "Bearer " + localStorage.getItem('access_token')
+        },
+        data: {
+            'username': 'username',
+            'avatar': 'avatar',
+        },
+        success: function (result) {
+            let datas = result.data;
+            console.log(datas)
+            $('.box2').append
+            (`
+                <img src="../assets/logo-2.png" alt="" class="img2">
+                <img src="../assets/`+datas.avatar+`" alt="" class="img1">
+                <h1 class="nama">`+datas.username+`</h1>
+                <p class="umur">24 Tahun</p>
+                <button class="btn-tanya2">Tanya Guru</button>
+            `)
+        },
+        failure: function () {
+            console.log('ok')
+        }
+    });
 })

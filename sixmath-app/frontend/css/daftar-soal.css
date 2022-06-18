@@ -1,0 +1,194 @@
+.content{
+    position: relative;
+    left: 150px;
+    height: 100%;
+    background: #E5E5E5;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content{
+    left: 357px;
+}
+.profile{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -630px;
+    width: 90px;
+    height: 54px;
+    border-radius: 40px;
+    background-color: #fff;
+}
+.sidebar.act ~ .content .profile{
+    left: 430px;
+}
+.kaca{
+    padding: 0 5px;
+}
+.lonceng{
+    padding: 0 5px;
+    
+}
+.foto{
+    position: absolute;
+    right: 185px;
+    top: 17px;
+    border-radius: 50%;
+    height: 54px;
+    width: 54px;
+    transition: all 1.4s ease;
+}
+.sidebar.act ~ .content .foto{
+    right: 380px;
+}
+.content-atas{
+    height: 370px;
+    width: 1300px;
+    padding: 0 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .content-atas{
+    width: 1100px;
+    transition: all .4s ease;
+}
+.sub{
+    font-size: 26px;
+}
+.card-lanjut{
+    background-image: url(../assets/variasi3.png);
+    position: relative;
+    height: 240px;
+    width: 293px;
+    background-color: #6A35FF;
+    border-radius: 10px 10px 8px 8px;
+}
+.wrapper{
+    padding-left: 65px;
+}
+.sidebar.act ~ .content .wrapper{
+    padding-left: 35px;
+}
+.judul{
+    padding-top: 24px;
+    padding-left: 24px;
+}
+.nama{
+    padding-left: 24px;
+}
+.img-math{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    opacity: .2;
+}
+.btn-mengerjakan{
+    position: absolute;
+    margin-left: 24px;
+    bottom: 30px;
+    height: 62px;
+    width: 245px;
+    background-color: #fff;
+    color: #6A35FF;
+    font-size: 20px;
+    border-radius: 14px;
+    border: none;
+    box-shadow: inset -2px -2px 5px rgba(0,0,0,0.4);
+}
+.content-kiri{
+    position: relative;
+    height: max-content;
+    width: 698px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .content-kiri{
+    width: 740px;
+    transition: all .4s ease;
+}
+#drop-down{
+    position: absolute;
+    right: 40px;
+    top: 24px;
+    border: none;
+    outline: none;
+}
+.card-soal{
+    position: relative;
+    height: 240px;
+    width: 293px;
+    border-radius: 10px 10px 8px 8px;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4);
+}
+.daftar{
+    padding-top: 24px;
+    margin-left: 20px;
+    font-size: 26px;
+}
+.logo-terbaru{
+    position: absolute;
+    right: 0;
+    top: 24px;
+}
+.judul-soal{
+    margin-top: 90px;
+    margin-left: 24px;
+    font-size: 32px;
+}
+.count{
+    margin-left: 24px;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.variasi{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.nama-guru{
+    margin-left: 24px;
+}
+
+.content-kanan{
+    height: 675px;
+    width: 540px;
+    background-color: #fff;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .content-kanan{
+    width: 330px;
+    transition: all .4s ease;
+}
+.card-nilai{
+    position: relative;
+    margin-left: 24px;
+    width: 241px;
+    height: 219px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4);
+    border-radius: 10px 8px;
+}
+.variasi-nilai{
+    position: absolute;
+    right: 0;
+}
+.judul-nilai{
+    font-size: 24px;
+    padding-top: 24px;
+    margin-left: 24px;
+}
+.count-nilai{
+    margin-left: 24px;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+.nilai{
+    font-size: 54px;
+    margin-left: 24px;
+    color: #FBAF00;
+}
+.nilai-max{
+    font-size: 26px;
+}

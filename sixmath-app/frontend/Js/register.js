@@ -38,22 +38,22 @@ $(function () {
     });
 });
 
+
+
 $('#btn-daftar').on('click', function (e) {
     e.preventDefault();
     $.ajax({
-        url: 'https://sixmath.vnnyx.my.id/api/student',
+        url: 'https://sixmath.vnnyx.my.id/api/user/student',
         type: 'post',
         dataType: 'json',
         data: {
             'email': $('#email').val(),
             'username': $('#username').val(),
             'handphone': $('#handphone').val(),
-            'password': $('#myInput2').val(),
-
+            'password': $('#myInput').val(),
         },
         success: function (result) {
-            window.location = "login.html"
-
+            window.location = 'login.html'
         },
         failure: function () {
             console.log('ok')
