@@ -14,7 +14,7 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 		return ctx.Status(fiber.StatusBadRequest).JSON(model.WebResponse{
 			Code:   400,
 			Status: "BAD_REQUEST",
-			Data:   struct{}{},
+			Data:   nil,
 			Error:  obj,
 		})
 	}
@@ -25,6 +25,17 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 			Data:   nil,
 			Error: map[string]interface{}{
 				"username": "MUST_UNIQUE",
+			},
+		})
+	}
+
+	if err.Error() == "PASSWORD_NOT_MATCH" {
+		return ctx.Status(fiber.StatusBadRequest).JSON(model.Response{
+			Code:   fiber.StatusBadRequest,
+			Status: "BAD_REQUEST",
+			Data:   nil,
+			Error: map[string]interface{}{
+				"password": "NOT_MATCH",
 			},
 		})
 	}
@@ -47,6 +58,17 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 			Data:   nil,
 			Error: map[string]interface{}{
 				"video_id": "NOT_FOUND",
+			},
+		})
+	}
+
+	if err.Error() == "STUDENT_NOT_FOUND" {
+		return ctx.Status(fiber.StatusNotFound).JSON(model.Response{
+			Code:   fiber.StatusNotFound,
+			Status: "BAD_REQUEST",
+			Data:   nil,
+			Error: map[string]interface{}{
+				"student_username": "NOT_FOUND",
 			},
 		})
 	}
