@@ -33,7 +33,7 @@ func (controller ExamController) CreateExam(c *fiber.Ctx) error {
 
 	image, err := c.FormFile("image")
 	exception.PanicIfNeeded(err)
-	result, err := helper.UploadToCloudinary(c, image, ".:/uploads/exam/", image.Filename)
+	result, err := helper.UploadToCloudinary(c, image, ".:/sixmath/exam/", image.Filename)
 	exception.PanicIfNeeded(err)
 
 	imageUrl := result.SecureURL
