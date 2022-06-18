@@ -40,7 +40,7 @@ func TestUserController_CreateStudent(t *testing.T) {
 	assert.Equal(t, "OK", webResponse.Status)
 
 	jsonData, _ := json.Marshal(webResponse.Data)
-	createStudentResponse := model.StudentResponse{}
+	createStudentResponse := model.StudentCreateResponse{}
 	json.Unmarshal(jsonData, &createStudentResponse)
 	assert.NotNil(t, createStudentResponse.UserId)
 	assert.Equal(t, createStudentRequest.Username, createStudentResponse.Username)

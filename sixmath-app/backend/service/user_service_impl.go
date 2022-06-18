@@ -2,8 +2,10 @@ package service
 
 import (
 	"errors"
+	"github.com/gofiber/fiber/v2"
 	"rpl-sixmath/entity"
 	"rpl-sixmath/exception"
+	"rpl-sixmath/helper"
 	"rpl-sixmath/model"
 	"rpl-sixmath/repository"
 	"rpl-sixmath/validation"
@@ -18,9 +20,13 @@ func NewUserService(userRepository repository.UserRepository) UserService {
 	return &UserServiceImpl{UserRepository: userRepository}
 }
 
-func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest) (response model.StudentResponse, err error) {
-	validation.Validate(request)
+func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest) (response model.StudentCreateResponse, err error) {
+	validation.CreateStudentValidation(request)
 
+	user, err := service.UserRepository.FindUserByUsername(request.Username)
+	if (user != entity.User{}) {
+		return model.StudentCreateResponse{}, errors.New("USERNAME_REGISTERED")
+	}
 	student := entity.User{
 		Username:  request.Username,
 		Handphone: request.Handphone,
@@ -32,14 +38,15 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 
 	student, err = service.UserRepository.InsertUser(student)
 	if err != nil {
-		return model.StudentResponse{}, errors.New("USERNAME_REGISTERED")
+		return model.StudentCreateResponse{}, err
 	}
-	response = model.StudentResponse{
+	response = model.StudentCreateResponse{
 		UserId:    student.UserId,
 		Username:  student.Username,
 		Email:     student.Email,
 		Handphone: student.Handphone,
-		Avatar:    student.Avatar,
+		Role:      student.Role,
+		Avatar:    request.Avatar,
 		CreatedAt: student.CreatedAt,
 	}
 
@@ -62,48 +69,113 @@ func (service *UserServiceImpl) GetDataUser(month int) (response []model.GetUser
 	return response
 }
 
-func (service *UserServiceImpl) CreateTeacher(request model.TeacherCreateRequest) (response model.TeacherResponse, err error) {
+func (service *UserServiceImpl) CreateTeacher(request model.TeacherCreateRequest) (response model.TeacherCreateResponse, err error) {
+	validation.CreateTeacherValidation(request)
+
+	user, err := service.UserRepository.FindUserByUsername(request.Username)
+	if (user != entity.User{}) {
+		return model.TeacherCreateResponse{}, errors.New("USERNAME_REGISTERED")
+	}
+
+	var ctx *fiber.Ctx
+	resAvatar, err := helper.UploadToCloudinary(ctx, request.Avatar, ".:/sixmath/avatar/", request.Username+"_avatar")
+	exception.PanicIfNeeded(err)
+	resCertificate, err := helper.UploadToCloudinary(ctx, request.Certificate, ".:/sixmath/certificate/", request.Username+"_certificate")
+	exception.PanicIfNeeded(err)
+	AvatarUrl := resAvatar.SecureURL
+	CertificateUrl := resCertificate.SecureURL
 	teacher := entity.User{
 		Username:    request.Username,
 		Email:       request.Email,
 		Handphone:   request.Handphone,
 		Password:    request.Password,
 		Role:        "teacher",
-		Certificate: request.Certificate,
-		Avatar:      request.Avatar,
+		Certificate: CertificateUrl,
+		Avatar:      AvatarUrl,
+		Age:         request.Age,
+		Description: request.Description,
 	}
 
 	teacher, err = service.UserRepository.InsertUser(teacher)
 	if err != nil {
-		return model.TeacherResponse{}, errors.New("USERNAME_REGISTERED")
+		return model.TeacherCreateResponse{}, err
 	}
 
-	response = model.TeacherResponse{
+	response = model.TeacherCreateResponse{
 		UserId:      teacher.UserId,
 		Email:       teacher.Email,
 		Username:    teacher.Username,
 		Handphone:   teacher.Handphone,
+		Role:        teacher.Role,
 		Certificate: teacher.Certificate,
 		Avatar:      teacher.Avatar,
+		Age:         teacher.Age,
+		Description: teacher.Description,
 		CreatedAt:   teacher.CreatedAt,
 	}
 
 	return response, nil
 }
 
-func (service *UserServiceImpl) GetListTeacher() (response []model.TeacherResponse, err error) {
+func (service *UserServiceImpl) CreateParent(request model.ParentCreateRequest) (response model.ParentCreateResponse, err error) {
+	validation.CreateParentValidation(request)
+
+	user, err := service.UserRepository.FindUserByUsername(request.Username)
+	if (user != entity.User{}) {
+		return model.ParentCreateResponse{}, errors.New("USERNAME_REGISTERED")
+	}
+	student, err := service.UserRepository.FindUserByUsername(request.StudentUsername)
+	if (student == entity.User{}) {
+		return model.ParentCreateResponse{}, errors.New("STUDENT_NOT_FOUND")
+	}
+	var ctx *fiber.Ctx
+	resAvatar, err := helper.UploadToCloudinary(ctx, request.Avatar, ".:/sixmath/avatar/", request.Username+"_avatar")
+	exception.PanicIfNeeded(err)
+	AvatarUrl := resAvatar.SecureURL
+
+	parent := entity.User{
+		Username:        request.Username,
+		Email:           request.Email,
+		Handphone:       request.Handphone,
+		Password:        request.Password,
+		Role:            "parent",
+		Avatar:          AvatarUrl,
+		StudentUsername: request.StudentUsername,
+	}
+
+	parent, err = service.UserRepository.InsertUser(parent)
+	if err != nil {
+		return model.ParentCreateResponse{}, err
+	}
+
+	response = model.ParentCreateResponse{
+		Email:           parent.Email,
+		Username:        parent.Username,
+		Handphone:       parent.Handphone,
+		StudentUsername: parent.StudentUsername,
+		Role:            parent.Role,
+		Avatar:          parent.Avatar,
+	}
+
+	return response, nil
+}
+
+func (service *UserServiceImpl) GetListTeacher() (response []model.TeacherCreateResponse, err error) {
 	users, err := service.UserRepository.FindAllTeacher()
 	if err != nil {
-		return []model.TeacherResponse{}, err
+		return []model.TeacherCreateResponse{}, err
 	}
-	for _, user := range users {
-		response = append(response, model.TeacherResponse{
-			UserId:      user.UserId,
-			Email:       user.Email,
-			Username:    user.Username,
-			Handphone:   user.Handphone,
-			Certificate: user.Certificate,
-			CreatedAt:   user.CreatedAt,
+	for _, teacher := range users {
+		response = append(response, model.TeacherCreateResponse{
+			UserId:      teacher.UserId,
+			Email:       teacher.Email,
+			Username:    teacher.Username,
+			Handphone:   teacher.Handphone,
+			Certificate: teacher.Certificate,
+			Avatar:      teacher.Avatar,
+			Age:         teacher.Age,
+			Description: teacher.Description,
+			CreatedAt:   teacher.CreatedAt,
 		})
 	}
 	return response, nil

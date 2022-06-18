@@ -2,7 +2,6 @@ package controller
 
 import (
 	"rpl-sixmath/exception"
-	"rpl-sixmath/helper"
 	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
@@ -24,6 +23,7 @@ func (controller *UserController) Route(app *fiber.App) {
 	router := app.Group("/api/user")
 	router.Post("/student", controller.CreateStudent)
 	router.Post("/teacher", controller.CreateTeacher)
+	router.Post("/parent", controller.CreateParent)
 	router.Get("/teacher/all", middleware.CheckToken(), controller.GetAllTeacher)
 	app.Get("/api/dashboard/statistik-pendaftaran", middleware.CheckToken(), controller.GetDataUser)
 }
@@ -33,14 +33,9 @@ func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 
-	avatar, err := c.FormFile("avatar")
-	exception.PanicIfNeeded(err)
-
-	resAvatar, err := helper.UploadToCloudinary(c, avatar, ".:/sixmath/avatar/", request.Username+"_avatar")
-	exception.PanicIfNeeded(err)
-	avatarUrl := resAvatar.SecureURL
-	request.Avatar = avatarUrl
-
+	if request.Password != request.PasswordConfirmation {
+		exception.PanicIfNeeded("PASSWORD_NOT_MATCH")
+	}
 	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
 	request.Password = string(passwordHash)
 
@@ -60,20 +55,40 @@ func (controller *UserController) CreateTeacher(c *fiber.Ctx) error {
 
 	certificate, _ := c.FormFile("certificate")
 	avatar, _ := c.FormFile("avatar")
-	resCertificate, err := helper.UploadToCloudinary(c, certificate, ".:/sixmath/certificate/", request.Username+"_certificate")
-	exception.PanicIfNeeded(err)
-	resAvatar, err := helper.UploadToCloudinary(c, avatar, ".:/sixmath/avatar/", request.Username+"_avatar")
-	exception.PanicIfNeeded(err)
 
-	certificateUrl := resCertificate.SecureURL
-	AvatarUrl := resAvatar.SecureURL
-	request.Certificate = certificateUrl
-	request.Avatar = AvatarUrl
+	request.Certificate = certificate
+	request.Avatar = avatar
 
+	if request.Password != request.PasswordConfirmation {
+		exception.PanicIfNeeded("PASSWORD_NOT_MATCH")
+	}
 	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
 	request.Password = string(passwordHash)
 
 	response, err := controller.UserService.CreateTeacher(request)
+	exception.PanicIfNeeded(err)
+	return c.JSON(model.WebResponse{
+		Code:   200,
+		Status: "OK",
+		Data:   response,
+	})
+}
+
+func (controller *UserController) CreateParent(c *fiber.Ctx) error {
+	var request model.ParentCreateRequest
+	err := c.BodyParser(&request)
+	exception.PanicIfNeeded(err)
+
+	avatar, _ := c.FormFile("avatar")
+	request.Avatar = avatar
+
+	if request.Password != request.PasswordConfirmation {
+		exception.PanicIfNeeded("PASSWORD_NOT_MATCH")
+	}
+	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
+	request.Password = string(passwordHash)
+
+	response, err := controller.UserService.CreateParent(request)
 	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,

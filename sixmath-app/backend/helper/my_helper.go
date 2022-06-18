@@ -2,6 +2,7 @@ package helper
 
 import (
 	"errors"
+	"fmt"
 	"os"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
@@ -44,6 +45,7 @@ func CreateToken(request model.JwtPayload) *model.TokenDetails {
 	td.AccessToken, err = at.SignedString(keyAccess)
 
 	if err != nil {
+		fmt.Println(err)
 		exception.PanicIfNeeded(errors.New(model.AUTHENTICATION_FAILURE_ERR_TYPE))
 	}
 
