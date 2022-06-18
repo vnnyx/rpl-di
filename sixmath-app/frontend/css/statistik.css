@@ -348,7 +348,7 @@ body{
 }
 .home_content .dough{
     position: relative;
-    width: 290px;
+    width: 300px;
 }
 /* end */
 /* tugas */
@@ -453,8 +453,10 @@ body{
     position: absolute;
     left: 81%;
     top: 35%;
+    transition: all .4s ease;
 }
 .sidebar.act ~ .container-fluid .count-tugas{
+    transition: all .4s ease;
     left: 56%;
 }
 .variasi{

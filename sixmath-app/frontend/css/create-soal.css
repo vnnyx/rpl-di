@@ -42,7 +42,7 @@
     border-radius: 50%;
     height: 54px;
     width: 54px;
-    transition: all 1.4s ease;
+    transition: all .4s ease;
 }
 .sidebar.act ~ .content .foto{
     right: 410px;

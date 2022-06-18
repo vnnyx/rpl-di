@@ -39,31 +39,31 @@ $(function () {
 });
 
 
-$('#btn-daftar').on('click', function (e) {
-    e.preventDefault();
-    var data = new FormData();
+// $('#btn-daftar').on('click', function (e) {
+//     e.preventDefault();
+//     var data = new FormData();
 
-    var avatar = document.getElementById("avatar-guru");
-    data.append('email', $('#email').val())
-    data.append('username', $('#username').val())
-    data.append('handphone', $('#handphone').val())
-    data.append('password', $('#myInput').val())
-    data.append('avatar', avatar.files[0])
+//     var avatar = document.getElementById("avatar-guru");
+//     data.append('email', $('#email').val())
+//     data.append('username', $('#username').val())
+//     data.append('handphone', $('#handphone').val())
+//     data.append('password', $('#myInput').val())
+//     data.append('avatar', avatar.files[0])
 
-    console.log($('#myInput').val())
-    $.ajax({
-        url: 'https://sixmath.vnnyx.my.id/api/user/teacher',
-        type: 'post',
-        enctype: 'multipart/form-data',
-        processData: false,
-        contentType: false,
-        data: data,
-        success: function (result) {
-            window.location = "login.html"
+//     console.log($('#myInput').val())
+//     $.ajax({
+//         url: 'https://sixmath.vnnyx.my.id/api/user/teacher',
+//         type: 'post',
+//         enctype: 'multipart/form-data',
+//         processData: false,
+//         contentType: false,
+//         data: data,
+//         success: function (result) {
+//             window.location = "login.html"
             
-        },
-        error: function () {
-            console.log("Response bla bla bla")
-        }
-    });
-});
+//         },
+//         error: function () {
+//             console.log("Response bla bla bla")
+//         }
+//     });
+// });

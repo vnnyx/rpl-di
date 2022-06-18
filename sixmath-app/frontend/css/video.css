@@ -228,25 +228,26 @@ body{
 .sidebar.act ~ .atas{
     left: 380px;
 }
-.sidebar.act ~ .heading{
+.sidebar.act ~ .container-fluid .heading{
     transition: all .4s ease;
 }
 .heading{
     transition: all .4s ease;
 }
-.sidebar.act ~ .property{
+.sidebar.act ~ .container-fluid .property{
     transition: all .4s ease;
+    margin-left: 225px;
 }
 .property{
     position: relative;
     display: flex;
     align-items: center;
+    height: 40px;
+    width: 110px;
     padding: 0 10px;
     background-color: #fff;
     border-radius: 60px;
-    width: 110px;
-    height: 40px;
-    top: 10px;
+    margin-left: 425px;
     transition: all .4s ease;
 }
 .bx-search{
@@ -266,7 +267,7 @@ body{
 }
 .content-left
 {
-    height: max-content;
+    height: 820px;
     width: 100%;
     background-color: #fff;
     border-radius: 10px;
@@ -278,14 +279,15 @@ body{
 .content-right
 {
     height: max-content;
-    width: max-content;
+    width: 535px;
     background-color: #fff;
     border-radius: 10px;
     margin-bottom: 20px;
     transition: all .4s ease;
 }
-.sidebar.act ~ .content-left,
-.sidebar.act ~ .content-left{
+
+.sidebar.act ~.container-fluid .content-right{
+    width: 335px;
     transition: all .4s ease;
 }
 #main-video iframe{
@@ -301,10 +303,30 @@ body{
 }
 
 .rekomendasi{
+    margin-left: 30px;
     font-size: 24px;
 }
 .judul-main{
     font-size: 40px;
 }.desc{
     margin-left: 70px;
+}
+.card{
+    margin-left: 20px;
+    width: 29rem; 
+    height: 14rem;
+    transition: all .4s ease;
+}
+.sidebar.act ~.container-fluid .card{
+    transition: all .4s ease;
+    width: 265px;
+}
+.iframe-rek{
+    transition: all .4s ease;
+    border-radius: 4px;
+    width: 463px;
+}
+.sidebar.act ~.container-fluid .iframe-rek{
+    width: 265px;
+    transition: all .4s ease;
 }

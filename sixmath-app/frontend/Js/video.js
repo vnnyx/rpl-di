@@ -41,8 +41,8 @@ $.ajax({
             $('.video-rekomendasi').append(`
             <div class="row">
                 <div class="col mb-4 ms-3 me-3">
-                    <div class="card" style="width: 19rem; height: 14rem;">
-                        <iframe width="303" height="" style="border-radius: 4px;"
+                    <div class="card">
+                        <iframe class="iframe-rek"
                             src="https://www.youtube.com/embed/`+ data.url_video + `" title="YouTube video player"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

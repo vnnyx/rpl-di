@@ -15,8 +15,6 @@ function myFunction() {
 
 $('#btn-login').on('click', function (e) {
   e.preventDefault();
-  console.log($('#username').val())
-  console.log($('#password').val())
   $.ajax({
     url: 'https://sixmath.vnnyx.my.id/api/auth/login',
     type: 'post',
@@ -27,8 +25,6 @@ $('#btn-login').on('click', function (e) {
       'password': $('#password').val(),
     }),
     success: function (result) {
-      console.log("tes")
-      console.log(result)
       localStorage.setItem(
         'access_token', result.data.access_token
       )
