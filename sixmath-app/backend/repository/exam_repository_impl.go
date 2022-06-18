@@ -26,6 +26,7 @@ func (repo examRepositoryImpl) InsertQuestion(request model.CreateQuestionReques
 	question := entity.Question{
 		ExamId:   request.ExamID,
 		Question: request.Question,
+		Image:    request.Image,
 	}
 
 	err := tx.Create(&question).Error

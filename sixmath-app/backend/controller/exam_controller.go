@@ -2,6 +2,7 @@ package controller
 
 import (
 	"rpl-sixmath/exception"
+	"rpl-sixmath/helper"
 	"rpl-sixmath/middleware"
 	"rpl-sixmath/model"
 	"rpl-sixmath/service"
@@ -30,18 +31,21 @@ func (controller ExamController) CreateExam(c *fiber.Ctx) error {
 	desc := c.FormValue("description")
 	duration, _ := strconv.Atoi(c.FormValue("duration_in_minute"))
 
-	image, _ := c.FormFile("image")
+	image, err := c.FormFile("image")
+	exception.PanicIfNeeded(err)
+	result, err := helper.UploadToCloudinary(c, image, ".:/uploads/exam/", image.Filename)
+	exception.PanicIfNeeded(err)
+
+	imageUrl := result.SecureURL
 
 	response, err := controller.service.CreateExam(model.CreateExamRequest{
 		Title:            title,
-		Image:            "/uploads/image/" + image.Filename,
+		Image:            imageUrl,
 		Description:      desc,
 		DurationInMinute: int64(duration),
 	})
 	exception.PanicIfNeeded(err)
 
-	err = c.SaveFile(image, "./uploads/image/"+image.Filename)
-	exception.PanicIfNeeded(err)
 	return c.Status(200).JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
@@ -57,16 +61,18 @@ func (controller ExamController) CreateQuestion(c *fiber.Ctx) error {
 
 	image, err := c.FormFile("image")
 	exception.PanicIfNeeded(err)
+	result, err := helper.UploadToCloudinary(c, image, ".:/sixmath/exam/", image.Filename)
+	exception.PanicIfNeeded(err)
+	imageUrl := result.SecureURL
 
 	response, err := controller.service.CreateQuestion(model.CreateQuestionRequest{
 		ExamID:        examId,
-		Image:         "/uploads/image/" + image.Filename,
+		Image:         imageUrl,
 		Question:      question,
 		AnswersString: answers,
 	})
 	exception.PanicIfNeeded(err)
 
-	c.SaveFile(image, "./uploads/image/"+image.Filename)
 	return c.Status(200).JSON(model.WebResponse{
 		Code:   200,
 		Status: "OK",
