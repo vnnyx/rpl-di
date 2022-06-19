@@ -22,7 +22,7 @@ func NewExamController(service service.ExamService) ExamController {
 func (controller ExamController) Route(app fiber.Router) {
 	router := app.Group("/api/exam", middleware.CheckToken())
 
-	router.Post("/", middleware.IsTeacher(), controller.CreateExam)
+	router.Post("/create", middleware.IsTeacher(), controller.CreateExam)
 	router.Get("/all", controller.GetAllExam)
 	router.Post("/question/:exam_id", middleware.IsTeacher(), controller.CreateQuestion)
 }
