@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/frontend/css/tes.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <div class="col">
+                <div class="header">
+                    <button class="mt-3 ms-3 btn-back"><i class='bx bx-arrow-back'></i></button>
+                    <h1 class="text-muted prev">Daftar Soal > <span class="subjek">Ujian Math 01</span></h1>
+                    <div class="mt-3 utility">
+                        <i class='bx bx-search'></i>
+                        <i class='bx bx-bell'></i>
+                    </div>
+                    <div class="avatar">
+                        <img src="/frontend/assets/ava2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row ms-3 mb-5">
+            <div class="col">
+                <div class="content">
+                    <div class="banner pt-3">
+                        <img src="/frontend/assets/banner-ujian.png" alt="">
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <h1 class="head-nilai">Nilai Kamu</h1>
+                            <div class="dough">
+                                <h1>80 <span class="text-muted">/100</span></h1>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col">
+                                    <h1 class="detail">Banyaknya Soal</h1>
+                                    <p class="text-muted">20 Soal</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h1 class="detail">Durasi Pengerjaan</h1>
+                                    <p class="text-muted">19 Menit 40 Detik</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn-utama me-3">Kembali Ke Halaman Utama</button>
+                                    <button class="btn-pembahasan">Lihat Pembahasan Soal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </script>
+    <script>
+        const data = {
+            labels: [
+                'Nilai Kamu',
+                'Nilai Max',
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [80, 20],
+                backgroundColor: [
+                    '#FBAF00',
+                    '#FEEFCC'
+                ],
+                hoverOffset: 4
+            }]
+        };
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                cutoutPercentage: 0,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                }
+            }
+        };
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+</body>
+
+</html>

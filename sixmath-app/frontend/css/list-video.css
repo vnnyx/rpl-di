@@ -1,0 +1,81 @@
+.content{
+    position: relative;
+    left: 150px;
+    height: 100%;
+    background: #E5E5E5;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content{
+    left: 357px;
+}
+.profile{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -630px;
+    width: 90px;
+    height: 54px;
+    border-radius: 40px;
+    background-color: #fff;
+}
+.sidebar.act ~ .content .profile{
+    left: 430px;
+}
+.kaca{
+    padding: 0 5px;
+}
+.lonceng{
+    padding: 0 5px;
+    
+}
+.foto{
+    position: absolute;
+    right: 185px;
+    top: 17px;
+    border-radius: 50%;
+    height: 54px;
+    width: 54px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .foto{
+    right: 380px;
+}
+.main-content{
+    position: relative;
+    width: 1300px;
+    height: max-content;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    transition: all .4s ease;    
+}
+.sidebar.act ~ .content .main-content{
+    width: 1100px;
+    transition: all .4s ease;    
+}
+.sub-judul{
+    font-size: 24px;
+}
+#filter{
+    position: absolute;
+    right: 20px;
+    border: none;
+    outline: none;
+}
+.card-video{
+    position: relative;
+    height: calc(41.17px + 142.04px);
+    width: 210.8px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .1);
+    border-radius: 10.2px;
+}
+.card-video iframe{
+    border-radius: 6.2px;
+}
+.judul-video{
+    font-size: 14.41px;
+}
+.list-video{
+    margin-left: 15px;
+}
