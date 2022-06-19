@@ -1,338 +1,211 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "poppins", sans-serif;
-}
-body{
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
-    background: #E5E5E5;
-    
-}
-/* sidebar */
-.sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 150px;
-    background: #6A35FF;
-    padding: 6px 14px;
-    transition: all 0.5s ease;
-}
-.sidebar.act .akt{
-    background-color: #EBC314;
-    border-radius: 10px;
-}
-.sidebar .akt{
-    background-color: #EBC314;
-    border-radius: 10px;
-}
-.sidebar.act{
-    width: 357px;
-}
-.sidebar .logo_content .logo{
-    color: #fff;
-    display: flex;
-    height: 50px;
-    width: 100%;
-    align-items: center;
-    opacity: 0;
-    pointer-events: auto;
-}
-.sidebar.act .logo_content .logo{
-    opacity: 1;
-    position: relative;
-    left: 40px;
-    cursor: pointer;
-    transition: all .5s ease;
-}
-.logo_content .logo i {
-    font-size: 20px;
-    margin-right: 5px;
-}
-.sidebar #btn{
-    position: absolute;
-    color: #fff;
-    top: 6px;
-    left: 50%;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    line-height: 50px;
-    transform: translate(-50%);
-    cursor: pointer;
-}
-.sidebar.act #btn{
-    left: 90%;
-    cursor: pointer;
-}
-.sidebar ul{
-    margin-top: 20px;   
-}
-.sidebar ul li{
-    position: relative;
-    height: 50px;
-    width: 50%;
-    left: 30px;
-    margin: 0 5px;
-    list-style: none;
-    line-height: 50px;
-}
-.sidebar.act ul li{
-    width: 80%;
-    left: 20px;
-}
-.sidebar ul li a{
-    color: #fff;
-    display: flex;
-    border-radius: 12px;
-    white-space: nowrap;
-    align-items: center;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all .4s ease;
-}
-.sidebar ul li i{
-    height: 50px;
-    min-width: 55px;
-    border-radius: 12px;
-    line-height: 50px;
-    text-align: center;
-}
-.sidebar ul li a:hover{
-    background: #EBC314;
-    color: #6A35FF;
-}
-.sidebar .logout_content{
-    position: absolute;
-    color: #fff;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-.sidebar .logout_content .logout{
-    position: relative;
-    padding: 10px 6px;
-    height: 60px;
-    background: none;
-    transition: all .5 ease;
-}
-.sidebar.act .logout_content .logout{
-    background: #6A35FF;
-}
-.logout_content .logout .log_details{
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    white-space: nowrap;
-}
-.sidebar.act .logout .log_details{
-    opacity: 1;
-    pointer-events: auto;
-}
-.logout .log_details img{
-    height: 45px;
-    width: 45px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-.logout .log_details .string{
-    font-size: 20px;
-    position: absolute;
-    left: 90px;
-    cursor: pointer;
-}
-.sidebar.act .logout .log_details .string{
-    transition: all .4s ease;
-}
-.logout #log_out:hover{
-    background-color: #EBC314;
 }
 
-.logout #log_out{
-    position: absolute;
-    left: 50%;
-    bottom: 5px;
-    transform: translate(-50%);
-    min-width: 50px;
-    line-height: 50px;
-    font-size: 20px;
-    border-radius: 12px;
-    text-align: center;
-    transition: all .5 ease;
-    background: #6A35FF;
-    cursor: pointer;
-}
-.sidebar.act .logout #log_out{
-    left: 20%;
-    top: 1px;
-}
-.sidebar.act .logout #log_out{
-    background: none;
-}
-.sidebar ul li .tultip{
-    position: absolute;
-    height: 35px;
-    left: 162px;
-    top: 0;
-    transform: translate(-50% , -50%);
-    border-radius: 6px;
-    width: 122px;
-    line-height: 35px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-.sidebar.act ul li .tultip{
-    left: 380px;
-    display: block;
-}
-.sidebar .links_name{
-    opacity: 0;
-    pointer-events: none;
-    transition: all .5s ease;
-}
-.sidebar.act .links_name{
-    opacity: 1;
-    pointer-events: auto;
-}
-.sidebar ul li:hover .tultip{
-    transition: all .5s ease;
-    opacity: 1;
-    top: 50%;
-}
-.sidebar.act ul li:hover .tultip
-{
-    opacity: 0;
-}
-.nav-list{
-    padding-left: 0 !important;
-}
-/* end */
-
-/* content */
-.home_content{
-    position: absolute;
-    height: 100%;
-    width: 100%;
+.content {
+    position: relative;
     left: 150px;
-    top: 24px;
-    transition: all .5s ease;
+    height: 100%;
+    background: #E5E5E5;
+    transition: all .4s ease;
 }
-.sidebar.act ~ .container-fluid .home_content{
+
+.sidebar.act~.content {
     left: 357px;
 }
-.sidebar.act ~ .home_content .up-judul{
-    position: absolute;
-    left: 190px;
-    top: 0;
-    transition: all .4s ease;
-}
-.home_content .up-judul{
+
+.profile {
     position: relative;
-    font-weight: bold;
-    left: 26px;
-    width: 600px;
-    transition: all .4s ease;
-}
-.home_content .cont-left{
-    position: relative;
-    left: 12px;
-}
-.sidebar.act ~ .container-fluid .home_content .profile{
-    left: 230px;
-    transition: all .4s ease;
-}
-.profile{
-    background: #fff;
-    position: relative;
-    border-radius: 60px;
-    width: 80px;
-    height: 40px;
-    top: 10px;
-    left: 420px;
-    transition: all .4s ease;
-}
-.profile img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    left: 90px;
-    position: absolute;
-}
-.bx-search{
-    position: absolute;
-    left: 13px;
-    top: 7px;
-}
-.bxs-bell{
-    position: absolute;
-    top: 7px;
-    left: 10px;
-    padding: 0 30px;
-}
-/* konten kiri */
-.vid-l{
-    position: relative;
-    left: 54px;
-    top: 20px;
-    height: 895px;
-    border-radius: 10px;
-    width: 1280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -630px;
+    width: 90px;
+    height: 54px;
+    border-radius: 40px;
     background-color: #fff;
-    transition: all .4s ease;
-    z-index: -1111;
 }
-.home_content .kerjakan{
+
+.sidebar.act~.content .profile {
+    left: 410px;
+}
+
+.kaca {
+    padding: 0 5px;
+}
+
+.lonceng {
+    padding: 0 5px;
+
+}
+
+.foto {
+    position: absolute;
+    right: 185px;
+    top: 17px;
+    border-radius: 50%;
+    height: 54px;
+    width: 54px;
+    transition: all .4s ease;
+}
+
+.sidebar.act~.content .foto {
+    right: 410px;
+}
+
+.main-left {
     position: relative;
-    top: -220px;
-    left: 75%;
-    background-color: #6A35FF;
-    color: #fff;
-    width: 232px;
-    height: 68px;
-    border-radius: 12px;
+    height: 346px;
+    width: 715px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
 }
-/* end */
-.sidebar.act ~ .container-fluid .home_content .vid-l{
-    width: 1090px;
+
+.main-jdl {
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 24px;
+    padding-top: 24px;
+}
+
+.card-sunting {
+    position: relative;
+    margin-left: 24px;
+    width: 293px;
+    height: 240px;
+    background-color: #6A35FF;
+    border-radius: 10px 8px;
+    overflow: hidden;
+}
+
+.variasi {
+    position: absolute;
+    width: 20%;
+    left: 0;
+    top: -5px;
+    opacity: .2;
+}
+
+.variasi-img {
+    position: absolute;
+    height: 90%;
+    width: 100%;
+    bottom: 0;
+
+}
+
+.topik {
+    margin-top: 25px;
+    margin-left: 10px;
+    color: #fff;
+    font-size: 32px;
+}
+
+.detail {
+    color: #E1E1E1;
+    margin-left: 13px;
+}
+
+.btn-sunting {
+    width: 245px;
+    height: 62px;
+    z-index: 111;
+}
+
+.card-buat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 550px;
+    height: 346px;
+    background-color: #D19200;
+    border-radius: 10px;
+    overflow: hidden;
     transition: all .4s ease;
 }
-/* banner */
-.kpk{
-    position: absolute;
-    top: 10px;
-    left: 40px;
-    width: 90%;
-    height: 250px;
+.sidebar.act ~ .content .card-buat{
+    width: 330px;
+    transition: all .4s ease;
 }
-/* end */
-/* tulisan */
-.home_content .tulisan{
+.main-jdl2{
+    margin-top: 24px;
+    color: #fff;
+    font-size: 36px;
+}
+.var{
     position: absolute;
-    top: 400px;
-    left: 90px;
+    bottom: 0;
+    right: 0;
+}
+.btn-buat{
+    background-color: #FFFFFF;
+    width: 241px;
+    height: 62px;
+    border-radius: 14px;
+    border: none;
+    box-shadow: inset 2px 2px 2px 2px rgba(0, 0, 0, .4);
+    position: absolute;
+    bottom: 40px;
+    transition: all 1.4s ease;
+}
+.btn-buat:hover{
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .4);
+    transition: all .4s ease;
+}
+.second-content{
+    height: max-content;
+    width: 1085px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.wrap{
+    display: flex;
+}
+#filter{
+    height: fit-content;
+    margin-top: 24px;
+    margin-right: 24px;
+    border: none;
+    outline: none;
+}
+.heading{
+    margin-left: 24px;
+    margin-top: 24px;
+    font-size: 26px;
     font-weight: bold;
-    font-size: 20px;
 }
-.home_content .instruksi{
+.card-soal{
+    background-color: #fff;
+    position: relative;
+    margin-left: 24px;
+    height: 240px;
+    width: 293px;
+    border-radius: 10px 8px;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .1);
+}
+.var-img{
     position: absolute;
-    top: 440px;
-    left: 90px;
-    width: 80%;
+    right: 0;
+    bottom: 0;
 }
-.sidebar.act ~ .container-fluid .instruksi{
-    width: 65%;
+.subjek{
+    margin-top: 24px;
+    margin-left: 10px;
+    font-size: 32px;
+    font-weight: bold;
 }
-/* end */
+.btn-hapus{
+    color: #Eb4335;
+    background-color: #FDECEB;
+    width: 124px;
+    height: 37px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 70px;
+    margin-left: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+}

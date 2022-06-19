@@ -1,4 +1,6 @@
 var fill;
+var minute;
+var seconds
 function createTimer(n) {
     const startingMinutes = n;
     var time = startingMinutes * 60;
@@ -11,10 +13,10 @@ function createTimer(n) {
       
     function fillCounter() {
         const minutes = Math.floor(time / 60);
-        let seconds = time % 60;
+        seconds = time % 60;
         diff = ((time / no) * Math.PI * 2 * 10);
         seconds = seconds < 10 ? '0' + seconds : seconds;
-        let minute = minutes < 10 ? '0' + minutes : minutes;
+        minute = minutes < 10 ? '0' + minutes : minutes;
         counter.clearRect(0, 0, cw, ch);
         counter.lineWidth = 30;
         counter.fillStyle = '#1466ff';
@@ -42,8 +44,15 @@ function createTimer(n) {
     
     fill = setInterval(fillCounter, 1000);
 }
-  
+
+function getTime(){
+    var t = [minute,seconds];
+    console.log(t);
+    return t;
+}
+
 function stopTimer(){
     clearTimeout(fill);
 }
+
 createTimer(15);
