@@ -15,13 +15,14 @@ type StudentCreateRequest struct {
 }
 
 type StudentCreateResponse struct {
-	UserId    int       `json:"user_id"`
-	Email     string    `json:"email"`
-	Username  string    `json:"username"`
-	Handphone string    `json:"handphone"`
-	Role      string    `json:"role"`
-	Avatar    string    `json:"avatar"`
-	CreatedAt time.Time `json:"created_at"`
+	AccessToken string    `json:"access_token"`
+	UserId      int       `json:"user_id"`
+	Email       string    `json:"email"`
+	Username    string    `json:"username"`
+	Handphone   string    `json:"handphone"`
+	Role        string    `json:"role"`
+	Avatar      string    `json:"avatar"`
+	CreatedAt   time.Time `json:"created_at"`
 }
 
 type TeacherCreateRequest struct {
@@ -37,6 +38,7 @@ type TeacherCreateRequest struct {
 }
 
 type TeacherCreateResponse struct {
+	AccessToken string    `json:"access_token"`
 	UserId      int       `json:"user_id"`
 	Email       string    `json:"email"`
 	Username    string    `json:"username"`
@@ -60,6 +62,7 @@ type ParentCreateRequest struct {
 }
 
 type ParentCreateResponse struct {
+	AccessToken     string `json:"access_token"`
 	Email           string `json:"email"`
 	Username        string `json:"username"`
 	Handphone       string `json:"handphone"`

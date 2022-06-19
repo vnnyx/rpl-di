@@ -27,6 +27,7 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 	if (user != entity.User{}) {
 		return model.StudentCreateResponse{}, errors.New("USERNAME_REGISTERED")
 	}
+
 	student := entity.User{
 		Username:  request.Username,
 		Handphone: request.Handphone,
@@ -40,14 +41,24 @@ func (service *UserServiceImpl) CreateStudent(request model.StudentCreateRequest
 	if err != nil {
 		return model.StudentCreateResponse{}, err
 	}
+
+	td := helper.CreateToken(model.JwtPayload{
+		UserID:   student.UserId,
+		Avatar:   student.Avatar,
+		Username: student.Username,
+		Email:    student.Email,
+		Role:     student.Role,
+	})
+
 	response = model.StudentCreateResponse{
-		UserId:    student.UserId,
-		Username:  student.Username,
-		Email:     student.Email,
-		Handphone: student.Handphone,
-		Role:      student.Role,
-		Avatar:    request.Avatar,
-		CreatedAt: student.CreatedAt,
+		AccessToken: td.AccessToken,
+		UserId:      student.UserId,
+		Username:    student.Username,
+		Email:       student.Email,
+		Handphone:   student.Handphone,
+		Role:        student.Role,
+		Avatar:      request.Avatar,
+		CreatedAt:   student.CreatedAt,
 	}
 
 	return response, nil
@@ -101,7 +112,16 @@ func (service *UserServiceImpl) CreateTeacher(request model.TeacherCreateRequest
 		return model.TeacherCreateResponse{}, err
 	}
 
+	td := helper.CreateToken(model.JwtPayload{
+		UserID:   teacher.UserId,
+		Avatar:   teacher.Avatar,
+		Username: teacher.Username,
+		Email:    teacher.Email,
+		Role:     teacher.Role,
+	})
+
 	response = model.TeacherCreateResponse{
+		AccessToken: td.AccessToken,
 		UserId:      teacher.UserId,
 		Email:       teacher.Email,
 		Username:    teacher.Username,
@@ -148,7 +168,16 @@ func (service *UserServiceImpl) CreateParent(request model.ParentCreateRequest) 
 		return model.ParentCreateResponse{}, err
 	}
 
+	td := helper.CreateToken(model.JwtPayload{
+		UserID:   parent.UserId,
+		Avatar:   parent.Avatar,
+		Username: parent.Username,
+		Email:    parent.Email,
+		Role:     parent.Role,
+	})
+
 	response = model.ParentCreateResponse{
+		AccessToken:     td.AccessToken,
 		Email:           parent.Email,
 		Username:        parent.Username,
 		Handphone:       parent.Handphone,
