@@ -25,7 +25,7 @@ func (controller *UserController) Route(app *fiber.App) {
 	router.Post("/teacher", controller.CreateTeacher)
 	router.Post("/parent", controller.CreateParent)
 	router.Get("/teacher/all", middleware.CheckToken(), controller.GetAllTeacher)
-	app.Get("/api/dashboard/statistik-pendaftaran", middleware.CheckToken(), controller.GetDataUser)
+	router.Get("/registration-statistics", middleware.CheckToken(), controller.GetDataUser)
 }
 
 func (controller *UserController) CreateStudent(c *fiber.Ctx) error {
