@@ -21,22 +21,22 @@ func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (
 	validation.VideoValidate(request)
 
 	video := entity.Video{
-		PlaylistId: request.PlaylistId,
-		Title:      request.Title,
-		URLVideo:   request.URLVideo,
-		Deskripsi:  request.Deskripsi,
+		Teacher:     request.Teacher,
+		Title:       request.Title,
+		URLVideo:    request.URLVideo,
+		Description: request.Description,
 	}
 
 	video, err = service.VideoRepository.InsertVideo(video)
 	if err != nil {
-		return model.VideoResponse{}, errors.New("PLAYLIST_NOT_FOUND")
+		return model.VideoResponse{}, err
 	}
 	response = model.VideoResponse{
-		VideoId:    video.VideoId,
-		PlaylistId: video.PlaylistId,
-		Title:      video.Title,
-		URLVideo:   video.URLVideo,
-		Deskripsi:  video.Deskripsi,
+		VideoId:     video.VideoId,
+		Teacher:     video.Teacher,
+		Title:       video.Title,
+		URLVideo:    video.URLVideo,
+		Description: video.Description,
 	}
 
 	return response, nil
@@ -50,39 +50,39 @@ func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (
 		return model.VideoResponse{}, errors.New("VIDEO_NOT_FOUND")
 	}
 	video = entity.Video{
-		VideoId:    request.VideoId,
-		PlaylistId: request.PlaylistId,
-		Title:      request.Title,
-		URLVideo:   request.URLVideo,
-		Deskripsi:  request.Deskripsi,
+		VideoId:     request.VideoId,
+		Teacher:     request.Teacher,
+		Title:       request.Title,
+		URLVideo:    request.URLVideo,
+		Description: request.Description,
 	}
 
 	_, err = service.VideoRepository.UpdateVideo(video)
 	if err != nil {
-		return model.VideoResponse{}, errors.New("PLAYLIST_NOT_FOUND")
+		return model.VideoResponse{}, err
 	}
 	response = model.VideoResponse{
-		VideoId:    video.VideoId,
-		PlaylistId: video.PlaylistId,
-		Title:      video.Title,
-		URLVideo:   video.URLVideo,
-		Deskripsi:  video.Deskripsi,
+		VideoId:     video.VideoId,
+		Teacher:     video.Teacher,
+		Title:       video.Title,
+		URLVideo:    video.URLVideo,
+		Description: video.Description,
 	}
 
 	return response, nil
 }
 
-func (service *VideoServiceImpl) GetMainVideo() (response model.VideoResponse, err error) {
-	video, err := service.VideoRepository.FindOneRandomVideo()
+func (service *VideoServiceImpl) DetailVideo(videoId int) (response model.VideoResponse, err error) {
+	video, err := service.VideoRepository.FindVideoById(videoId)
 	if err != nil {
 		return model.VideoResponse{}, errors.New("VIDEO_NOT_FOUND")
 	}
 	response = model.VideoResponse{
-		VideoId:    video.VideoId,
-		PlaylistId: video.PlaylistId,
-		Title:      video.Title,
-		URLVideo:   video.URLVideo,
-		Deskripsi:  video.Deskripsi,
+		VideoId:     video.VideoId,
+		Teacher:     video.Teacher,
+		Title:       video.Title,
+		URLVideo:    video.URLVideo,
+		Description: video.Description,
 	}
 	return response, nil
 }

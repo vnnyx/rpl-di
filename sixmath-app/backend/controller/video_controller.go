@@ -19,18 +19,20 @@ func NewVideoController(videoService *service.VideoService) VideoController {
 
 func (controller *VideoController) Route(app *fiber.App) {
 	router := app.Group("/api/video", middleware.CheckToken())
-	router.Post("/", middleware.IsTeacher(), controller.CreateVideo)
-	router.Get("/", controller.MainVideo)
+	router.Post("/create", middleware.IsTeacher(), controller.CreateVideo)
+	router.Get("/:id", controller.DetailVideo)
 	router.Get("/recommended", controller.RecommendedVideo)
 	router.Delete("/:id", middleware.IsTeacher(), controller.DeleteVideo)
 	router.Put("/:id", middleware.IsTeacher(), controller.UpdateVideo)
 }
 
 func (controller *VideoController) CreateVideo(c *fiber.Ctx) error {
+	teacher := c.Locals("currentUsername").(string)
 	var request model.VideoCreateRequest
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 
+	request.Teacher = teacher
 	response, err := controller.VideoService.CreateVideo(request)
 	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
@@ -40,8 +42,9 @@ func (controller *VideoController) CreateVideo(c *fiber.Ctx) error {
 	})
 }
 
-func (controller *VideoController) MainVideo(c *fiber.Ctx) error {
-	response, err := controller.VideoService.GetMainVideo()
+func (controller *VideoController) DetailVideo(c *fiber.Ctx) error {
+	id, _ := strconv.Atoi(c.Params("id"))
+	response, err := controller.VideoService.DetailVideo(id)
 	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,
@@ -77,9 +80,11 @@ func (controller VideoController) DeleteVideo(c *fiber.Ctx) error {
 
 func (controller VideoController) UpdateVideo(c *fiber.Ctx) error {
 	videoId := c.Params("id")
+	teacher := c.Locals("currentUsername").(string)
 	id, _ := strconv.Atoi(videoId)
 	var request model.VideoUpdateRequest
 	request.VideoId = id
+	request.Teacher = teacher
 	err := c.BodyParser(&request)
 	exception.PanicIfNeeded(err)
 

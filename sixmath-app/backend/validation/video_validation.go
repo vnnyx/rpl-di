@@ -1,6 +1,7 @@
 package validation
 
 import (
+	"encoding/json"
 	validation "github.com/go-ozzo/ozzo-validation"
 	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
@@ -8,28 +9,30 @@ import (
 
 func VideoValidate(request model.VideoCreateRequest) {
 	err := validation.ValidateStruct(&request,
-		validation.Field(&request.PlaylistId, validation.Required),
 		validation.Field(&request.Title, validation.Required),
-		validation.Field(&request.Deskripsi, validation.Required),
+		validation.Field(&request.Description, validation.Required),
 		validation.Field(&request.URLVideo, validation.Required),
 	)
 	if err != nil {
-		panic(exception.ValidationError{
-			Message: err.Error(),
-		})
+		b, _ := json.Marshal(err)
+		err = exception.ValidationError{
+			Message: string(b),
+		}
+		exception.PanicIfNeeded(err)
 	}
 }
 
 func VideoUpdateValidate(request model.VideoUpdateRequest) {
 	err := validation.ValidateStruct(&request,
-		validation.Field(&request.PlaylistId, validation.Required),
 		validation.Field(&request.Title, validation.Required),
-		validation.Field(&request.Deskripsi, validation.Required),
+		validation.Field(&request.Description, validation.Required),
 		validation.Field(&request.URLVideo, validation.Required),
 	)
 	if err != nil {
-		panic(exception.ValidationError{
-			Message: err.Error(),
-		})
+		b, _ := json.Marshal(err)
+		err = exception.ValidationError{
+			Message: string(b),
+		}
+		exception.PanicIfNeeded(err)
 	}
 }
