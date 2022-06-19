@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/frontend/css/select-user-register.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="ms-5 mt-5 judul">
+                    <h1>Hai!<br>
+                        Selamat datang <br>
+                        di <img src="/frontend/assets/logo-4.png" alt="">
+                    </h1>
+                </div>
+                <p class="ms-5 mb-5 text-muted">Yuk pilih role kamu dulu!</p>
+                <div class="container-fluid mb-5">
+                    <div class="row ms-1 pt-3">
+                        <div class="col-3">
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="guru">
+                                <label class="guru m-3" for="btnradio1">
+                                </label>
+                        
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="murid">
+                                <label class="murid m-3" for="btnradio2">
+                                    <h1 class="role fw-bold">Murid</h1>
+                                    <img src="/frontend/assets/murid.png" class="img-parents" alt="">
+                                </label>
+                        
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="parent">
+                                <label class="parents m-3" for="btnradio3">
+                                    <h1 class="role fw-bold">Orang Tua</h1>
+                                    <img src="/frontend/assets/orang-tua.png" class="img-parents" alt="">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <button class="btn-next">Selanjutnya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col poster">
+                <div class="wrapper">
+                    <img src="/frontend/assets/logo.png" alt="" class="img1">
+                    <img src="/frontend/assets/logo-3.png" alt="" class="img2">
+                    <img src="/frontend/assets/vektor-1.png" alt="" class="img3">
+                    <div class="wave">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                            <path fill="#fff" fill-opacity="1"
+                                d="M0,320L80,282.7C160,245,320,171,480,144C640,117,800,139,960,133.3C1120,128,1280,96,1360,80L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/frontend/Js/role-pick.js"></script>
+
+</body>
+
+</html>
