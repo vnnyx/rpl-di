@@ -23,6 +23,7 @@ func (controller ExamController) Route(app fiber.Router) {
 	router := app.Group("/api/exam", middleware.CheckToken())
 
 	router.Post("/", middleware.IsTeacher(), controller.CreateExam)
+	router.Get("/all", controller.GetAllExam)
 	router.Post("/question/:exam_id", middleware.IsTeacher(), controller.CreateQuestion)
 }
 
@@ -78,5 +79,15 @@ func (controller ExamController) CreateQuestion(c *fiber.Ctx) error {
 		Status: "OK",
 		Data:   response,
 	})
+}
 
+func (controller ExamController) GetAllExam(c *fiber.Ctx) error {
+	orderBy := c.Query("orderBy", "new")
+	response, err := controller.service.GetAllExam(orderBy)
+	exception.PanicIfNeeded(err)
+	return c.Status(200).JSON(model.WebResponse{
+		Code:   200,
+		Status: "OK",
+		Data:   response,
+	})
 }

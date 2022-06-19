@@ -3,10 +3,10 @@ package service
 import (
 	"encoding/json"
 	"rpl-sixmath/entity"
+	"rpl-sixmath/exception"
 	"rpl-sixmath/model"
 	"rpl-sixmath/repository"
 	"rpl-sixmath/validation"
-	"time"
 )
 
 type examServiceImpl struct {
@@ -30,7 +30,7 @@ func (service examServiceImpl) CreateExam(request model.CreateExamRequest) (resp
 		Title:       request.Title,
 		ImageURL:    request.Image,
 		Description: request.Description,
-		Duration:    request.DurationInMinute * int64(time.Minute),
+		Duration:    request.DurationInMinute,
 	})
 
 	return response, err
@@ -52,4 +52,25 @@ func (service examServiceImpl) CreateQuestion(request model.CreateQuestionReques
 
 	return response, err
 
+}
+
+func (service examServiceImpl) GetAllExam(orderBy string) (response []model.GetExamResponse, err error) {
+	exams, err := service.examRepo.GetAllExam(orderBy)
+	if err != nil {
+		return response, err
+	}
+	for _, exam := range exams {
+		count, err := service.examRepo.GetTotalQuestion(exam.ExamId)
+		exception.PanicIfNeeded(err)
+		response = append(response, model.GetExamResponse{
+			ExamId:           exam.ExamId,
+			Title:            exam.Title,
+			Image:            exam.ImageURL,
+			Description:      exam.Description,
+			DurationInMinute: exam.Duration,
+			Total:            count,
+		})
+	}
+
+	return response, nil
 }

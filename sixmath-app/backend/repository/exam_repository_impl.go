@@ -59,3 +59,17 @@ func (repo examRepositoryImpl) GetExamByID(examID int) (response entity.Exam, er
 
 	return response, err
 }
+
+func (repo examRepositoryImpl) GetAllExam(orderBy string) (response []entity.Exam, err error) {
+	if orderBy == "alphabet" {
+		err = repo.DB.Order("title").Find(&response).Error
+	} else {
+		err = repo.DB.Order("created_at desc").Find(&response).Error
+	}
+	return response, err
+}
+
+func (repo examRepositoryImpl) GetTotalQuestion(examId int) (response int64, err error) {
+	err = repo.DB.Find(&entity.Question{}).Where("exam_id", examId).Count(&response).Error
+	return response, err
+}

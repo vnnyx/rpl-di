@@ -7,6 +7,15 @@ type CreateExamRequest struct {
 	DurationInMinute int64  `json:"duration_in_minute"`
 }
 
+type GetExamResponse struct {
+	ExamId           int    `json:"exam_id"`
+	Title            string `json:"title"`
+	Image            string `json:"image"`
+	Description      string `json:"description"`
+	DurationInMinute int64  `json:"duration_in_minute"`
+	Total            int64  `json:"total_question"`
+}
+
 type AnswerRequest struct {
 	QuestionID int    `json:"question_id"`
 	Answer     string `json:"answer"`

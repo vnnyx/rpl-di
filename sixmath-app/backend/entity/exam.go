@@ -1,11 +1,14 @@
 package entity
 
+import "time"
+
 type Exam struct {
-	ExamId      int    `gorm:"column:exam_id;primaryKey;autoIncrement;type:int" json:"exam_id"`
-	Title       string `gorm:"column:title" json:"title"`
-	ImageURL    string `gorm:"column:image_url" json:"image_url"`
-	Description string `gorm:"column:description" json:"description"`
-	Duration    int64  `gorm:"column:duration" json:"duration"`
+	ExamId      int       `gorm:"column:exam_id;primaryKey;autoIncrement;type:int" json:"exam_id"`
+	Title       string    `gorm:"column:title" json:"title"`
+	ImageURL    string    `gorm:"column:image_url" json:"image_url"`
+	Description string    `gorm:"column:description" json:"description"`
+	Duration    int64     `gorm:"column:duration" json:"duration"`
+	CreatedAt   time.Time `gorm:"column:created_at;autoCreateTime" json:"created_at"`
 }
 
 func (Exam) TableName() string {
