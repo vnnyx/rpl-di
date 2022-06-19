@@ -83,6 +83,16 @@ body {
     border-radius: 4px;
 }
 
+.card-ava.selected {
+    border-style: solid;
+    border-color: #6A35FF;
+}
+
+.card-ava.unselected {
+    opacity:0.6;
+	filter:alpha(opacity=60);
+}
+
 .blob {
     position: absolute;
     height: 83.68px;
