@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="/frontend/css/tanya.css">
+    <link rel="stylesheet" href="/frontend/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="d-flex container-fluid py-5 justify-content-center">
+    <div class="container-fluid py-5 justify-content-center">
         <div class="row">
-            <div class="md:col-9 sm:col lg:col-9 xl:col-9 xxl:col-9 col">
+            <div class="col-8">
                 <div class="card container-xl p-4" id="my-node">
                     <div class="card-body">
                         <div class="container-fluid d-flex justify-content-center mb-5">
-                            <img src="assets/img/dummy-image.jpg" alt="">
+                            <img src="/frontend/assets/kpk.png" alt="" class="img-fluid">
                         </div>
                         <div class="mb-5 mt-5">
                             <h6 id="question"></h6>
@@ -26,7 +26,6 @@
                         <div class="col-12 mt-5">
                             <div class="row col-12 mb-4">
                                 <div class="col">
-                                    <!-- <img src="/assets/dummy-image.jpg" id="bannerImage" /> -->
                                     <input type="radio" class="btn-check" name="choices" id="choice0" data-id="0"
                                         id="choice0" autocomplete="off" onchange="saveAnswer()">
                                     <label class="btn btn-outline-primary p-4 container-fluid shadow-sm rounded"
@@ -57,36 +56,36 @@
                     </div>
                 </div>
             </div>
-            <div class="md:col-3 sm:col lg:col-3 xl:col-3 xxl:col-3 col-4">
-                <div class="card container p-4">
+            <div class="col-4">
+                <div class="card container">
                     <div class="card-body">
                         <div class="container-fluid d-flex justify-content-center mb-5">
                             <span class="cycleTimerBox">
                                 <canvas height="200" width="200" id="Timer">
                             </span>
                         </div>
-                        <div class="container-fluid mb-2">
+                        <div class="mb-2">
                             <div class="container">
                                 <div class="row row-cols-4 mb-3 mt-5">
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion0"
                                             autocomplete="off" onchange="goToQuestion(0)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion0" id="selectQuestionBtn0">1</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion1"
                                             autocomplete="off" onchange="goToQuestion(1)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion1" id="selectQuestionBtn1">2</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion2"
                                             autocomplete="off" onchange="goToQuestion(2)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion2" id="selectQuestionBtn2">3</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion3"
                                             autocomplete="off" onchange="goToQuestion(3)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
@@ -94,25 +93,25 @@
                                     </div>
                                 </div>
                                 <div class="row row-cols-4 mb-3">
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion4"
                                             autocomplete="off" onchange="goToQuestion(4)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion4" id="selectQuestionBtn4">5</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion5"
                                             autocomplete="off" onchange="goToQuestion(5)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion5" id="selectQuestionBtn5">6</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion6"
                                             autocomplete="off" onchange="goToQuestion(6)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion6" id="selectQuestionBtn6">7</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion7"
                                             autocomplete="off" onchange="goToQuestion(7)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
@@ -120,26 +119,26 @@
                                     </div>
                                 </div>
                                 <div class="row row-cols-4 mb-3">
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion8"
                                             autocomplete="off" onchange="goToQuestion(8)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion8" id="selectQuestionBtn8">9</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check" id="selectQuestion9"
                                             autocomplete="off" onchange="goToQuestion(9)" disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion9" id="selectQuestionBtn9">10</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check"
                                             id="selectQuestion10" autocomplete="off" onchange="goToQuestion(10)"
                                             disabled>
                                         <label class="btn btn-outline-warning p-2 container-fluid shadow-sm rounded"
                                             for="selectQuestion10" id="selectQuestionBtn10">11</label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <input type="radio" name="selectQuestion" class="btn-check"
                                             id="selectQuestion11" autocomplete="off" onchange="goToQuestion(11)"
                                             disabled>
@@ -150,13 +149,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end mb-2">
+                    <div class="d-flex justify-content-end mb-2 px-5">
                         <a id="finish-btn" class="text-decoration-none text-dark fw-bold cursor-pointer"
                             data-bs-toggle="modal" data-bs-target="#confirmModal">Selesai</a>
                     </div>
-                    <button type="button" class="btn btn-primary p-3 mb-2" id="btn_next"
-                        onclick="nextQuestion()">Selanjutnya</button>
-                    <button type="button" class="btn btn-outline-primary p-3 tanya" onclick="Ask()">Tanya Guru</button>
+                    <div class="col-12 mb-2 px-4">
+                        <button type="button" class="btn btn-primary p-3 mb-2 container-fluid" id="btn_next"
+                            onclick="nextQuestion()">Selanjutnya</button>
+                        <button type="button" class="btn btn-outline-primary p-3 mb-5 container-fluid" onclick="Ask()">Tanya Guru</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -168,11 +169,11 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Are you sure?</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Apa Kamu Yakin?</h5>
                         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                     </div>
                     <div class="modal-body">
-                        Make sure you answer all the questions!
+                        Pastikan semua soal sudah kamu jawab!
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
@@ -191,7 +192,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Result - <span id="predicate"></span></h5>
-                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                     </div>
                     <div class="modal-body">
                         Your Score Is : <span id="score"></span>
@@ -208,23 +208,18 @@
             </div>
         </div>
     </div>
-
+    <img src="" id="bannerImage" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
         integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/frontend/Js/tanya.js"></script>
-    <script src="/frontend/Js/timer.js"></script>
+    <script src="/frontend/js/script2.js"></script>
+    <script src="/frontend/js/timer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <script>
-        $('.tanya').on('click', function () {
-            window.location = 'tanya.html'
-        })
-    </script>
 </body>
 
 </html>

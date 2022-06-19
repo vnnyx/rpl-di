@@ -53,6 +53,12 @@ $('#btn-daftar').on('click', function (e) {
             'password': $('#myInput').val(),
         },
         success: function (result) {
+            localStorage.setItem(
+                'email', result.data.email,
+                'username', result.data.username,
+                'handphone', result.data.handphone,
+                'password', result.data.email,
+            )
             window.location = 'login.html'
         },
         failure: function () {
