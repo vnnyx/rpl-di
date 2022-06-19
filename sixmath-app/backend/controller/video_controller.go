@@ -20,7 +20,7 @@ func NewVideoController(videoService *service.VideoService) VideoController {
 func (controller *VideoController) Route(app *fiber.App) {
 	router := app.Group("/api/video", middleware.CheckToken())
 	router.Post("/create", middleware.IsTeacher(), controller.CreateVideo)
-	router.Get("/:id", controller.DetailVideo)
+	router.Get("/detail/:id", controller.DetailVideo)
 	router.Get("/recommended", controller.RecommendedVideo)
 	router.Delete("/:id", middleware.IsTeacher(), controller.DeleteVideo)
 	router.Put("/:id", middleware.IsTeacher(), controller.UpdateVideo)
@@ -55,7 +55,7 @@ func (controller *VideoController) DetailVideo(c *fiber.Ctx) error {
 
 func (controller VideoController) RecommendedVideo(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
-	main, _ := strconv.Atoi(c.Query("main_video"))
+	main, _ := strconv.Atoi(c.Query("main"))
 	var pagination model.Pagination
 	pagination.Page = page
 	pagination.MainVideoId = main
