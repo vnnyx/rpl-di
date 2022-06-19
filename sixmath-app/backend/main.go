@@ -21,7 +21,6 @@ func main() {
 		entity.User{},
 		entity.Message{},
 		entity.Transaction{},
-		entity.Playlist{},
 		entity.Video{},
 		entity.Exam{},
 		entity.Question{},
@@ -29,30 +28,25 @@ func main() {
 	)
 
 	userRepository := repository.NewUserRepository(databases)
-	playlistRepository := repository.NewPlaylistRepository(databases)
 	videoRepository := repository.NewVideoRepository(databases)
 	examRepository := repository.NewExamRepository(databases)
 
 	userService := service.NewUserService(userRepository)
 	authService := service.NewAuthService(&userRepository)
-	playlistService := service.NewPlaylistService(playlistRepository)
 	videoService := service.NewVideoService(videoRepository)
 	examService := service.NewExamService(examRepository, videoRepository)
 
 	userController := controller.NewUserController(&userService)
 	authController := controller.NewAuthController(&authService)
-	playlistController := controller.NewPlaylistController(&playlistService)
 	videoController := controller.NewVideoController(&videoService)
 	examController := controller.NewExamController(examService)
 
 	app := fiber.New(config.NewFiberConfig())
 	app.Use(cors.New())
 	app.Use(recover.New())
-	app.Static("/uploads/image", "./uploads/image")
 
 	userController.Route(app)
 	authController.Route(app)
-	playlistController.Route(app)
 	videoController.Route(app)
 	examController.Route(app)
 
