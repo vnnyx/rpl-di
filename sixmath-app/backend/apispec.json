@@ -14,9 +14,8 @@
     "/user/student": {
       "post": {
         "tags": ["User API"],
-        "summary": "Create student",
+        "summary": "Register student",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -31,24 +30,23 @@
                   "password": {
                     "type": "string"
                   },
+                  "password_confirmation": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string"
+                  },
                   "handphone": {
                     "type": "string"
                   }
                 }
-              },
-              "example":
-              {
-                "username":"myusername",
-                "email":"myemail@email.com",
-                "password":"password",
-                "handphone":"081234567890"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success register user role student",
+            "description": "Success add student",
             "content": {
               "application/json": {
                 "schema": {
@@ -61,26 +59,40 @@
                       "type": "string"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/Student"
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "number"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "handphone": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "avatar": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
                     },
-                    "errors": {
+                    "error": {
                       "type": "object",
                       "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "code": 200,
-                  "status": "OK",
-                  "data": {
-                    "user_id": 1,
-                    "email": "myemail@email.com",
-                    "username": "myusername",
-                    "handphone": "081234567890",
-                    "created_at": "2022-05-18T15:20:32.135+07:00"
-                  },
-                  "errors": null
                 }
               }
             }
@@ -88,35 +100,53 @@
         }
       }
     },
-    "/auth/login": {
+    "/user/teacher": {
       "post": {
         "tags": ["User API"],
-        "summary": "User login",
+        "summary": "Register teacher",
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "username": {
                     "type": "string"
                   },
+                  "email": {
+                    "type": "string"
+                  },
+                  "handphone": {
+                    "type": "string"
+                  },
                   "password": {
+                    "type": "string"
+                  },
+                  "password_confirmation": {
+                    "type": "string"
+                  },
+                  "certificate": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "age": {
+                    "type": "number"
+                  },
+                  "description": {
                     "type": "string"
                   }
                 }
-              },
-              "example":
-              {
-                "username":"myusername",
-                "password":"password"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success login",
+            "description": "Success add student",
             "content": {
               "application/json": {
                 "schema": {
@@ -140,32 +170,38 @@
                         "email": {
                           "type": "string"
                         },
+                        "username": {
+                          "type": "string"
+                        },
+                        "handphone": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "certificate": {
+                          "type": "string"
+                        },
+                        "age": {
+                          "type": "number"
+                        },
                         "avatar": {
                           "type": "string"
                         },
-                        "username": {
+                        "description": {
                           "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
                         }
                       }
                     },
-                    "errors": {
+                    "error": {
                       "type": "object",
-                      "nullable": false
+                      "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "code": 200,
-                  "status": "OK",
-                  "data": {
-                    "access_token": "beaeretokenBEar3rTOK3nbeaeretokenBEar3rTOK3n",
-                    "user_id": 1,
-                    "email": "email@email.com",
-                    "avatar": "https://res.cloudinary.com/avatar.jpg",
-                    "username": "myusername"
-                  },
-                  "errors": null
                 }
               }
             }
@@ -173,29 +209,114 @@
         }
       }
     },
-    "/dashboard/statistik-pendaftaran": {
+    "/user/parent": {
+      "post": {
+        "tags": ["User API"],
+        "summary": "Register parent",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "handphone": {
+                    "type": "string"
+                  },
+                  "student_username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "password_confirmation": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "format": "byte"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success add student",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "number"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "handphone": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "student_username": {
+                          "type": "string"
+                        },
+                        "avatar": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    },
+                    "error": {
+                      "type": "object",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/registration-statistics": {
       "get": {
+        "tags": ["User API"],
+        "summary": "Get registration statistics",
         "security": [
           {
             "SixmathAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "month",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            },
-            "example": 3
-          }
-        ],
-        "tags": ["Dashboard API"],
-        "summary": "Get statistics",
         "responses": {
           "200": {
-            "description": "Success get statistics",
+            "description": "Success get registration statistics",
             "content": {
               "application/json": {
                 "schema": {
@@ -212,7 +333,7 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "month": {
+                          "month" : {
                             "type": "string"
                           },
                           "amount": {
@@ -226,26 +347,6 @@
                       "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "code": 200,
-                  "status": "OK",
-                  "data": [
-                    {
-                      "month": "May",
-                      "amount": 12
-                    },
-                    {
-                      "month": "Apr",
-                      "amount": 0
-                    },
-                    {
-                      "month": "Mar",
-                      "amount": 0
-                    }
-                  ],
-                  "errors": null
                 }
               }
             }
@@ -253,49 +354,38 @@
         }
       }
     },
-    "/video" : {
+    "/video/create": {
       "post": {
+        "tags": ["Video API"],
+        "summary": "Add new video",
         "security": [
           {
             "SixmathAuth": []
           }
         ],
-        "tags": ["Video API"],
-        "summary": "Create new video",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "playlist_id": {
-                    "type": "number"
-                  },
                   "title": {
                     "type": "string"
                   },
                   "url_video": {
                     "type": "string"
                   },
-                  "deskripsi": {
+                  "description": {
                     "type": "string"
                   }
                 }
-              },
-              "example":
-              {
-                "playlist_id":1,
-                "title":"video",
-                "url_video":"youtube.video",
-                "deskripsi":"this is a video"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success create video",
+            "description": "Success add new video",
             "content": {
               "application/json": {
                 "schema": {
@@ -315,36 +405,35 @@
                       "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "code": 200,
-                  "status": "OK",
-                  "data": {
-                    "video_id": 1,
-                    "playlist_id": 1,
-                    "title": "video",
-                    "url_video": "youtube.video",
-                    "deskripsi": "this is a video"
-                  },
-                  "errors": null
                 }
               }
             }
           }
         }
-      },
+      }
+    },
+    "/video/detail/{id}": {
       "get": {
+        "tags": ["Video API"],
+        "summary": "Get detail video",
         "security": [
           {
             "SixmathAuth": []
           }
         ],
-        "tags": ["Video API"],
-        "summary": "Get main video",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Success get main video",
+            "description": "Success get detail video",
             "content": {
               "application/json": {
                 "schema": {
@@ -361,22 +450,9 @@
                     },
                     "errors": {
                       "type": "object",
-                      "nullable": false
+                      "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "code": 200,
-                  "status": "OK",
-                  "data": {
-                    "video_id": 1,
-                    "playlist_id": 1,
-                    "title": "video",
-                    "url_video": "youtube.video",
-                    "deskripsi": "this is a video"
-                  },
-                  "errors": null
                 }
               }
             }
@@ -387,7 +463,7 @@
     "/video/{id}": {
       "put": {
         "tags": ["Video API"],
-        "summary": "Update video by id",
+        "summary": "Update Video",
         "security": [
           {
             "SixmathAuth": []
@@ -400,8 +476,7 @@
             "required": true,
             "schema": {
               "type": "number"
-            },
-            "example": 1
+            }
           }
         ],
         "requestBody": {
@@ -410,33 +485,23 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "playlist_id": {
-                    "type": "number"
-                  },
                   "title": {
                     "type": "string"
                   },
                   "url_video": {
                     "type": "string"
                   },
-                  "deskripsi": {
+                  "description": {
                     "type": "string"
                   }
                 }
-              },
-              "example":
-              {
-                "playlist_id":1,
-                "title":"title_video_update",
-                "url_video":"url_video_update",
-                "deskripsi":"deskripsi_video_update"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success update video by id",
+            "description": "Success update video",
             "content": {
               "application/json": {
                 "schema": {
@@ -456,14 +521,6 @@
                       "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "video_id": 1,
-                  "playlist_id":1,
-                  "title":"title_video_update",
-                  "url_video":"url_video_update",
-                  "deskripsi":"deskripsi_video_update"
                 }
               }
             }
@@ -472,7 +529,7 @@
       },
       "delete": {
         "tags": ["Video API"],
-        "summary": "Delete video by id",
+        "summary": "Delete video",
         "security": [
           {
             "SixmathAuth": []
@@ -485,13 +542,12 @@
             "required": true,
             "schema": {
               "type": "number"
-            },
-            "example": 1
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success delete video by id",
+            "description": "Success delete video",
             "content": {
               "application/json": {
                 "schema": {
@@ -503,17 +559,15 @@
                     "status": {
                       "type": "string"
                     },
+                    "data": {
+                      "type": "object",
+                      "nullable": true
+                    },
                     "errors": {
                       "type": "object",
                       "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "code": 200,
-                  "status": "OK",
-                  "errors": null
                 }
               }
             }
@@ -523,6 +577,8 @@
     },
     "/video/recommended": {
       "get": {
+        "tags": ["Video API"],
+        "summary": "Get recommended video",
         "security": [
           {
             "SixmathAuth": []
@@ -530,25 +586,22 @@
         ],
         "parameters": [
           {
-            "name": "main_video",
+            "name": "main",
+            "required": true,
             "in": "query",
             "schema": {
               "type": "number"
-            },
-            "example": 1,
-            "required": true
+            }
           },
           {
             "name": "page",
+            "required": true,
             "in": "query",
             "schema": {
               "type": "number"
-            },
-            "example": 1
+            }
           }
         ],
-        "tags": ["Video API"],
-        "summary": "Get recommended video",
         "responses": {
           "200": {
             "description": "Success get recommended video",
@@ -564,41 +617,36 @@
                       "type": "string"
                     },
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Video"
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number"
+                        },
+                        "page": {
+                          "type": "number"
+                        },
+                        "sort": {
+                          "type": "string"
+                        },
+                        "total_rows": {
+                          "type": "number"
+                        },
+                        "total_pages": {
+                          "type": "number"
+                        },
+                        "rows": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Video"
+                          }
+                        }
                       }
+                    },
+                    "errors": {
+                      "type": "object",
+                      "nullable": true
                     }
                   }
-                },
-                "example":
-                {
-                  "code": 200,
-                  "status": "OK",
-                  "data": {
-                    "limit": 3,
-                    "page": 1,
-                    "sort": "rand()",
-                    "total_rows": 2,
-                    "total_pages": 1,
-                    "rows": [
-                      {
-                        "video_id": 2,
-                        "playlist_id": 1,
-                        "title": "video2",
-                        "url_video": "youtube.video2",
-                        "deskripsi": "this is a video 2"
-                      },
-                      {
-                        "video_id": 3,
-                        "playlist_id": 1,
-                        "title": "video3",
-                        "url_video": "youtube.video3",
-                        "deskripsi": "this is a video 3"
-                      }
-                    ]
-                  },
-                  "errors": null
                 }
               }
             }
@@ -606,17 +654,16 @@
         }
       }
     },
-    "/exam": {
+    "/exam/create": {
       "post": {
         "tags": ["Exam API"],
-        "summary": "Create exam",
+        "summary": "Create new exam",
         "security": [
           {
             "SixmathAuth": []
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
@@ -625,10 +672,11 @@
                   "title": {
                     "type": "string"
                   },
-                  "description": {
-                    "type": "string"
-                  },
                   "image": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "description": {
                     "type": "string"
                   },
                   "duration_in_minute": {
@@ -641,7 +689,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success create exam",
+            "description": "Success create new exam",
             "content": {
               "application/json": {
                 "schema": {
@@ -670,6 +718,10 @@
                         },
                         "duration": {
                           "type": "number"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
                         }
                       }
                     },
@@ -678,18 +730,6 @@
                       "nullable": true
                     }
                   }
-                },
-                "example": {
-                  "code": 200,
-                  "status": "OK",
-                  "data": {
-                    "exam_id": 1,
-                    "title": "mytitle",
-                    "description": "my_description",
-                    "image": "/uploads/image/image.jpg",
-                    "duration_in_minute": 600000000000
-                  },
-                  "errors": null
                 }
               }
             }
@@ -697,8 +737,71 @@
         }
       }
     },
-    "/exam/question/{exam_id}": {
+    "/exam/all": {
+      "get": {
+        "tags": ["Exam API"],
+        "summary": "Get all exam",
+        "security": [
+          {
+            "SixmathAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all exam",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "exam_id": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "image": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "duration_in_minute": {
+                            "type": "number"
+                          },
+                          "total_question": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    },
+                    "errors": {
+                      "type": "object",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exam/question/{id}": {
       "post": {
+        "tags": ["Exam API"],
+        "summary": "Create question",
         "security": [
           {
             "SixmathAuth": []
@@ -706,35 +809,40 @@
         ],
         "parameters": [
           {
-            "name": "exam_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "number"
-            },
-            "example": 1
+            }
           }
         ],
-        "tags": ["Exam API"],
-        "summary": "Create question",
         "requestBody": {
-          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title": {
-                    "type": "string"
+                  "image": {
+                    "type": "string",
+                    "format": "byte"
                   },
                   "question": {
                     "type": "string"
                   },
-                  "image": {
-                    "type": "string"
-                  },
                   "answers": {
-                    "type": "string"
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "answer": {
+                          "type": "string"
+                        },
+                        "is_true": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -764,6 +872,9 @@
                         "question": {
                           "type": "string"
                         },
+                        "image": {
+                          "type": "string"
+                        },
                         "exam_id": {
                           "type": "number"
                         }
@@ -774,11 +885,6 @@
                       "nullable": true
                     }
                   }
-                },
-                "example": {
-                  "question_id": 1,
-                  "question": "my_question?",
-                  "exam_id": 1
                 }
               }
             }
@@ -786,6 +892,7 @@
         }
       }
     }
+
   },
   "components": {
     "schemas": {
@@ -795,8 +902,8 @@
           "video_id": {
             "type": "number"
           },
-          "playlist_id": {
-            "type": "number"
+          "teacher": {
+            "type": "string"
           },
           "title": {
             "type": "string"
@@ -804,29 +911,8 @@
           "url_video": {
             "type": "string"
           },
-          "deskripsi": {
+          "description": {
             "type": "string"
-          }
-        }
-      },
-      "Student": {
-        "type": "object",
-        "properties": {
-          "user_id": {
-            "type": "number"
-          },
-          "email": {
-            "type": "string"
-          },
-          "username": {
-            "type": "string"
-          },
-          "handphone": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       }
