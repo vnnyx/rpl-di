@@ -19,10 +19,10 @@ func NewPasswordResetController(passwordResetService *service.PasswordResetServi
 }
 
 func (controller *PasswordResetController) Route(app *fiber.App) {
-	router := app.Group("/api/user")
+	router := app.Group("/api/password-reset")
 	router.Post("/send-otp", controller.SendOtp)
 	router.Post("/validate-otp", controller.ValidateOtp)
-	router.Post("/password-reset", controller.PasswordReset)
+	router.Post("/", controller.PasswordReset)
 }
 
 func (controller *PasswordResetController) SendOtp(ctx *fiber.Ctx) error {
