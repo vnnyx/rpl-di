@@ -36,10 +36,11 @@ func (controller ExamController) CreateExam(c *fiber.Ctx) error {
 	exception.PanicIfNeeded(err)
 	result, err := helper.UploadToCloudinary(c, image, ".:/sixmath/exam/", image.Filename)
 	exception.PanicIfNeeded(err)
-
+	teacher := c.Locals("currentUsername").(string)
 	imageUrl := result.SecureURL
 
 	response, err := controller.service.CreateExam(model.CreateExamRequest{
+		Teacher:          teacher,
 		Title:            title,
 		Image:            imageUrl,
 		Description:      desc,

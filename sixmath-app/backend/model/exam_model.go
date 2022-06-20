@@ -1,6 +1,7 @@
 package model
 
 type CreateExamRequest struct {
+	Teacher          string `json:"teacher"`
 	Title            string `json:"title"`
 	Image            string `json:"image"`
 	Description      string `json:"description"`
@@ -9,6 +10,7 @@ type CreateExamRequest struct {
 
 type GetExamResponse struct {
 	ExamId           int    `json:"exam_id"`
+	Teacher          string `json:"teacher"`
 	Title            string `json:"title"`
 	Image            string `json:"image"`
 	Description      string `json:"description"`

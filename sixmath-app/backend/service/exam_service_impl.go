@@ -27,10 +27,11 @@ func (service examServiceImpl) CreateExam(request model.CreateExamRequest) (resp
 	}
 
 	response, err = service.examRepo.InsertExam(entity.Exam{
-		Title:       request.Title,
-		ImageURL:    request.Image,
-		Description: request.Description,
-		Duration:    request.DurationInMinute,
+		TeacherUsername: request.Teacher,
+		Title:           request.Title,
+		ImageURL:        request.Image,
+		Description:     request.Description,
+		Duration:        request.DurationInMinute,
 	})
 
 	return response, err
@@ -64,6 +65,7 @@ func (service examServiceImpl) GetAllExam(orderBy string) (response []model.GetE
 		exception.PanicIfNeeded(err)
 		response = append(response, model.GetExamResponse{
 			ExamId:           exam.ExamId,
+			Teacher:          exam.TeacherUsername,
 			Title:            exam.Title,
 			Image:            exam.ImageURL,
 			Description:      exam.Description,
