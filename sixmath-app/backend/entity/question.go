@@ -8,7 +8,7 @@ type Question struct {
 	Image      string    `gorm:"column:image;type:varchar(255)" json:"image"`
 	ExamId     int       `gorm:"column:exam_id;type:int" json:"exam_id,omitempty"`
 	Exam       *Exam     `gorm:"association_foreignkey:ExamId" json:"-"`
-	CreatedAt  time.Time `gorm:"column:created_at;autoCreateTime" json:"created_at"`
+	CreatedAt  time.Time `gorm:"column:created_at;autoCreateTime" json:"-"`
 }
 
 func (Question) TableName() string {

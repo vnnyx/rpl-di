@@ -8,7 +8,7 @@ type Answer struct {
 	Question   *Question `gorm:"association_foreignkey:QuestionId" json:"-"`
 	Answer     string    `gorm:"column:answer;type:mediumtext" json:"answer,omitempty"`
 	IsTrue     bool      `gorm:"column:is_true" json:"is_true,omitempty"`
-	CreatedAt  time.Time `gorm:"column:created_at;autoCreateTime" json:"created_at"`
+	CreatedAt  time.Time `gorm:"column:created_at;autoCreateTime" json:"-"`
 }
 
 func (Answer) TableName() string {
