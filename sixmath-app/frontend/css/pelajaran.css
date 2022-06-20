@@ -1,211 +1,142 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.content {
-    position: relative;
-    left: 150px;
-    height: 100%;
-    background: #E5E5E5;
-    transition: all .4s ease;
+body {
+    background-color: #F0EFFF;
 }
-
-.sidebar.act~.content {
-    left: 357px;
+::-webkit-scrollbar{
+    display: none;
 }
-
-.profile {
-    position: relative;
+.header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    right: -630px;
-    width: 90px;
-    height: 54px;
-    border-radius: 40px;
-    background-color: #fff;
-}
-
-.sidebar.act~.content .profile {
-    left: 410px;
-}
-
-.kaca {
-    padding: 0 5px;
-}
-
-.lonceng {
-    padding: 0 5px;
 
 }
 
-.foto {
-    position: absolute;
-    right: 185px;
-    top: 17px;
-    border-radius: 50%;
-    height: 54px;
-    width: 54px;
-    transition: all .4s ease;
-}
-
-.sidebar.act~.content .foto {
-    right: 410px;
-}
-
-.main-left {
-    position: relative;
-    height: 346px;
-    width: 715px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-}
-
-.main-jdl {
-    font-weight: bold;
-    font-size: 24px;
-    margin-left: 24px;
-    padding-top: 24px;
-}
-
-.card-sunting {
-    position: relative;
-    margin-left: 24px;
-    width: 293px;
-    height: 240px;
-    background-color: #6A35FF;
-    border-radius: 10px 8px;
-    overflow: hidden;
-}
-
-.variasi {
-    position: absolute;
-    width: 20%;
-    left: 0;
-    top: -5px;
-    opacity: .2;
-}
-
-.variasi-img {
-    position: absolute;
-    height: 90%;
-    width: 100%;
-    bottom: 0;
-
+.btn-back {
+    height: fit-content;
+    border: none;
+    background-color: transparent;
 }
 
 .topik {
-    margin-top: 25px;
+    color: #000;
+}
+
+.header h1 {
+    font-size: 35px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.utility {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    height: 54px;
+    width: 90px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 40px;
+}
+
+.bx {
+    padding: 0 5px;
+    font-size: 20px;
+}
+
+.blob {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    height: 54px;
+    width: 54px;
+    background-color: #9C78FF;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.profile {
+    position: absolute;
+    width: fit-content;
+    height: 100%;
+}
+
+.main-content {
+    background-color: #fff;
+    height: 100vh;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #EEC011;
+    width: 30%;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 0 40px 0 25px;
+}
+
+.label h1 {
     margin-left: 10px;
-    color: #fff;
-    font-size: 32px;
+    font-size: 27.26px;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+}
+
+.img-banner {
+    width: 100%;
+    height: 250px;
+    padding: 0 20px;
+}
+
+.instruksi {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.detail-instruksi {
+    margin-left: 20px;
 }
 
 .detail {
-    color: #E1E1E1;
-    margin-left: 13px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.btn-sunting {
-    width: 245px;
-    height: 62px;
-    z-index: 111;
+.count {
+    font-size: 16px;
 }
 
-.card-buat {
+.tombol {
     position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 550px;
-    height: 346px;
-    background-color: #D19200;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all .4s ease;
+    justify-content: center;
+    width: 100%;
 }
-.sidebar.act ~ .content .card-buat{
-    width: 330px;
-    transition: all .4s ease;
-}
-.main-jdl2{
-    margin-top: 24px;
+.btn-kerjakan{
+    width: 268px;
+    height: 76px;
     color: #fff;
-    font-size: 36px;
-}
-.var{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-.btn-buat{
-    background-color: #FFFFFF;
-    width: 241px;
-    height: 62px;
-    border-radius: 14px;
-    border: none;
-    box-shadow: inset 2px 2px 2px 2px rgba(0, 0, 0, .4);
-    position: absolute;
-    bottom: 40px;
-    transition: all 1.4s ease;
-}
-.btn-buat:hover{
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .4);
-    transition: all .4s ease;
-}
-.second-content{
-    height: max-content;
-    width: 1085px;
-    background-color: #fff;
-    border-radius: 10px;
-}
-.wrap{
-    display: flex;
-}
-#filter{
-    height: fit-content;
-    margin-top: 24px;
-    margin-right: 24px;
-    border: none;
-    outline: none;
-}
-.heading{
-    margin-left: 24px;
-    margin-top: 24px;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
-}
-.card-soal{
-    background-color: #fff;
-    position: relative;
-    margin-left: 24px;
-    height: 240px;
-    width: 293px;
-    border-radius: 10px 8px;
-    overflow: hidden;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .1);
-}
-.var-img{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-.subjek{
-    margin-top: 24px;
-    margin-left: 10px;
-    font-size: 32px;
-    font-weight: bold;
-}
-.btn-hapus{
-    color: #Eb4335;
-    background-color: #FDECEB;
-    width: 124px;
-    height: 37px;
+    background-color: #6A35FF;
+    border-radius: 12px;
     border: none;
-    border-radius: 6px;
-    margin-top: 70px;
-    margin-left: 10px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
 }

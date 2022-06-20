@@ -23,7 +23,6 @@ window.addEventListener("DOMContentLoaded", (_) => {
             sender: {
               name: username,
             },
-            // file: filename
           })
         );
         text.value = "";

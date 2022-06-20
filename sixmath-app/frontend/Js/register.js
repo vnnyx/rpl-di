@@ -78,9 +78,9 @@ $(function () {
             "password",
             result.data.email
           );
-          window.location = "login.html";
+          window.location = "../login.html";
         },
-        failure: function () {
+        error: function () {
           console.log("ok");
         },
       });
@@ -101,9 +101,9 @@ $(function () {
       return false;
     }
 
-    window.location.href = `pilih-ava.html?email=${email}&username=${username}&handphone=${hp}&password=${password}&confirmPassword=${confirmPassword}`;
+    window.location = `pilih-ava.html?email=${email}&username=${username}&handphone=${hp}&password=${password}&confirmPassword=${confirmPassword}`;
 
-    return true;
+    return false;
   });
 });
 

@@ -14,6 +14,7 @@ body{
     width: 133px;
     background-color: #E0D6FE;
     border-radius: 16px;
+    overflow: hidden;
 }
 .murid{
     position: relative;

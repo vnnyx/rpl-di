@@ -9,15 +9,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/dashboard.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
-    <link rel="stylesheet" href="../../css/guru-dashboard.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Hello, world!</title>
 </head>
 
 <body>
-
     <div class="sidebar act">
         <div class="logo_content">
             <div class="logo">
@@ -33,14 +32,14 @@
                 </a>
                 <span class="tultip">Dashboard</span>
             </li>
-            <li class="akt">
+            <li>
                 <a href="#">
                     <i class='bx bx-book-open'></i>
                     <span class="links_name">Pelajaran</span>
                 </a>
                 <span class="tultip">Pelajaran</span>
             </li>
-            <li>
+            <li class="akt">
                 <a href="../../html/list_guru.html">
                     <i class='bx bx-conversation'></i>
                     <span class="links_name">Pesan</span>
@@ -73,10 +72,11 @@
             </div>
         </div>
     </div>
+
     <div class="content">
         <div class="row mb-5">
             <div class="col mt-3 ms-5">
-                <h1 class="fw-bold">Sixmath Pesan</h1>
+                <h1>Sixmath Pesan</h1>
             </div>
             <div class="col mt-3">
                 <div class="profile">
@@ -88,54 +88,90 @@
                 <img src="../../assets/foto.jpeg" alt="" class="foto">
             </div>
         </div>
-        <div class="row mb-5">
+        <div class="row mb-4">
+            <div class="col-4 ms-5">
+                <div class="main-kiri">
+                    <div class="wrap">
+                        <h1 class="heading">Statistik Nilai Anak</h1>
+                        <select class="combo-box ms-auto">
+                            <option name="months" value="6" id="opt">6 Months</option>
+                            <option name="months" value="5" id="opt">5 Months</option>
+                            <option name="months" value="4" id="opt">4 Months</option>
+                            <option name="months" value="3" id="opt">3 Months</option>
+                        </select>
+                    </div>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
             <div class="col">
-                <div class="content-atas ms-5">
-                    <input type="text" class="ms-5 mt-5 judul-video" placeholder="Judul Soal" required>
-                    <input type="text" class="ms-5 mt-4 desc-video" placeholder="Deskripsi" required>
-                    <select name="pilihan-ganda" id="pilihan" class="ms-5 mt-4 mb-2">
-                        <option value="a">A</option>
-                        <option value="b">B</option>
-                        <option value="c">C</option>
-                        <option value="d">D</option>
-                    </select>
-                    <h5 class="ms-5 mt-3 fw-bold">Upload Foto Soal</h5>
-                    <input type="file" class="ms-5 mt-2 mb-5 upload ">
-                    <div class="row">
-                        <div class="col ms-5 mb-3">
-                            <span class="opt">A</span>
-                            <input class="input-jawaban" type="text" placeholder="Input Text">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col ms-5 mb-3">
-                            <span class="opt">B</span>
-                            <input class="input-jawaban" type="text" placeholder="Input Text">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col ms-5 mb-3">
-                            <span class="opt">C</span>
-                            <input class="input-jawaban" type="text" placeholder="Input Text">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col ms-5 mb-3">
-                            <span class="opt">D</span>
-                            <input class="input-jawaban" type="text" placeholder="Input Text">
-                        </div>
+                <div class="main-kanan">
+                    <h1 class="heading2">Total</h1>
+                    <div class="dough">
+                        <h1 class="count-tugas">512</h1>
+                        <canvas id="doughChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col ms-5">
+                <div class="konten-kiri">
+                    <h1 class="header ms-3">Sedang Dikerjakan Anak</h1>
+                    <div class="row">
+                        <div class="col mb-4">
+                            <div class="card-soal ms-3">
+                                <img src="../../assets/variasi.png" class="variasi" alt="">
+                                <h1 class="topik ms-3 pt-3">KPK & IPB 03</h1>
+                                <p class="text-muted ms-3">
+                                    Mengerjakan tugas mengenai FPB dan KPK
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card-soal ms-3">
+                                <img src="../../assets/variasi.png" class="variasi" alt="">
+                                <h1 class="topik ms-3 pt-3">KPK & IPB 03</h1>
+                                <p class="text-muted ms-3">
+                                    Mengerjakan tugas mengenai FPB dan KPK
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card-soal ms-3">
+                                <img src="../../assets/variasi.png" class="variasi" alt="">
+                                <h1 class="topik ms-3 pt-3">KPK & IPB 03</h1>
+                                <p class="text-muted ms-3">
+                                    Mengerjakan tugas mengenai FPB dan KPK
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col ms-5">
+                <div class="rank">
+                    <img src="../../assets/variasi10.png" alt="" class="variasi2">
+                    <img src="../../assets/variasi11.png" alt="" class="variasi">
+                    <h1 class="header-ranking">Ranking Anak</h1>
+                    <div class="wrap">
+                        <h1 class="ranking">10<span>/100</span></h1>
+                    </div>
+                    <hr class="mx-auto mb-3">
+                    <h1 class="total mb-5">Total Nilai: <span class="score">1290</span></h1>
+                    <div class="bingkai mx-auto">
+                        <div class="blob"></div>
+                        <img src="../../assets/ava2.png" alt="" class="avatar">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../Js/statistik.js"></script>
     <script>
         $(document).ready(function () {
             let sidebar = document.querySelector(".sidebar")
@@ -148,6 +184,9 @@
                 console.log('ok')
             });
         });
+        $('.kerjakan').on('click', function(){
+            window.location = 'quiz.html'
+        })
     </script>
 
 </body>

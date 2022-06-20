@@ -1,0 +1,124 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#kol1{
+    width: 50%;
+    height: 759px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+    z-index: 111;
+}
+#kol1 h3{
+    position: relative;
+    top:30px;
+    left: 177px;
+    font-size: bold;
+    font-size: 40px;
+}
+#kol1 .head{
+    color: #FBAF00;
+}
+#kol1 .tulisan{
+    position: relative;
+    top: 30px;
+    left: 177px;
+    color: #B0B0B0;
+}
+#kol1 .math{
+    position: relative;
+    top: -5px;
+}
+#kol2{
+    width: 50%;
+    background-color: #6A35FF;
+}
+.form-control{
+    position: relative;
+    background-color: #F0EFFF;
+    width: 347px;
+    height: 50px;
+    top: 30px;
+    left: 177px;
+    border-radius: 8px;
+}
+.form-control::placeholder {
+    color: #B0B0B0;
+  }
+#kol2 .gambar img{
+    width: 125px;
+    margin-left: 60px;
+    margin-top: 31px;
+}#kol2 .gambar-2 img{
+    position: relative;
+    left: 100px;
+    width: 700px;
+}
+#kol2 .gambar-3 img{
+    position: relative;
+    top: -480px;
+    left: 290px;
+    width: 343px;
+}
+.btn{
+    position: relative;
+    left: 181px;
+    top: 40px;
+    width: 340px;
+    height: 50px;
+    background-color: #6A35FF;
+    color: white;
+}
+.btn:hover{
+    color: #fff;
+}
+.wave{
+    position: relative;
+    top: -615px;
+    left: -120px;
+    width: 900px;
+}
+.eye{
+    position: absolute;
+    top: 495px;
+    left: 490px;
+    color: #6A35FF;
+}
+.eye2{
+    position: absolute;
+    top: 560px;
+    left: 490px;
+    color: #6A35FF;
+}
+.eye3{
+    position: absolute;
+    top: 446px;
+    left: 490px;
+    color: #6A35FF;
+}
+.eye4{
+    position: absolute;
+    top: 510px;
+    left: 490px;
+    color: #6A35FF;
+}
+#hide1{
+    display: none;
+}
+#hide3{
+    display: none;
+}
+#err{
+    position: absolute;
+    bottom: 135px;
+    left: 180px;
+}
+.warning{
+    position: absolute;
+    bottom: 85px;
+    left: 180px;
+}
+#btn-daftar2{
+    margin-top: 10px;
+}
