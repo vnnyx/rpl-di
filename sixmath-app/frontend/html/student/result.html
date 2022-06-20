@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hasil</title>
-    <link rel="stylesheet" href="/frontend/css/result.css">
+    <link rel="stylesheet" href="../../css/result.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -24,7 +24,7 @@
                         <i class='bx bx-bell'></i>
                     </div>
                     <div class="avatar">
-                        <img src="/frontend/assets/ava2.png" alt="">
+                        <img src="../../assets/ava2.png" alt="">
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="container-fluid">
                         <div class="banner">
-                            <img src="/frontend/assets/banner-ujian.png" alt="">
+                            <img src="../../assets/banner-ujian.png" alt="">
                         </div>
                     </div>
                     <div class="row mt-5">
@@ -87,8 +87,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
         integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/frontend/js/script2.js"></script>
-    <script src="/frontend/js/score.js"></script>
+    <script src="../../js/script2.js"></script>
+    <script src="../../js/score.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
@@ -108,10 +108,13 @@
     <script>
         $(document).ready(function () {
             $('.btn-utama').on('click', function () {
-                window.location = '/frontend/html/student/pembahasan.html'
+                window.location = '../../html/student/statistik.html'
             })
             $('.btn-pembahasan').on('click', function () {
-                window.location = '/frontend/html/student/pembahasan.html'
+                window.location = '../../html/student/pembahasan.html'
+            })
+            $('.btn-back').on('click', function () {
+                window.location = '../../html/student/daftar-soal.html'
             })
         })
     </script>

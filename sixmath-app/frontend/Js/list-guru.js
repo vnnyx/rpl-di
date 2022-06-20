@@ -10,10 +10,10 @@ $(document).ready(function () {
     });
 });
 $('.btn-tanya').on('click', function () {
-    window.location = 'tanya.html'
+    window.location = 'chat.html'
 })
 $('.btn-tanya2').on('click', function () {
-    window.location = 'tanya.html'
+    window.location = 'chat.html'
 })
 
 $(document).ready(function () {

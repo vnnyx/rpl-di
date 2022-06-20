@@ -249,11 +249,6 @@ body{
     font-size: 36px;
     transition: all .4s ease;
 }
-/* .home_content .cont-left{
-    position: relative;
-    left: 12px;
-    z-index: -1111;
-} */
 .sidebar.act ~ .container-fluid .home_content .profile{
     left: 220px;
     transition: all .4s ease;
@@ -310,7 +305,7 @@ body{
     left: 140px;
     top: 20px;
     height: 338px;
-    width: 583.5px;
+    max-width: 640px;
     background-color: #FFFFFF;
     border-radius: 10px;
     -webkit-box-shadow: 0 0 3px #000;
@@ -323,7 +318,7 @@ body{
 }
 /* end */
 .sidebar.act ~ .container-fluid .home_content .vid-r{
-    width: 400px;
+    width: 415px;
 }
 /* statistik */
 .home_content .daftar{
@@ -354,7 +349,7 @@ body{
 /* tugas */
 .tugas{
     position: relative;
-    width: 1205px;
+    width: 1260px;
     height: max-content;
     padding-bottom: 50px;
     margin-bottom: 50px;

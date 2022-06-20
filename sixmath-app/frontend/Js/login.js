@@ -28,7 +28,7 @@ $('#btn-login').on('click', function (e) {
       localStorage.setItem(
         'access_token', result.data.access_token
       )
-      window.location = 'statistik.html'
+      window.location = '../../html/student/statistik.html'
     },
     failure: function () {
       console.log('ok')

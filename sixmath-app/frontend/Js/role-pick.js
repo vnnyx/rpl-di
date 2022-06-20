@@ -5,11 +5,11 @@ $(document).ready(function () {
     });
     $('.btn-next').on('click', function () {
         if ($('#btnradio1').prop("checked")) {
-            window.location = '/frontend/html/student/register.html'
+            window.location = '../html/teacher/guru-registrasi.html'
         }else if ($('#btnradio2').prop("checked")){
-            window.location = '/frontend/html/student/login.html'
+            window.location = '../html/student/register.html'
         }else{
-            window.location = '/frontend/html/student/statistik.html'
+            window.location = '../html/ortu/parent-regist.html'
         }
     })
 });

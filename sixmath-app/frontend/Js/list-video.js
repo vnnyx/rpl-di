@@ -8,4 +8,8 @@ $(document).ready(function () {
         $(this).addClass('akt')
         console.log('ok')
     });
+
+    $('.card-video').on('click', function() {
+        window.location = 'video.html'
+    })
 });

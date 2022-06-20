@@ -195,7 +195,7 @@ function stopQuiz(){
   localStorage.setItem("wrong", wrong);
   localStorage.setItem("userAnswer", user_answer);
   localStorage.setItem("rightAnswer", CORRECT_ANSWER);
-  location.href = "/frontend/html/student/result.html";
+  location.href = "result.html";
   return
 }
 

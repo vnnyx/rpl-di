@@ -69,7 +69,7 @@ $(document).ready(function () {
         myChart.destroy()
         var bar = $(this).children("option:selected").val();
         $.ajax({
-            url: "https://sixmath.vnnyx.my.id/api/dashboard/statistik-pendaftaran?month=" + bar,
+            url: "https://sixmath.vnnyx.my.id/api/user/registration-statistics?month=" + bar,
             type: 'GET',
             contentType: 'json',
             headers: {

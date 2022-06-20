@@ -36,7 +36,7 @@
     border-radius: 50%;
     height: 54px;
     width: 54px;
-    transition: all 1.4s ease;
+    transition: all .4s ease;
 }
 .sidebar.act ~ .content .foto{
     right: 380px;
@@ -98,11 +98,12 @@
 }
 .content-kiri{
     position: relative;
-    height: max-content;
+    height: 680px;
     width: 698px;
     background-color: #fff;
     border-radius: 10px;
     transition: all .4s ease;
+    overflow-y: auto;
 }
 .sidebar.act ~ .content .content-kiri{
     width: 740px;
@@ -153,12 +154,20 @@
 }
 
 .content-kanan{
+    margin-left: -40px;
     height: 675px;
-    width: 540px;
+    width: 580px;
     background-color: #fff;
     transition: all .4s ease;
+    overflow-y: auto;
 }
+/* .wrap{
+    position: relative;
+    overflow-y: auto;
+
+} */
 .sidebar.act ~ .content .content-kanan{
+    margin-left: 0;
     width: 330px;
     transition: all .4s ease;
 }
