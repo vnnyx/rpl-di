@@ -1,0 +1,239 @@
+.content{
+    position: relative;
+    left: 150px;
+    height: 100%;
+    background: #E5E5E5;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content{
+    left: 357px;
+}
+.profile{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -630px;
+    width: 90px;
+    height: 54px;
+    border-radius: 40px;
+    background-color: #fff;
+}
+.sidebar.act ~ .content .profile{
+    left: 430px;
+}
+.kaca{
+    padding: 0 5px;
+}
+.lonceng{
+    padding: 0 5px;
+    
+}
+.foto{
+    position: absolute;
+    right: 185px;
+    top: 17px;
+    border-radius: 50%;
+    height: 54px;
+    width: 54px;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .foto{
+    right: 380px;
+}
+.main-content{
+    position: relative;
+    width: 1300px;
+    height: max-content;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    transition: all .4s ease;    
+}
+.sidebar.act ~ .content .main-content{
+    width: 1100px;
+    transition: all .4s ease;    
+}
+.sub-judul{
+    font-size: 24px;
+}
+#filter{
+    position: absolute;
+    right: 20px;
+    border: none;
+    outline: none;
+}
+.card-edit{
+    position: relative;
+    height: 250px;
+    width: 310.8px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .1);
+    border-radius: 10.2px;
+}
+.card-edit iframe{
+    border-radius: 6.2px;
+}
+.judul-video{
+    font-size: 14.41px;
+}
+.list-video{
+    margin-left: 15px;
+}
+
+.container-fluid .btn{
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    background-color: #FFFFFF;
+    width: 241px;
+    height: 62px;
+    border-radius: 14px;
+    border: none;
+    position: absolute;
+    bottom: 40px;
+    transition: all 1.4s ease;
+}
+
+.container-fluid .text2{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    color: #fff;
+}
+
+.container-fluid .text3{
+    position: absolute;
+    top: 23%;
+    left: 10%;
+    color: #FFFFFF;
+}
+
+.btn-hapus{
+    color: #Eb4335;
+    background-color: #FDECEB;
+    width: 124px;
+    height: 37px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 70px;
+    margin-left: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+}
+.banner-edit{
+    position: relative;
+    display: block;
+    width: 1300px;
+    height: 354px;
+    background-color: #6A35FF;
+    border-radius: 10px 8px;
+    overflow: hidden;
+    transition: all .4s ease;
+}
+.sidebar.act ~ .content .banner-edit{
+    transition: all .4s ease;
+    width: 1100px;
+}
+.banner h1{
+    position: absolute;
+}
+.img-math{
+    position: absolute;
+    height: 30%;
+    opacity: .2;
+}
+.variasi{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.variasi2{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 45%;
+}
+.banner-edit h1{
+    color: #fff;
+    font-size: 38px;
+    font-weight: bold;
+    margin-left: 36px;
+    margin-top: 42px;
+    text-shadow: 2px 2px 5px #000;
+}
+.banner-edit p{
+    text-shadow: 2px 2px 5px #000;
+    margin-left: 36px;
+    color: #E1E1E1;
+}
+.btn-unggah{
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    font-weight: bold;
+    font-size: 32px;
+    color: #6A35FF;
+    width: 288px;
+    height: 77px;
+    border-radius: 14px;
+    border: none;
+}
+.wrap{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 365px;
+    width: 304px;
+    border-radius: 16px;
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, .1);
+    overflow: hidden;
+}
+.card-video{
+    margin-top: 28.32px;
+    border-radius: 12.14px;
+    position: relative;
+    height: calc(167.59px + 48.58px);
+    width: 248.72px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+}
+.card-video iframe{
+    border-radius: 7.32px;
+}
+.modal-footer{
+    border-top: none;
+}
+.modal-header{
+    border: none;
+    margin-bottom: 0;
+}
+.modal-header h5{
+    margin-left: 20px;
+    font-size: 38px;
+}
+.form-control{
+    padding: 20px 20px;
+    background-color: #F5F5F5;
+    border-radius: 0;
+    width: 96%;
+    margin-left: 20px;
+}
+.form-group textarea{
+    height: 333px;
+}
+.btn-urungkan{
+    height: 66px;
+    width: 175px;
+    color: #6A35FF;
+    background-color: #fff;
+    border: 1px solid #6A35FF;
+    border-radius: 12px;
+    font-weight: bold;
+}
+.btn-publish{
+    height: 66px;
+    width: 373px;
+    color: #fff;
+    background-color: #6A35FF;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+}

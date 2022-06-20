@@ -1,0 +1,240 @@
+.card-tugas {
+    position: relative;
+    margin-left: 24px;
+    height: 117px;
+    width: 95%;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4);
+    overflow: hidden;
+}
+
+.heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 16px;
+    margin-top: 17px;
+}
+
+.heading2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 16px;
+    padding-top: 17px;
+}
+
+.desc-tugas {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+
+
+.content {
+    position: relative;
+    left: 150px;
+    height: 100%;
+    background: #E5E5E5;
+    transition: all .4s ease;
+}
+
+.sidebar.act~.content {
+    left: 357px;
+}
+
+.profile {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -630px;
+    width: 90px;
+    height: 54px;
+    border-radius: 40px;
+    background-color: #fff;
+}
+
+.sidebar.act~.content .profile {
+    left: 430px;
+}
+
+.kaca {
+    padding: 0 5px;
+}
+
+.lonceng {
+    padding: 0 5px;
+
+}
+
+.foto {
+    position: absolute;
+    right: 185px;
+    top: 17px;
+    border-radius: 50%;
+    height: 54px;
+    width: 54px;
+    transition: all .4s ease;
+}
+
+.sidebar.act ~ .content .foto {
+    right: 380px;
+}
+
+.main-kiri {
+    position: relative;
+    width: 483.5px;
+    height: 338px;
+    background-color: #fff;
+    border-radius: 10px;
+
+}
+
+.wrap {
+    display: flex;
+}
+
+.combo-box {
+    position: absolute;
+    right: 20px;
+    top: 24px;
+    border: none;
+    outline: none;
+}
+
+.main-kanan {
+    position: relative;
+    width: 790px;
+    height: 338px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all .4s ease;
+}
+
+.sidebar.act ~ .content .main-kanan {
+    width: 590px;
+    transition: all .4s ease;
+}
+.dough {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+}
+
+.dough #doughChart {
+    max-width: 300px;
+    max-height: 300px;
+    transition: all .2s ease;
+}
+.sidebar.act ~ .content .dough #doughChart {
+    max-width: 200px;
+    max-height: 270px;
+    transition: all .4s ease;
+}
+.count-tugas{
+    position: absolute;
+    top: 90px;
+}
+.konten-kiri   {
+    width: 783px;
+    height: 449px;
+    background-color: #fff;
+    margin-bottom: 40px;
+    overflow-y: auto;
+    margin-right: 30px;
+}
+.header{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 24px;
+    margin-bottom: 24px;
+}
+.card-soal{
+    position: relative;
+    width: 735px;
+    height: 117px;
+    box-shadow: 2px 4px 2px 2px rgba(0, 0, 0, .1);
+}
+.topik{
+    font-size: 24px;
+    font-weight: bold;
+}
+.variasi{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.rank{
+    position: relative;
+    background-color: #fff;
+    width: 300px;
+    height: 445px;
+    margin-left: -80px;
+    border-radius: 10px;
+}
+.header-ranking{
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 24px;
+    padding-top: 24px;
+    margin-bottom: 30px;
+}
+.ranking{
+    color: #FBAF00;
+    font-weight: bold;
+    font-size: 80px;
+}
+.wrap{
+    display: flex;
+    justify-content: center;
+}
+.wrap span{
+    font-size: 38px;
+    color: #AAAAAA;
+}
+hr{
+    width: 88%;
+    border: 2px solid;
+    color: #FBAF00;
+}
+.total{
+    margin-left: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #808080;
+}
+.score{
+    color: #FBAF00;
+    margin-left: 215px;
+}
+.bingkai{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 7px solid #fff;
+    height: 90px;
+    width: 78.56px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, .1);
+}
+.blob{
+    height: 70px;
+    width: 70px;
+    background-color: #9C78FF;
+    border-radius: 50%;
+}
+.avatar{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.variasi2{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
