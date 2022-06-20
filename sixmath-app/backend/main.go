@@ -20,7 +20,6 @@ func main() {
 	migration.MyMigration(databases,
 		entity.User{},
 		entity.Message{},
-		entity.Transaction{},
 		entity.Video{},
 		entity.Exam{},
 		entity.Question{},
