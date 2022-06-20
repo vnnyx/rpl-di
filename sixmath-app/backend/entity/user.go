@@ -5,7 +5,7 @@ import "time"
 type User struct {
 	UserId          int       `gorm:"column:user_id;primaryKey;autoIncrement" json:"user_id,omitempty"`
 	Username        string    `gorm:"column:username;unique;type:varchar(50)" json:"username,omitempty"`
-	Email           string    `gorm:"column:email;type:varchar(100)" json:"email,omitempty"`
+	Email           string    `gorm:"column:email;type:varchar(100);unique" json:"email,omitempty"`
 	Handphone       string    `gorm:"column:handphone;type:varchar(20)" json:"handphone,omitempty"`
 	Password        string    `gorm:"column:password;type:varchar(255)" json:"password,omitempty"`
 	Role            string    `gorm:"column:role;type:varchar(10)" json:"role,omitempty"`
