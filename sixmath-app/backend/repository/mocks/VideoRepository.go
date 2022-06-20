@@ -30,7 +30,7 @@ func (_m *VideoRepository) DeleteVideo(videoId int) error {
 }
 
 // FindAllVideo provides a mock function with given fields: pagination
-func (_m *VideoRepository) FindAllVideo(pagination model.Pagination) *model.Pagination {
+func (_m *VideoRepository) FindRecommendedVideo(pagination model.Pagination) *model.Pagination {
 	ret := _m.Called(pagination)
 
 	var r0 *model.Pagination

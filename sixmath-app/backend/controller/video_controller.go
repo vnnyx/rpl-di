@@ -24,6 +24,7 @@ func (controller *VideoController) Route(app *fiber.App) {
 	router.Get("/recommended", controller.RecommendedVideo)
 	router.Delete("/:id", middleware.IsTeacher(), controller.DeleteVideo)
 	router.Put("/:id", middleware.IsTeacher(), controller.UpdateVideo)
+	router.Get("/all", controller.GetAllVideo)
 }
 
 func (controller *VideoController) CreateVideo(c *fiber.Ctx) error {
@@ -89,6 +90,17 @@ func (controller VideoController) UpdateVideo(c *fiber.Ctx) error {
 	exception.PanicIfNeeded(err)
 
 	response, err := controller.VideoService.UpdateVideo(request)
+	exception.PanicIfNeeded(err)
+	return c.JSON(model.WebResponse{
+		Code:   200,
+		Status: "OK",
+		Data:   response,
+	})
+}
+
+func (controller VideoController) GetAllVideo(c *fiber.Ctx) error {
+	orderBy := c.Query("orderBy", "new")
+	response, err := controller.VideoService.GetAllVideo(orderBy)
 	exception.PanicIfNeeded(err)
 	return c.JSON(model.WebResponse{
 		Code:   200,

@@ -98,7 +98,7 @@ func (service *VideoServiceImpl) DeleteVideo(videoId int) error {
 }
 
 func (service *VideoServiceImpl) GetRecommendedVideo(pagination model.Pagination) (response model.Pagination) {
-	video := service.VideoRepository.FindAllVideo(pagination)
+	video := service.VideoRepository.FindRecommendedVideo(pagination)
 	response = model.Pagination{
 		Limit:      video.Limit,
 		Page:       video.Page,
@@ -108,4 +108,22 @@ func (service *VideoServiceImpl) GetRecommendedVideo(pagination model.Pagination
 		Rows:       video.Rows,
 	}
 	return response
+
+}
+
+func (service *VideoServiceImpl) GetAllVideo(orderBy string) (response []model.VideoResponse, err error) {
+	videos, err := service.VideoRepository.FindAllVideo(orderBy)
+	if err != nil {
+		return response, err
+	}
+	for _, video := range videos {
+		response = append(response, model.VideoResponse{
+			VideoId:     video.VideoId,
+			Teacher:     video.TeacherUsername,
+			Title:       video.Title,
+			URLVideo:    video.URLVideo,
+			Description: video.Description,
+		})
+	}
+	return response, nil
 }
