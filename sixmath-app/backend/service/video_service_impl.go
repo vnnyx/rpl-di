@@ -21,10 +21,10 @@ func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (
 	validation.VideoValidate(request)
 
 	video := entity.Video{
-		Teacher:     request.Teacher,
-		Title:       request.Title,
-		URLVideo:    request.URLVideo,
-		Description: request.Description,
+		TeacherUsername: request.Teacher,
+		Title:           request.Title,
+		URLVideo:        request.URLVideo,
+		Description:     request.Description,
 	}
 
 	video, err = service.VideoRepository.InsertVideo(video)
@@ -33,7 +33,7 @@ func (service *VideoServiceImpl) CreateVideo(request model.VideoCreateRequest) (
 	}
 	response = model.VideoResponse{
 		VideoId:     video.VideoId,
-		Teacher:     video.Teacher,
+		Teacher:     video.TeacherUsername,
 		Title:       video.Title,
 		URLVideo:    video.URLVideo,
 		Description: video.Description,
@@ -50,11 +50,11 @@ func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (
 		return model.VideoResponse{}, errors.New("VIDEO_NOT_FOUND")
 	}
 	video = entity.Video{
-		VideoId:     request.VideoId,
-		Teacher:     request.Teacher,
-		Title:       request.Title,
-		URLVideo:    request.URLVideo,
-		Description: request.Description,
+		VideoId:         request.VideoId,
+		TeacherUsername: request.Teacher,
+		Title:           request.Title,
+		URLVideo:        request.URLVideo,
+		Description:     request.Description,
 	}
 
 	_, err = service.VideoRepository.UpdateVideo(video)
@@ -63,7 +63,7 @@ func (service *VideoServiceImpl) UpdateVideo(request model.VideoUpdateRequest) (
 	}
 	response = model.VideoResponse{
 		VideoId:     video.VideoId,
-		Teacher:     video.Teacher,
+		Teacher:     video.TeacherUsername,
 		Title:       video.Title,
 		URLVideo:    video.URLVideo,
 		Description: video.Description,
@@ -79,7 +79,7 @@ func (service *VideoServiceImpl) DetailVideo(videoId int) (response model.VideoR
 	}
 	response = model.VideoResponse{
 		VideoId:     video.VideoId,
-		Teacher:     video.Teacher,
+		Teacher:     video.TeacherUsername,
 		Title:       video.Title,
 		URLVideo:    video.URLVideo,
 		Description: video.Description,
