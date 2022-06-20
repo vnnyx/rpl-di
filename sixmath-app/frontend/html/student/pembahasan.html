@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="/frontend/css/style2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -18,7 +19,7 @@
                 <div class="card container-xl p-4" id="my-node">
                     <div class="card-body">
                         <div class="container-fluid d-flex justify-content-center mb-5">
-                            <img src="/frontend/assets/kpk.png" alt="" class="img-fluid">
+                            <img src="/frontend/assets/kpk.png" alt="">
                         </div>
                         <div class="mb-5 mt-5">
                             <h6 id="question"></h6>
@@ -29,13 +30,18 @@
                                     <input type="radio" class="btn-check" name="choices" id="choice0" data-id="0"
                                         id="choice0" autocomplete="off" onchange="saveAnswer()">
                                     <label class="btn btn-outline-primary p-4 container-fluid shadow-sm rounded"
-                                        for="choice0" id="choiceText0">Checked success radio</label>
+                                        for="choice0" id="choiceText0">Checked success radio
+                                        <i id="choiceIcon0" class="text-success"></i>
+                                    </label>
                                 </div>
+                                
                                 <div class="col">
                                     <input type="radio" class="btn-check" name="choices" id="choice1" data-id="1"
                                         id="choice1" autocomplete="off" onchange="saveAnswer()">
                                     <label class="btn btn-outline-primary p-4 container-fluid shadow-sm rounded"
-                                        for="choice1" id="choiceText1">Checked success radio</label>
+                                        for="choice1" id="choiceText1">Checked success radio
+                                        <i id="choiceIcon1" class="text-success"></i>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row col-12">
@@ -43,19 +49,34 @@
                                     <input type="radio" class="btn-check" name="choices" id="choice2" data-id="2"
                                         id="choice2" autocomplete="off" onchange="saveAnswer()">
                                     <label class="btn btn-outline-primary p-4 container-fluid shadow-sm rounded"
-                                        for="choice2" id="choiceText2">Checked success radio</label>
+                                        for="choice2" id="choiceText2">Checked success radio
+                                        <i id="choiceIcon2" class="text-success"></i>
+                                    </label>
                                 </div>
                                 <div class="col">
                                     <input type="radio" class="btn-check" name="choices" id="choice3" data-id="3"
                                         id="choice3" autocomplete="off" onchange="saveAnswer()">
                                     <label class="btn btn-outline-primary p-4 container-fluid shadow-sm rounded"
-                                        for="choice3" id="choiceText3">Checked success radio</label>
+                                        for="choice3" id="choiceText3">Checked success radio
+                                        <i id="choiceIcon3" class="text-success"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mt-5">
+                            <div class="row col-12 mb-4">
+                                <div class="col">
+                                    <button type="button" data-bs-toggle="modal" onclick="showPembahasan()" data-bs-target="#modal-pembahasan" class="btn btn-outline-warning p-3 mb-2 container-fluid"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Lihat Langkah Pembahasan Disini</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+            
+
             <div class="col-4">
                 <div class="card container">
                     <div class="card-body">
@@ -64,7 +85,7 @@
                                 <canvas height="200" width="200" id="Timer">
                             </span>
                         </div>
-                        <div class="mb-2">
+                        <div class="container-fluid mb-2">
                             <div class="container">
                                 <div class="row row-cols-4 mb-3 mt-5">
                                     <div class="col-3">
@@ -149,14 +170,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end mb-2 px-5">
-                        <a id="finish-btn" class="text-decoration-none text-dark fw-bold cursor-pointer"
-                            data-bs-toggle="modal" data-bs-target="#confirmModal">Selesai</a>
-                    </div>
                     <div class="col-12 mb-2 px-4">
-                        <button type="button" class="btn btn-primary p-3 mb-2 container-fluid" id="btn_next"
-                            onclick="nextQuestion()">Selanjutnya</button>
-                        <button type="button" class="btn btn-outline-primary p-3 mb-5 container-fluid" onclick="Ask()">Tanya Guru</button>
+                    <button type="button" class="btn btn-primary p-3 container-fluid mb-2" id="btn_next"
+                        onclick="nextQuestion()">Selanjutnya</button>
+                    <a href="/frontend/html/student/result.html" class="btn btn-outline-primary container-fluid p-3">Tutup Pembahasan</a>
                     </div>
                 </div>
             </div>
@@ -164,62 +181,37 @@
     </div>
 
     <div id="confirm-modal">
-        <div class="modal fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="modal-pembahasan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Apa Kamu Yakin?</h5>
-                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                    </div>
                     <div class="modal-body">
-                        Pastikan semua soal sudah kamu jawab!
+                        <div id="pembahasan" class="p-4 border border-warning rounded"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                            onclick="stopQuiz()">Finish</button>
+                        <button type="button" class="btn btn-outline-primary py-2" data-bs-dismiss="modal" onclick="destroyDownload()">Keluar Dari Pembahasan</button>
+                        <button type="button" class="btn btn-primary py-2" data-bs-dismiss="modal"
+                            onclick="downloadPembahasan()">Unduh Pembahasan</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <br>
+    <div id="node-for-download" class="bg-white my-5">
+
     </div>
 
-    <div id="finish-modal">
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Result - <span id="predicate"></span></h5>
-                    </div>
-                    <div class="modal-body">
-                        Your Score Is : <span id="score"></span>
-                        <br>
-                        Correct Answer : <span id="correct"></span>
-                        <br>
-                        Wrong Answer : <span id="wrong"></span>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="location.reload()">Play Again</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <img src="" id="bannerImage" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
         integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/frontend/js/script2.js"></script>
-    <script src="/frontend/js/timer.js"></script>
+    <script src="/frontend/js/pembahasan.js"></script>
+    <script src="/frontend/js/score.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
 </body>
 
 </html>

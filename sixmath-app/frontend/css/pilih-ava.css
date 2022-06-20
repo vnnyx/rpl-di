@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+.poster {
+    background-color: #6A35FF;
+    height: 100vh;
+    width: 100%;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.img1 {
+    width: 15%;
+    margin-left: 60px;
+    margin-top: 31px;
+}
+
+.img2 {
+    position: absolute;
+    top: 244px;
+    left: 200px;
+    width: 60%;
+}
+
+.img3 {
+    margin-top: -60px;
+    margin-left: 50px;
+    width: 100%;
+}
+
+.wave svg {
+    position: absolute;
+    bottom: 64px;
+    right: -12px;
+    width: max-content;
+}
+
+.btn-next:hover {
+    transform: translateY(-10px);
+    transition: all .4s ease;
+}
+
+.btn-next {
+    height: 59px;
+    width: 100%;
+    background-color: #6A35FF;
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    margin-left: 55px;
+    margin-top: 20px;
+    transition: all .4s ease;
+}
+
+.desc {
+    font-size: 20px;
+}
+
+.card-ava {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 97px;
+    width: 97px;
+    background-color: #F5F5F5;
+    -moz-box-shadow: 0 0 3px #000;
+    -webkit-box-shadow: 0 0 3px #000;
+    box-shadow: 0 0 1px #000;
+    border-radius: 4px;
+}
+
+.card-ava.selected {
+    border-style: solid;
+    border-color: #6A35FF;
+}
+
+.card-ava.unselected {
+    opacity:0.6;
+	filter:alpha(opacity=60);
+}
+
+.blob {
+    position: absolute;
+    height: 83.68px;
+    width: 83.68px;
+    background-color: #9C78FF;
+    border-radius: 50%;
+}
+.avatar{
+    z-index: 11;
+}
+.wrapp{
+    height: max-content;
+    width: 560px;
+    padding-bottom: 10px;
+}

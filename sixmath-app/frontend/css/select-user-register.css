@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow: hidden;
+}
+.guru{
+    text-align: center;
+    background-image: url(/frontend/assets/guru.png);
+    height: 180px;
+    width: 133px;
+    background-color: #E0D6FE;
+    border-radius: 16px;
+}
+.murid{
+    position: relative;
+    text-align: center;
+    height: 180px;
+    width: 133px;
+    background-color: #E0D6FE;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.role{
+    font-size: 24px;
+    padding-top: 16px;
+    color: #351A80;
+}
+.img-murid{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.parents{
+    position: relative;
+    text-align: center;
+    height: 180px;
+    width: 133px;
+    background-color: #E0D6FE;
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+}
+.aktif{
+    border: 3px solid #351A80;
+}
+.img-parents{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.btn-next{
+    height: 59px;
+    width: 100%;
+    background-color: #6A35FF;
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    margin-left: 29px;
+    margin-top: 100px;
+    transition: all .4s ease;
+}
+.btn-next:hover{
+    transform: translateY(-10px);
+    transition: all .4s ease;
+}
+.poster{
+    background-color: #6A35FF;
+    height: 100vh;
+    width: 100%;
+}
+.wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.img1{
+    width: 15%;
+    margin-left: 60px;
+    margin-top: 31px;
+}
+.img2{
+    position: absolute;
+    top: 244px;
+    left: 200px;
+    width: 60%;
+}
+.img3{
+    margin-top: -60px;
+    margin-left: 50px;
+    width: 100%;
+}
+.wave svg{
+    position: absolute;
+    bottom: 64px;
+    right: -12px;
+    width: max-content;
+}
+.guru:hover
+{
+    transform: translateY(-10px);
+    border: 3px solid #351A80;
+}
+.murid:hover{
+    transform: translateY(-10px);
+    border: 3px solid #351A80;
+}
+.parents:hover{
+    transform: translateY(-10px);
+    border: 3px solid #351A80;
+}
+.guru, .murid, .parents, .img1, .img2, .img3{
+    transition: all .4s ease;
+}
