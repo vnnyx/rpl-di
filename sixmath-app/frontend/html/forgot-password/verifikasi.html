@@ -22,10 +22,10 @@
             <p class="mb-5">Kode verifikasi telah dikirim melalui SMS ke <br>****-****-*714</p>
             <form method="get" class="digit-group mb-4 ms-5" data-group-name="digits" data-autosubmit="false"
                 autocomplete="off">
-                <input type="text" class="digits" maxlength="1" id="first" onkeyup="clickEvent(this, 'sec')"/>
-                <input type="text" class="digits" maxlength="1" id="sec" onkeyup="clickEvent(this, 'third')"/>
-                <input type="text" class="digits" maxlength="1" id="third" onkeyup="clickEvent(this, 'fourth')"/>
-                <input type="text" class="digits" maxlength="1" id="fourth"/>
+                <input type="text" class="digits" maxlength="1" id="first" onkeyup="clickEvent(this, 'sec')" />
+                <input type="text" class="digits" maxlength="1" id="sec" onkeyup="clickEvent(this, 'third')" />
+                <input type="text" class="digits" maxlength="1" id="third" onkeyup="clickEvent(this, 'fourth')" />
+                <input type="text" class="digits" maxlength="1" id="fourth" onkeyup="validateOtp()" />
             </form>
             <p class="side">Tidak Menerima Kode ? <span class="kirim-ulang">Kirim Ulang</span></p>
         </div>
@@ -47,11 +47,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
+        let frst
+        let second
+        let third
         function clickEvent(first, last) {
+            frst = $('#first').val()
+            second = $('#sec').val()
+            third = $('#third').val()
             if (first.value.length) {
                 document.getElementById(last).focus();
             }
         }
+        function validateOtp(e) {
+            // e.preventDefault();
+            const urlParams = new URLSearchParams(window.location.search)
+            const email = urlParams.get('email')
+            const userId = urlParams.get('id')
+            console.log(email)
+            let fourth = $('#fourth').val()
+            let otp = parseInt(frst.concat(second, third, fourth))
+            $.ajax({
+                url: `https://sixmath.vnnyx.my.id/api/password-reset/validate-otp?email=${email}`,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    'otp': otp,
+                },
+                success: function (result) {
+                    window.location = `ganti-pw.html?id=${userId}`
+                },
+                error: function () {
+                    alert('OTP yang anda masukan salah!')
+                }
+            })
+        }
+
+
     </script>
 
 </body>

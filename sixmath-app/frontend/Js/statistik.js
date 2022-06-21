@@ -6,7 +6,7 @@ $(document).ready(function () {
     var config
     var myChart
     $.ajax({
-        url: 'https://sixmath.vnnyx.my.id/api/dashboard/statistik-pendaftaran',
+        url: 'https://sixmath.vnnyx.my.id/api/user/registration-statistics',
         type: 'GET',
         contentType: 'json',
         headers: {
@@ -41,6 +41,11 @@ $(document).ready(function () {
                     },
                     scales: {
                         y: {
+                            ticks: {
+                                callback: (value, index, values)=> {
+                                    return value;
+                                }
+                            },
                             beginAtZero: true,
                             grid: {
                                 display: false,
@@ -110,7 +115,8 @@ $(document).ready(function () {
                                     display: false,
                                     drawOnChartArea: false,
                                     drawBorder: false
-                                }
+                                },
+                                type: 'linear',
                             },
                             x: {
                                 grid: {

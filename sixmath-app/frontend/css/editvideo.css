@@ -236,4 +236,14 @@
     border-radius: 12px;
     border: none;
     font-weight: bold;
+    margin-left: 20px;
+}
+.btn-delete{
+    height: 65px;
+    width: 234px;
+    border-radius: 7.08px;
+    border: none;
+    color: #EB4335;
+    background-color: #FDECEB;
+    margin-right: 20px;
 }

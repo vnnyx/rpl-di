@@ -28,9 +28,18 @@ $('#btn-login').on('click', function (e) {
       localStorage.setItem(
         'access_token', result.data.access_token
       )
-      window.location = '../../html/student/statistik.html'
+      if (result.code == "200"){
+        let datas = result.data.role;
+        if(datas == "student"){
+          window.location = '../../html/student/statistik.html'
+        }else if (datas == "teacher"){
+          window.location = '../../html/teacher/halaman-create-soal.html'
+        }else{
+          window.location = '../../html/ortu/dashboard.html'
+        }
+      }
     },
-    failure: function () {
+    error: function () {
       console.log('ok')
     }
   });

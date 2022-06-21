@@ -38,7 +38,7 @@
                         <i id="hide2" class="fa-solid fa-eye-slash"></i>
                     </span>
                 </div>
-                <button type="submit" class="btn" id="btn-login">Login</button>
+                <button type="submit" class="btn" id="btn-login">Ganti</button>
             </form>
         </div>
         <div class="col-md-6" id="kol2">
@@ -91,14 +91,36 @@
                 hide4.style.display = "inline"
             }
         }
-        $('#btn-login').on('click', function () {
+        $('#btn-login').on('click', function (event) {
+            event.preventDefault()
+            console.log('test')
             var new_pw = $('#new-pw').val()
             var confrm_pw = $('#confrm-pw').val()
-            if (new_pw != confrm_pw) {
-                console.log('ok')
+            console.log(new_pw, confrm_pw)
+            if (new_pw !== confrm_pw) {
+                console.log('lalalalall')
                 $('.matching').show()
             } else {
                 $('.matching').hide()
+                const urlParams = new URLSearchParams(window.location.search)
+                const userId = urlParams.get('id')
+                $.ajax({
+                    url: `https://sixmath.vnnyx.my.id/api/password-reset?id=${userId}`,
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        'password': $('#new-pw').val(),
+                        'password_confirmation': $('#confrm-pw').val()
+                    }),
+                    success: function (result) {
+                        console.log('success')
+                        window.location = `../login.html`
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                })
             }
         })
     </script>

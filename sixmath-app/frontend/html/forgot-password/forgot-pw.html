@@ -20,7 +20,8 @@
             <span class="mb-3 lupa">Lupa password?</span>
             <div class="lupa-pw mb-3">Tenang, yang penting<br>masih inget rumus!</div>
             <p class="judul">Mudah kok gantinya, seperti soal matematika!</p>
-            <input type="email" class="form-control mb-5 email" placeholder="Masukan Email" required>
+            <input type="email" class="form-control mb-3 email" placeholder="Masukan Email" required>
+            <p class="text-danger eror-msg"></p>
             <button class="btn-kirim" type="submit">Kirim</button>
         </div>
         <div class="col-7 right">
@@ -43,24 +44,23 @@
     <script>
         $('.btn-kirim').on('click', function () {
             $.ajax({
-                url: 'https://sixmath.vnnyx.my.id/api/user/teacher/all',
+                url: 'https://sixmath.vnnyx.my.id/api/password-reset/send-otp',
                 type: 'post',
                 dataType: 'json',
-                headers: {
-                    'Authorization': "Bearer " + localStorage.getItem('access_token')
-                },
+                
                 data: {
                     'email': $('.email').val(),
                 },
                 success: function (result) {
-                   
+                    let email = result.data.email
+                    let userId = result.data.user_id
+                    window.location = `verifikasi.html?email=${email}&id=${userId}`
                 },
-                failure: function () {
-                    console.log('ok')
+                error: function () {
+                    $('.eror-ms').html('*Harap periksa email anda kembali!')
                 }
             })
 
-            // window.location = 'verifikasi.html'
         })
     </script>
 

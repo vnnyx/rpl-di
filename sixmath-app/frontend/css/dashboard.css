@@ -12,7 +12,6 @@
     font-size: 24px;
     font-weight: bold;
     margin-left: 16px;
-    margin-top: 17px;
 }
 
 .heading2 {
@@ -87,10 +86,6 @@
     background-color: #fff;
     border-radius: 10px;
 
-}
-
-.wrap {
-    display: flex;
 }
 
 .combo-box {
@@ -237,4 +232,8 @@ hr{
     position: absolute;
     bottom: 0;
     left: 0;
+}
+#myChart{
+    padding: 0 20px;
+    margin-top: 20px;
 }

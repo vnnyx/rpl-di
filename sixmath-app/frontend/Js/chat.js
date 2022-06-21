@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", (_) => {
     var roomname = getParameterByName("room");
     var username = getParameterByName("name");
     let websocket = new WebSocket(
-      "ws://localhost:8080/websocket?name=" + username
+      "ws://3e69-103-57-36-42.ngrok.io/websocket?name=" + username
     );
     let room = document.getElementById("sender-chat");
   
