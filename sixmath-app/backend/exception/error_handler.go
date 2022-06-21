@@ -95,6 +95,17 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 		})
 	}
 
+	if err.Error() == "TOKEN_INVALID" {
+		return ctx.Status(fiber.StatusNotFound).JSON(model.Response{
+			Code:   fiber.StatusNotFound,
+			Status: "BAD_REQUEST",
+			Data:   nil,
+			Error: map[string]interface{}{
+				"otp": "INVALID",
+			},
+		})
+	}
+
 	return ctx.Status(fiber.StatusInternalServerError).JSON(model.WebResponse{
 		Code:   500,
 		Status: "INTERNAL_SERVER_ERROR",

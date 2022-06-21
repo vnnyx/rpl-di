@@ -69,6 +69,9 @@ func (service *PasswordResetServiceImpl) SendOtp(request model.SendOtpRequest) (
 }
 
 func (service *PasswordResetServiceImpl) ValidateOtp(request model.SendOtpRequest) error {
+	if request.Email == "" {
+		return errors.New("TOKEN_INVALID")
+	}
 	validate, err := service.PasswordResetRepository.ValidateToken(request.Otp, request.Email)
 	exception.PanicIfNeeded(err)
 	if (validate == entity.PasswordReset{}) {
