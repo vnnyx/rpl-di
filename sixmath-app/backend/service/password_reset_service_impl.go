@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"embed"
 	"errors"
+	"gorm.io/gorm"
 	"html/template"
 	"math/rand"
 	"rpl-sixmath/entity"
@@ -70,8 +71,7 @@ func (service *PasswordResetServiceImpl) SendOtp(request model.SendOtpRequest) (
 
 func (service *PasswordResetServiceImpl) ValidateOtp(request model.SendOtpRequest) error {
 	validate, err := service.PasswordResetRepository.ValidateToken(request.Otp, request.Email)
-	exception.PanicIfNeeded(err)
-	if (validate == entity.PasswordReset{}) {
+	if err == gorm.ErrRecordNotFound {
 		return errors.New("TOKEN_INVALID")
 	}
 	err = service.PasswordResetRepository.DeleteToken(validate.UserEmail)

@@ -20,7 +20,7 @@ func (repo *PasswordResetRepositoryImpl) InsertToken(reset entity.PasswordReset)
 }
 
 func (repo *PasswordResetRepositoryImpl) ValidateToken(otp int, email string) (response entity.PasswordReset, err error) {
-	err = repo.DB.First(&response).Where("token", otp).Where("expired_at >", time.Now()).Where("user_email", email).Error
+	err = repo.DB.Where("token=? and expired_at>=? and user_email=?", otp, time.Now(), email).First(&response).Error
 	return response, err
 }
 
