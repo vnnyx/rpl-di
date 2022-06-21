@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.drag-area{
+  border: 3px dashed #6A35FF;
+  background-color: #EBEBEB;
+  height: 358.75px;
+  width: 287px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.drag-area.active{
+  border: 2px solid #fff;
+}
+.drag-area .icon{
+  font-size: 100px;
+  color: #fff;
+}
+.drag-area header{
+  font-size: 26.09px;
+  font-weight: 500;
+  color: #6A35FF;
+}
+.drag-area span{
+  font-size: 19.57px;
+  font-weight: 500;
+  color: #6A35FF;
+  margin: 10px 0 15px 0;
+}
+.drag-area button{
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: #6A35FF;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.drag-area img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.upload{
+    word-spacing: -5px;
+}
+.poster {
+    background-color: #6A35FF;
+    height: 100vh;
+    width: 100%;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.img1 {
+    width: 15%;
+    margin-left: 60px;
+    margin-top: 31px;
+}
+
+.img2 {
+    position: absolute;
+    top: 244px;
+    left: 200px;
+    width: 60%;
+}
+
+.img3 {
+    margin-top: -60px;
+    margin-left: 50px;
+    width: 100%;
+}
+
+.wave svg {
+    position: absolute;
+    bottom: 64px;
+    right: -12px;
+    width: max-content;
+}
+
+.btn-next:hover {
+    transform: translateY(-10px);
+    transition: all .4s ease;
+}
+
+.btn-next {
+    height: 59px;
+    width: 100%;
+    background-color: #6A35FF;
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    margin-left: 25px;
+    margin-top: 90px;
+    transition: all .4s ease;
+}

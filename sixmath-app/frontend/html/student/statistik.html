@@ -73,8 +73,8 @@
                 <div class="col-lg-6">
                     <div class="profile">
                         <i class="bx bx-search bx-sm"></i>
-                        <i class='bx bxs-bell bx-sm'></i>
-                        <img src="../../assets/foto.jpeg" alt="">
+                    <i class='bx bxs-bell bx-sm'></i>
+                        <img src="../../assets/ava2.png" alt="">
                     </div>
                 </div>
             </div>
@@ -175,10 +175,30 @@
                 $(this).addClass('akt')
                 console.log('ok')
             });
+            $('.profile').append(`
+                    
+                    <img src="../../${localstorage.getItem('path')}" alt="">
+                `)
         });
-        $('.kerjakan').on('click', function(){
+        $('.kerjakan').on('click', function () {
             window.location = 'pelajaran.html'
         })
+        $.ajax({
+            url: 'https://sixmath.vnnyx.my.id/api/auth/login',
+            type: 'post',
+            dataType: 'json',
+            contentType: "application/json",
+            data: {
+                'avatar': 'avatar'
+            },
+            success: function (result) {
+
+
+            },
+            error: function () {
+                console.log('ok')
+            }
+        });
     </script>
     <script src="../../Js/util.js"></script>
     <script src="../../Js/statistik.js"></script>

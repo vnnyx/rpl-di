@@ -26,15 +26,18 @@ $('#btn-login').on('click', function (e) {
     }),
     success: function (result) {
       localStorage.setItem(
-        'access_token', result.data.access_token
+        'access_token', result.data.access_token,
       )
-      if (result.code == "200"){
+      localStorage.setItem(
+        'path', result.data.avatar,
+      )
+      if (result.code == "200") {
         let datas = result.data.role;
-        if(datas == "student"){
+        if (datas == "student") {
           window.location = '../../html/student/statistik.html'
-        }else if (datas == "teacher"){
+        } else if (datas == "teacher") {
           window.location = '../../html/teacher/halaman-create-soal.html'
-        }else{
+        } else {
           window.location = '../../html/ortu/dashboard.html'
         }
       }
