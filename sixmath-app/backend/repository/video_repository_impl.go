@@ -41,10 +41,19 @@ func (repo *VideoRepositoryImpl) FindOneRandomVideo() (response entity.Video, er
 	return response, err
 }
 
-func (repo *VideoRepositoryImpl) FindAllVideo(pagination model.Pagination) *model.Pagination {
+func (repo *VideoRepositoryImpl) FindRecommendedVideo(pagination model.Pagination) *model.Pagination {
 	var video []*entity.Video
 	repo.DB.Scopes(helper.Paginate(video, &pagination, repo.DB)).Where("video_id != ?", pagination.MainVideoId).Find(&video)
 	pagination.Rows = video
 
 	return &pagination
+}
+
+func (repo *VideoRepositoryImpl) FindAllVideo(orderBy string) (response []entity.Video, err error) {
+	if orderBy == "alphabet" {
+		err = repo.DB.Order("title").Find(&response).Error
+	} else {
+		err = repo.DB.Order("created_at desc").Find(&response).Error
+	}
+	return response, err
 }

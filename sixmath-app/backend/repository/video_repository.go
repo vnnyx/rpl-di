@@ -11,5 +11,6 @@ type VideoRepository interface {
 	DeleteVideo(videoId int) error
 	FindVideoById(videoId int) (response entity.Video, err error)
 	FindOneRandomVideo() (response entity.Video, err error)
-	FindAllVideo(pagination model.Pagination) *model.Pagination
+	FindRecommendedVideo(pagination model.Pagination) *model.Pagination
+	FindAllVideo(orderBy string) (response []entity.Video, err error)
 }

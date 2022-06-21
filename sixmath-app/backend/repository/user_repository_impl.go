@@ -53,3 +53,8 @@ func (repo *UserRepositoryImpl) GetDataUser(month string, year string) (response
 	err = repo.DB.Raw("SELECT COUNT(1) as total FROM users WHERE MONTH(created_at) = ? AND YEAR(created_at) = ?", month, year).Scan(&response).Error
 	return response, err
 }
+
+func (repo *UserRepositoryImpl) FindUserByEmail(email string) (response entity.User, err error) {
+	err = repo.DB.First(&response).Where("email", email).Error
+	return response, err
+}
