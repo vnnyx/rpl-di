@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 });
 $.ajax({
-    url: 'https://sixmath.vnnyx.my.id/api/video',
+    url: 'https://sixmath.vnnyx.my.id/api/video/detail/1',
     type: 'GET',
     contentType: 'json',
     headers: {
@@ -23,13 +23,13 @@ $.ajax({
         $('#detail').append(`
         <h1 class="judul-main fw-bold mb-4" style="margin-left: 75px;">`+ datas.title + `</h1>
         <h6 class="desc mb-3 fw-bold text-muted">Deskripsi</h6>
-        <p class="deskripsi ms-4 mb-5 px-5" style="text-indent: 30px; width: 100%;">`+ datas.deskripsi + `</p>
+        <p class="deskripsi ms-4 mb-5 px-5" style="text-indent: 30px; width: 100%;">`+ datas.description + `</p>
     `)
     }
 })
 
 $.ajax({
-    url: 'https://sixmath.vnnyx.my.id/api/video/recommended',
+    url: 'https://sixmath.vnnyx.my.id/api/video/recommended?main=1',
     type: 'GET',
     contentType: 'json',
     headers: {

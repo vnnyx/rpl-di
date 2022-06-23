@@ -34,7 +34,7 @@
                 <span class="tultip">Dashboard</span>
             </li>
             <li class="akt">
-                <a href="#">
+                <a href="../">
                     <i class='bx bx-book-open'></i>
                     <span class="links_name">Pelajaran</span>
                 </a>
@@ -153,8 +153,15 @@
                 $(this).addClass('akt')
                 console.log('ok')
             });
+
+            $(window).resize(function () {
+                if ($(window).width() >= 1080) {
+                    $('.content').style.marginLeft = "503px"
+                }
+            }).resize();
         });
     </script>
+    <script src="../../Js/get-ava.js"></script>
 </body>
 
 </html>

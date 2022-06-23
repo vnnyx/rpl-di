@@ -39,7 +39,7 @@
                 <span class="tultip">Pelajaran</span>
             </li>
             <li>
-                <a href="../../html/student/list_guru.html">
+                <a href="../student/list_guru.html">
                     <i class='bx bx-conversation'></i>
                     <span class="links_name">Pesan</span>
                 </a>
@@ -175,10 +175,6 @@
                 $(this).addClass('akt')
                 console.log('ok')
             });
-            $('.profile').append(`
-                    
-                    <img src="../../${localstorage.getItem('path')}" alt="">
-                `)
         });
         $('.kerjakan').on('click', function () {
             window.location = 'pelajaran.html'
@@ -202,6 +198,7 @@
     </script>
     <script src="../../Js/util.js"></script>
     <script src="../../Js/statistik.js"></script>
+    <script src="../../Js/get-ava.js"></script>
 </body>
 
 </html>
