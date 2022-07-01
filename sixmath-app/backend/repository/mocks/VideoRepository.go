@@ -29,20 +29,27 @@ func (_m *VideoRepository) DeleteVideo(videoId int) error {
 	return r0
 }
 
-// FindAllVideo provides a mock function with given fields: pagination
-func (_m *VideoRepository) FindRecommendedVideo(pagination model.Pagination) *model.Pagination {
-	ret := _m.Called(pagination)
+// FindAllVideo provides a mock function with given fields: orderBy
+func (_m *VideoRepository) FindAllVideo(orderBy string) ([]entity.Video, error) {
+	ret := _m.Called(orderBy)
 
-	var r0 *model.Pagination
-	if rf, ok := ret.Get(0).(func(model.Pagination) *model.Pagination); ok {
-		r0 = rf(pagination)
+	var r0 []entity.Video
+	if rf, ok := ret.Get(0).(func(string) []entity.Video); ok {
+		r0 = rf(orderBy)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*model.Pagination)
+			r0 = ret.Get(0).([]entity.Video)
 		}
 	}
 
-	return r0
+	var r1 error
+	if rf, ok := ret.Get(1).(func(string) error); ok {
+		r1 = rf(orderBy)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
 }
 
 // FindOneRandomVideo provides a mock function with given fields:
@@ -64,6 +71,22 @@ func (_m *VideoRepository) FindOneRandomVideo() (entity.Video, error) {
 	}
 
 	return r0, r1
+}
+
+// FindRecommendedVideo provides a mock function with given fields: pagination
+func (_m *VideoRepository) FindRecommendedVideo(pagination model.Pagination) *model.Pagination {
+	ret := _m.Called(pagination)
+
+	var r0 *model.Pagination
+	if rf, ok := ret.Get(0).(func(model.Pagination) *model.Pagination); ok {
+		r0 = rf(pagination)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*model.Pagination)
+		}
+	}
+
+	return r0
 }
 
 // FindVideoById provides a mock function with given fields: videoId

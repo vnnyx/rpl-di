@@ -29,7 +29,30 @@ func (_m *UserRepository) DeleteUser(userId int) error {
 	return r0
 }
 
-// FindUserAll provides a mock function with given fields:
+// FindAll provides a mock function with given fields:
+func (_m *UserRepository) FindAll() ([]entity.User, error) {
+	ret := _m.Called()
+
+	var r0 []entity.User
+	if rf, ok := ret.Get(0).(func() []entity.User); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]entity.User)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func() error); ok {
+		r1 = rf()
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// FindAllTeacher provides a mock function with given fields:
 func (_m *UserRepository) FindAllTeacher() ([]entity.User, error) {
 	ret := _m.Called()
 
@@ -45,6 +68,27 @@ func (_m *UserRepository) FindAllTeacher() ([]entity.User, error) {
 	var r1 error
 	if rf, ok := ret.Get(1).(func() error); ok {
 		r1 = rf()
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// FindUserByEmail provides a mock function with given fields: email
+func (_m *UserRepository) FindUserByEmail(email string) (entity.User, error) {
+	ret := _m.Called(email)
+
+	var r0 entity.User
+	if rf, ok := ret.Get(0).(func(string) entity.User); ok {
+		r0 = rf(email)
+	} else {
+		r0 = ret.Get(0).(entity.User)
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(string) error); ok {
+		r1 = rf(email)
 	} else {
 		r1 = ret.Error(1)
 	}

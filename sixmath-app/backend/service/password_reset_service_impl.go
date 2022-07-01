@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"embed"
 	"errors"
+	"fmt"
 	"gorm.io/gorm"
 	"html/template"
 	"math/rand"
@@ -34,6 +35,7 @@ func (service *PasswordResetServiceImpl) SendOtp(request model.SendOtpRequest) (
 	if err != nil {
 		return entity.User{}, errors.New("EMAIL_NOT_FOUND")
 	}
+	fmt.Println(user)
 	otp := rand.Intn(9999-1000) + 1000
 	passwordReset := entity.PasswordReset{
 		UserEmail: request.Email,

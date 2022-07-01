@@ -55,6 +55,6 @@ func (repo *UserRepositoryImpl) GetDataUser(month string, year string) (response
 }
 
 func (repo *UserRepositoryImpl) FindUserByEmail(email string) (response entity.User, err error) {
-	err = repo.DB.First(&response).Where("email", email).Error
+	err = repo.DB.Where("email", email).First(&response).Error
 	return response, err
 }

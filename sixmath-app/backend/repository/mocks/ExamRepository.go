@@ -15,6 +15,29 @@ type ExamRepository struct {
 	mock.Mock
 }
 
+// GetAllExam provides a mock function with given fields: orderBy
+func (_m *ExamRepository) GetAllExam(orderBy string) ([]entity.Exam, error) {
+	ret := _m.Called(orderBy)
+
+	var r0 []entity.Exam
+	if rf, ok := ret.Get(0).(func(string) []entity.Exam); ok {
+		r0 = rf(orderBy)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]entity.Exam)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(string) error); ok {
+		r1 = rf(orderBy)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // GetExamByID provides a mock function with given fields: examID
 func (_m *ExamRepository) GetExamByID(examID int) (entity.Exam, error) {
 	ret := _m.Called(examID)
@@ -29,6 +52,27 @@ func (_m *ExamRepository) GetExamByID(examID int) (entity.Exam, error) {
 	var r1 error
 	if rf, ok := ret.Get(1).(func(int) error); ok {
 		r1 = rf(examID)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// GetTotalQuestion provides a mock function with given fields: examId
+func (_m *ExamRepository) GetTotalQuestion(examId int) (int64, error) {
+	ret := _m.Called(examId)
+
+	var r0 int64
+	if rf, ok := ret.Get(0).(func(int) int64); ok {
+		r0 = rf(examId)
+	} else {
+		r0 = ret.Get(0).(int64)
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(int) error); ok {
+		r1 = rf(examId)
 	} else {
 		r1 = ret.Error(1)
 	}

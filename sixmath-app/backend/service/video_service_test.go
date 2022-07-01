@@ -3,43 +3,26 @@ package service
 import (
 	"github.com/stretchr/testify/assert"
 	"rpl-sixmath/entity"
-	"rpl-sixmath/model"
 	"rpl-sixmath/repository/mocks"
 	"testing"
 )
 
 var (
 	videoEntity = entity.Video{
-		PlaylistId: 1,
-		Title:      "title",
-		URLVideo:   "urlvideo",
-		Deskripsi:  "deskripsi",
+		VideoId:         1,
+		TeacherUsername: "testteacher",
+		Title:           "testtitle",
+		URLVideo:        "testurl",
+		Description:     "testdeskripsi",
 	}
 )
 
-func TestCreateVideoSuccess(t *testing.T) {
-	videoRepoMock := new(mocks.VideoRepository)
+func TestVideoServiceImpl_GetAllVideo(t *testing.T) {
+	videoRepMock := new(mocks.VideoRepository)
+	videoRepMock.On("FindAllVideo", "new").Return([]entity.Video{videoEntity}, nil)
+	videoService := NewVideoService(videoRepMock)
 
-	video := entity.Video{
-		PlaylistId: videoEntity.PlaylistId,
-		Title:      videoEntity.Title,
-		URLVideo:   videoEntity.URLVideo,
-		Deskripsi:  videoEntity.Deskripsi,
-	}
-
-	videoRepoMock.On("InsertVideo", video).Return(video, nil)
-
-	videoService := NewVideoService(videoRepoMock)
-
-	request := model.VideoCreateRequest{
-		PlaylistId: videoEntity.PlaylistId,
-		Title:      videoEntity.Title,
-		URLVideo:   videoEntity.URLVideo,
-		Deskripsi:  videoEntity.Deskripsi,
-	}
-
-	response, err := videoService.CreateVideo(request)
+	response, err := videoService.GetAllVideo("new")
 	assert.Nil(t, err)
-	assert.Equal(t, videoEntity.PlaylistId, response.PlaylistId)
-	assert.Equal(t, videoEntity.URLVideo, response.URLVideo)
+	assert.Equal(t, videoEntity.Title, response[0].Title)
 }

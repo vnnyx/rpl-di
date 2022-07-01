@@ -9,7 +9,7 @@ $(document).ready(function () {
         }else if ($('#btnradio2').prop("checked")){
             window.location = '../html/student/register.html'
         }else{
-            window.location = '../html/ortu/parent-regist.html'
+            window.location = '../ortu/parent-regist.html'
         }
     })
 });
